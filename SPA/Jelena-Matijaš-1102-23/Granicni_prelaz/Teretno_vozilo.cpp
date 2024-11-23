@@ -52,13 +52,24 @@ void Teretno_vozilo::init() {
 			int* indeksi = new int[broj_robe];
 			for (int i = 0; i < broj_robe; i++)indeksi[i] = i;
 
+			int brSlova = 0;
+			string ispisiNaziv = "";
+
 			promijesaj_indekse(indeksi, broj_robe);
 			for (int i = 0; i < 3; i++) {
 				int index = indeksi[i];
 				int kolicina = rand() % 100 + 1;
 				Roba* nova = new Roba(nazivi_robe[index], kolicina);
+				string naziv = nova->get_naziv();
+				int j = 0;
+				while (naziv[j++]);
+				if (j - 1 > brSlova) {
+					brSlova = j - 1;
+					ispisiNaziv = naziv;
+				}
 				push(nova);
 			}
+			cout << "Roba sa najduzim nazivom: " << ispisiNaziv << endl;
 			this->redni_broj = ++counter;
 			delete[]nazivi_robe;
 			nazivi_robe = nullptr;
