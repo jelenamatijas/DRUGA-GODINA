@@ -44,6 +44,7 @@ public:
     Vector2D operator*(int scalar)const{
         return Vector2D(x*scalar, y*scalar);
     }
+
     Vector2D& operator*=(int scalar){
         x*=scalar;
         y*=scalar;
@@ -56,9 +57,10 @@ public:
 
 };
 
-Vector2D& operator*=(int scalar, const Vector2D& other){
+Vector2D operator*(int scalar,Vector2D& other){
     return other*scalar;
 }
+
 
 std::ostream& operator<<(std::ostream& out, const Vector2D& v){
     out<<"("<<v.getX()<<","<<v.getY()<<")"<<std::endl;
@@ -74,5 +76,5 @@ std::istream& operator>>(std::istream& in, Vector2D& v){
 }
 
 Vector2D max(const Vector2D& v1,const Vector2D& v2){
-    return Vector2D(std::max(v1.getX(), v2.getX()),std::max(v1.getY(), v2.getY()));
+    return v1.max(v2);
 }

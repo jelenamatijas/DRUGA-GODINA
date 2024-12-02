@@ -12,7 +12,7 @@ public:
     const Vector2D get_v1()const{return v1;}
     const Vector2D get_v2()const{return v2;}
 
-    void execute(){
-        f(v1,v2);
+    Vector2D execute(){
+       return f(v1,v2);
     }
 };
