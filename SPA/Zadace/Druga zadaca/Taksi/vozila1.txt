@@ -1,0 +1,7 @@
+vozilo1,1
+vozilo2,4
+vozilo3,5
+vozilo4,2
+vozilo5,7
+vozilo6,3
+vozilo7,6
