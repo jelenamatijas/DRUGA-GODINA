@@ -178,18 +178,21 @@ void recreatePath(int *prev, int begin, int end){
 
 
 int main() {
-    City city(getNumOfLines("matricaGrada1.csv"), "matricaGrada1.csv");
+    string m = "matricaGrada1.csv";   
+    string v = "vozila1.txt";
+    string u = "upitiKorisnika1.csv";
+    City city(getNumOfLines(m), m);
     LIST* list = nullptr;
-    initialize("vozila1.txt", &list);
+    initialize(v, &list);
 
     cout<<"---------- INPUT INFO ----------"<<endl;
     city.printMatrix();
     printTaxies(list);
     cout<<"---------- END OF INPUT INFO ----------"<<endl;
     
-    int numUsers = getNumOfLines("upitiKorisnika1.csv");
+    int numUsers = getNumOfLines(u);
     int from[numUsers]{0}, to[numUsers]{0};
-    getAddresses("upitiKorisnika1.csv", from, to);
+    getAddresses(u, from, to);
 
     int waitingTime[numUsers]{0};
     int drivingTime[numUsers]{0};
@@ -211,8 +214,10 @@ int main() {
             int* prev = new int[n];
 
             shortestPath(city, pom->currAddr, dist, prev);
-            if(dist[userAddress]!=0)
+            if(dist[userAddress]!=0 && pom->available)
                 tree.add(dist[userAddress], pom->id, pom->currAddr, pom->numRides, pom->available);
+            if(!pom->available)
+                pom->available = true;
             pom = pom->next;
 
             delete[] dist;
@@ -232,6 +237,7 @@ int main() {
             if(dist[userAddress] == INT_MAX){
                 cout<<"There is no path from "<< closest->currAddr+1<<" to "<<userAddress+1<<"."<<endl;
             }else{
+                cout<<"Taxi: "<<closest->id<<" will be there in "<<dist[userAddress]<<" minutes."<<endl;
                 cout<<"Path: ";
                 recreatePath(prev, closest->currAddr, userAddress);
                 cout<<" |-> ";
@@ -241,7 +247,7 @@ int main() {
 
                 if(dist[destination] != INT_MAX) {  
                     recreatePath(prev, userAddress, destination);
-                    cout<<endl;
+                    cout<<endl<<"Trip is done."<<endl;
                     drivingTime[i]=dist[destination];
                     pom = list;
                     while(pom && pom->id != closest->id) {
@@ -270,21 +276,22 @@ int main() {
     cout<<"---------- END OF SIMULATION ----------"<<endl<<endl;
 
     cout<<"Total waiting time for all users: ";
-    for(int i=1;i<numUsers;i++)
-        waitingTime[0]+=waitingTime[i];
-    cout<<waitingTime[0]<<endl;
-
-    cout<<"Total driving time per user: "<<endl;
+    int wt=0;
     for(int i=0;i<numUsers;i++)
-        cout<<"User "<<i+1<<": "<<waitingTime[i]<<endl;
+        wt+=waitingTime[i];
+    cout<<wt<<endl;
+
+    cout<<"Total waiting time and driving time per user: "<<endl;
+    for(int i=0;i<numUsers;i++)
+        cout<<"User "<<i+1<<": waiting time + driving time: "<<waitingTime[i]<<" + "<<drivingTime[i] <<" = "<<waitingTime[i]+drivingTime[i] <<endl;
     
-    cout<<"Taxi datas: "<<endl;
+    cout<<"\nTaxi data: "<<endl;
     
     int travelWay=0;
     LIST* pom = list;
     while(pom){
         cout<<"ID: "<<pom->id<<endl;
-        cout<<"Number of rides: "<<pom->numRides<<" "<<pom->traveled<<endl;
+        cout<<"Number of rides: "<<pom->numRides<<endl;
         travelWay+=pom->traveled;
         pom = pom->next;
     }  
