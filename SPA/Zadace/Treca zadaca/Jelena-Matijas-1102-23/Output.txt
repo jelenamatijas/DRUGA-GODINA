@@ -1,0 +1,458 @@
+1. Primjer izvršavanja programa na ulaznim datotekama sa Moodle stranice predmeta:
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 1
+ File name: datoteka4.txt, number of words: 30, number of characters: 212
+ File name: datoteka7.txt, number of words: 30, number of characters: 197
+ File name: datoteka14.txt, number of words: 31, number of characters: 200
+ File name: datoteka6.txt, number of words: 33, number of characters: 230
+ File name: datoteka10.txt, number of words: 34, number of characters: 232
+ File name: datoteka15.txt, number of words: 36, number of characters: 243
+ File name: datoteka2.txt, number of words: 39, number of characters: 279
+ File name: datoteka8.txt, number of words: 39, number of characters: 287
+ File name: datoteka11.txt, number of words: 40, number of characters: 257
+ File name: datoteka5.txt, number of words: 41, number of characters: 257
+ File name: datoteka3.txt, number of words: 47, number of characters: 333
+ File name: datoteka9.txt, number of words: 50, number of characters: 356
+ File name: datoteka12.txt, number of words: 50, number of characters: 345
+ File name: datoteka13.txt, number of words: 62, number of characters: 416
+ File name: datoteka1.txt, number of words: 78, number of characters: 529
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 2
+Enter word count to search: 62
+ File name:datoteka13.txt, number of words: 62
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 2
+Enter word count to search: 39
+ File name:datoteka2.txt, number of words: 39
+ File name:datoteka8.txt, number of words: 39
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 2
+Enter word count to search: 44
+No file found with given word count.
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 3
+Enter text: This is user's file.
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 3
+Enter text: This is another user's file.
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 1
+ File name: userFile1.txt, number of words: 4, number of characters: 20
+ File name: userFile2.txt, number of words: 5, number of characters: 28
+ File name: datoteka4.txt, number of words: 30, number of characters: 212
+ File name: datoteka7.txt, number of words: 30, number of characters: 197
+ File name: datoteka14.txt, number of words: 31, number of characters: 200
+ File name: datoteka6.txt, number of words: 33, number of characters: 230
+ File name: datoteka10.txt, number of words: 34, number of characters: 232
+ File name: datoteka15.txt, number of words: 36, number of characters: 243
+ File name: datoteka2.txt, number of words: 39, number of characters: 279
+ File name: datoteka8.txt, number of words: 39, number of characters: 287
+ File name: datoteka11.txt, number of words: 40, number of characters: 257
+ File name: datoteka5.txt, number of words: 41, number of characters: 257
+ File name: datoteka3.txt, number of words: 47, number of characters: 333
+ File name: datoteka9.txt, number of words: 50, number of characters: 356
+ File name: datoteka12.txt, number of words: 50, number of characters: 345
+ File name: datoteka13.txt, number of words: 62, number of characters: 416
+ File name: datoteka1.txt, number of words: 78, number of characters: 529
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 4
+Enter word count to delete: 33
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 1
+ File name: userFile1.txt, number of words: 4, number of characters: 20
+ File name: userFile2.txt, number of words: 5, number of characters: 28
+ File name: datoteka4.txt, number of words: 30, number of characters: 212
+ File name: datoteka7.txt, number of words: 30, number of characters: 197
+ File name: datoteka14.txt, number of words: 31, number of characters: 200
+ File name: datoteka10.txt, number of words: 34, number of characters: 232
+ File name: datoteka15.txt, number of words: 36, number of characters: 243
+ File name: datoteka2.txt, number of words: 39, number of characters: 279
+ File name: datoteka8.txt, number of words: 39, number of characters: 287
+ File name: datoteka11.txt, number of words: 40, number of characters: 257
+ File name: datoteka5.txt, number of words: 41, number of characters: 257
+ File name: datoteka3.txt, number of words: 47, number of characters: 333
+ File name: datoteka9.txt, number of words: 50, number of characters: 356
+ File name: datoteka12.txt, number of words: 50, number of characters: 345
+ File name: datoteka13.txt, number of words: 62, number of characters: 416
+ File name: datoteka1.txt, number of words: 78, number of characters: 529
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 4
+Enter word count to delete: 50
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 1
+ File name: userFile1.txt, number of words: 4, number of characters: 20
+ File name: userFile2.txt, number of words: 5, number of characters: 28
+ File name: datoteka4.txt, number of words: 30, number of characters: 212
+ File name: datoteka7.txt, number of words: 30, number of characters: 197
+ File name: datoteka14.txt, number of words: 31, number of characters: 200
+ File name: datoteka10.txt, number of words: 34, number of characters: 232
+ File name: datoteka15.txt, number of words: 36, number of characters: 243
+ File name: datoteka2.txt, number of words: 39, number of characters: 279
+ File name: datoteka8.txt, number of words: 39, number of characters: 287
+ File name: datoteka11.txt, number of words: 40, number of characters: 257
+ File name: datoteka5.txt, number of words: 41, number of characters: 257
+ File name: datoteka3.txt, number of words: 47, number of characters: 333
+ File name: datoteka1.txt, number of words: 78, number of characters: 529
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 4
+Enter word count to delete: 42
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 1
+ File name: userFile1.txt, number of words: 4, number of characters: 20
+ File name: userFile2.txt, number of words: 5, number of characters: 28
+ File name: datoteka4.txt, number of words: 30, number of characters: 212
+ File name: datoteka7.txt, number of words: 30, number of characters: 197
+ File name: datoteka14.txt, number of words: 31, number of characters: 200
+ File name: datoteka10.txt, number of words: 34, number of characters: 232
+ File name: datoteka15.txt, number of words: 36, number of characters: 243
+ File name: datoteka2.txt, number of words: 39, number of characters: 279
+ File name: datoteka8.txt, number of words: 39, number of characters: 287
+ File name: datoteka11.txt, number of words: 40, number of characters: 257
+ File name: datoteka5.txt, number of words: 41, number of characters: 257
+ File name: datoteka3.txt, number of words: 47, number of characters: 333
+ File name: datoteka1.txt, number of words: 78, number of characters: 529
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 5
+ 1. Descending
+ 2. Ascending
+ Enter way of sorting: 1
+ File name: datoteka1.txt, number of words: 78, number of characters: 529
+ File name: datoteka3.txt, number of words: 47, number of characters: 333
+ File name: datoteka8.txt, number of words: 39, number of characters: 287
+ File name: datoteka2.txt, number of words: 39, number of characters: 279
+ File name: datoteka11.txt, number of words: 40, number of characters: 257
+ File name: datoteka5.txt, number of words: 41, number of characters: 257
+ File name: datoteka15.txt, number of words: 36, number of characters: 243
+ File name: datoteka10.txt, number of words: 34, number of characters: 232
+ File name: datoteka4.txt, number of words: 30, number of characters: 212
+ File name: datoteka14.txt, number of words: 31, number of characters: 200
+ File name: datoteka7.txt, number of words: 30, number of characters: 197
+ File name: userFile2.txt, number of words: 5, number of characters: 28
+ File name: userFile1.txt, number of words: 4, number of characters: 20
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 5
+ 1. Descending
+ 2. Ascending
+ Enter way of sorting: 2
+ File name: userFile1.txt, number of words: 4, number of characters: 20
+ File name: userFile2.txt, number of words: 5, number of characters: 28
+ File name: datoteka7.txt, number of words: 30, number of characters: 197
+ File name: datoteka14.txt, number of words: 31, number of characters: 200
+ File name: datoteka4.txt, number of words: 30, number of characters: 212
+ File name: datoteka10.txt, number of words: 34, number of characters: 232
+ File name: datoteka15.txt, number of words: 36, number of characters: 243
+ File name: datoteka11.txt, number of words: 40, number of characters: 257
+ File name: datoteka5.txt, number of words: 41, number of characters: 257
+ File name: datoteka2.txt, number of words: 39, number of characters: 279
+ File name: datoteka8.txt, number of words: 39, number of characters: 287
+ File name: datoteka3.txt, number of words: 47, number of characters: 333
+ File name: datoteka1.txt, number of words: 78, number of characters: 529
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 6
+ EXIT.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+2. Primjer izvršavanja programa na ličnim ulaznim datotekama:
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 1
+ File name: datoteka11.txt, number of words: 92, number of characters: 644
+ File name: datoteka7.txt, number of words: 97, number of characters: 671
+ File name: datoteka10.txt, number of words: 98, number of characters: 695
+ File name: datoteka14.txt, number of words: 98, number of characters: 678
+ File name: datoteka8.txt, number of words: 102, number of characters: 657
+ File name: datoteka4.txt, number of words: 104, number of characters: 711
+ File name: datoteka6.txt, number of words: 108, number of characters: 745
+ File name: datoteka1.txt, number of words: 112, number of characters: 739
+ File name: datoteka15.txt, number of words: 120, number of characters: 816
+ File name: datoteka13.txt, number of words: 121, number of characters: 801
+ File name: datoteka2.txt, number of words: 123, number of characters: 855
+ File name: datoteka3.txt, number of words: 124, number of characters: 810
+ File name: datoteka9.txt, number of words: 127, number of characters: 883
+ File name: datoteka5.txt, number of words: 157, number of characters: 1048
+ File name: datoteka12.txt, number of words: 163, number of characters: 1092
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 2
+Enter word count to search: 98
+ File name:datoteka10.txt, number of words: 98
+ File name:datoteka14.txt, number of words: 98
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 2
+Enter word count to search: 120
+ File name:datoteka15.txt, number of words: 120
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 2
+Enter word count to search: 164
+No file found with given word count.
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 3
+Enter text: New text file.
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 1
+ File name: userFile1.txt, number of words: 3, number of characters: 14
+ File name: datoteka11.txt, number of words: 92, number of characters: 644
+ File name: datoteka7.txt, number of words: 97, number of characters: 671
+ File name: datoteka10.txt, number of words: 98, number of characters: 695
+ File name: datoteka14.txt, number of words: 98, number of characters: 678
+ File name: datoteka8.txt, number of words: 102, number of characters: 657
+ File name: datoteka4.txt, number of words: 104, number of characters: 711
+ File name: datoteka6.txt, number of words: 108, number of characters: 745
+ File name: datoteka1.txt, number of words: 112, number of characters: 739
+ File name: datoteka15.txt, number of words: 120, number of characters: 816
+ File name: datoteka13.txt, number of words: 121, number of characters: 801
+ File name: datoteka2.txt, number of words: 123, number of characters: 855
+ File name: datoteka3.txt, number of words: 124, number of characters: 810
+ File name: datoteka9.txt, number of words: 127, number of characters: 883
+ File name: datoteka5.txt, number of words: 157, number of characters: 1048
+ File name: datoteka12.txt, number of words: 163, number of characters: 1092
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 4
+Enter word count to delete: 112
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 1
+ File name: userFile1.txt, number of words: 3, number of characters: 14
+ File name: datoteka11.txt, number of words: 92, number of characters: 644
+ File name: datoteka7.txt, number of words: 97, number of characters: 671
+ File name: datoteka10.txt, number of words: 98, number of characters: 695
+ File name: datoteka14.txt, number of words: 98, number of characters: 678
+ File name: datoteka8.txt, number of words: 102, number of characters: 657
+ File name: datoteka4.txt, number of words: 104, number of characters: 711
+ File name: datoteka6.txt, number of words: 108, number of characters: 745
+ File name: datoteka15.txt, number of words: 120, number of characters: 816
+ File name: datoteka13.txt, number of words: 121, number of characters: 801
+ File name: datoteka2.txt, number of words: 123, number of characters: 855
+ File name: datoteka3.txt, number of words: 124, number of characters: 810
+ File name: datoteka9.txt, number of words: 127, number of characters: 883
+ File name: datoteka5.txt, number of words: 157, number of characters: 1048
+ File name: datoteka12.txt, number of words: 163, number of characters: 1092
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 4
+Enter word count to delete: 98
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 1
+ File name: userFile1.txt, number of words: 3, number of characters: 14
+ File name: datoteka11.txt, number of words: 92, number of characters: 644
+ File name: datoteka7.txt, number of words: 97, number of characters: 671
+ File name: datoteka8.txt, number of words: 102, number of characters: 657
+ File name: datoteka4.txt, number of words: 104, number of characters: 711
+ File name: datoteka6.txt, number of words: 108, number of characters: 745
+ File name: datoteka15.txt, number of words: 120, number of characters: 816
+ File name: datoteka13.txt, number of words: 121, number of characters: 801
+ File name: datoteka2.txt, number of words: 123, number of characters: 855
+ File name: datoteka3.txt, number of words: 124, number of characters: 810
+ File name: datoteka9.txt, number of words: 127, number of characters: 883
+ File name: datoteka5.txt, number of words: 157, number of characters: 1048
+ File name: datoteka12.txt, number of words: 163, number of characters: 1092
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 5
+ 1. Descending
+ 2. Ascending
+ Enter way of sorting: 1
+ File name: datoteka12.txt, number of words: 163, number of characters: 1092
+ File name: datoteka5.txt, number of words: 157, number of characters: 1048
+ File name: datoteka9.txt, number of words: 127, number of characters: 883
+ File name: datoteka2.txt, number of words: 123, number of characters: 855
+ File name: datoteka15.txt, number of words: 120, number of characters: 816
+ File name: datoteka3.txt, number of words: 124, number of characters: 810
+ File name: datoteka13.txt, number of words: 121, number of characters: 801
+ File name: datoteka6.txt, number of words: 108, number of characters: 745
+ File name: datoteka4.txt, number of words: 104, number of characters: 711
+ File name: datoteka7.txt, number of words: 97, number of characters: 671
+ File name: datoteka8.txt, number of words: 102, number of characters: 657
+ File name: datoteka11.txt, number of words: 92, number of characters: 644
+ File name: userFile1.txt, number of words: 3, number of characters: 14
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 5
+ 1. Descending
+ 2. Ascending
+ Enter way of sorting: 2
+ File name: userFile1.txt, number of words: 3, number of characters: 14
+ File name: datoteka11.txt, number of words: 92, number of characters: 644
+ File name: datoteka8.txt, number of words: 102, number of characters: 657
+ File name: datoteka7.txt, number of words: 97, number of characters: 671
+ File name: datoteka4.txt, number of words: 104, number of characters: 711
+ File name: datoteka6.txt, number of words: 108, number of characters: 745
+ File name: datoteka13.txt, number of words: 121, number of characters: 801
+ File name: datoteka3.txt, number of words: 124, number of characters: 810
+ File name: datoteka15.txt, number of words: 120, number of characters: 816
+ File name: datoteka2.txt, number of words: 123, number of characters: 855
+ File name: datoteka9.txt, number of words: 127, number of characters: 883
+ File name: datoteka5.txt, number of words: 157, number of characters: 1048
+ File name: datoteka12.txt, number of words: 163, number of characters: 1092
+
+1. Display B-Tree
+2. Search by number of words
+3. Add new file
+4. Delete file
+5. Sort files
+6. Exit
+Enter your choice: 6
+ EXIT.
