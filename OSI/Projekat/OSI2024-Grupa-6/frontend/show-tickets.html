@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show tickets</title>
+    
+    <style>
+        .show-tickets-container{
+            font-family: 'DM Sans',sans-serif;
+            margin-right: 78px;
+            margin-left: 78px;
+            margin-bottom: 60px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        .show-tickets-heading{
+            margin-bottom: 30px;
+            font-size: 36px;
+            font-weight: bolder;
+            line-height: 26px;
+            letter-spacing: 0px;
+            color: #229C9F;
+
+        }
+        .ticket-item{
+            width: 100%;
+            height: 60px;
+            border: 1px solid #229C9F;
+            color:#229C9F;
+            border-radius: 100px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .ticket-item-wrapper{
+            margin-bottom: 53px;
+            display: flex;
+            flex-direction: row;
+        }
+        .ticket-show-btn{
+            margin-left: 32px;
+            width: 180px;
+            height: 60px;
+            background-color: #229C9F;
+            border:none;
+            border-radius: 100px;
+            color: white;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+        .ticket-name{
+            margin-left: 42px;
+        }
+        .ticket-show-btn:hover{
+            background-color: #175051;
+        }
+    </style>
+</head>
+<body>
+    <div class="show-tickets-container">
+        <div class="show-tickets-heading">YOUR TICKETS</div>
+        <div class="ticket-list-wrapper" id="ticket-container">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", loadTickets);
+        async function loadTickets() {
+            
+            const params = new URLSearchParams(window.location.search);
+            const userId = parseInt(params.get("id"), 10);
+            const ticketData = {
+                userId: userId,
+            };
+            try {
+                const response = await fetch("http://localhost:18080/show-tickets", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(ticketData),
+                });
+    
+                if (!response.ok) {
+                    throw new Error("Failed to fetch tickets");
+                }
+    
+                const data = await response.json();
+                let ticketContainer = document.getElementById("ticket-container");
+    
+                data.ticketIDs.forEach(ticketID => {
+                    let ticketHTML = `
+                            <div class="ticket-item-wrapper">
+                                <div class="ticket-item">
+                                    <span class="ticket-name">Ticket ${ticketID}</span>
+                                </div>
+                                <button class="ticket-show-btn" onclick="redirectToTicket(${ticketID})">SHOW</button>
+                            </div>
+                    `;
+                    ticketContainer.innerHTML += ticketHTML;
+                });
+            } catch (error) {
+                console.error("Error fetching tickets:", error);
+                alert("Failed to load tickets.");
+            }
+        }
+    
+        // Funkcija za preusmeravanje na stranicu sa ID-jem tiketa
+        function redirectToTicket(ticketID) {
+            const params = new URLSearchParams(window.location.search);
+            const userId = params.get("id");
+            const username = params.get("username");
+            const tID = parseInt(ticketID, 10);
+            // Kreiranje URL-a sa ID-jem tiketa kao query parametar
+            //
+            const url = `http://localhost:18080/show-ticket.html?ticketID=${tID}&username=${encodeURIComponent(username)}&id=${userId}&typeOfUser=${"Client"}`;
+            window.location.href = url; // Preusmeravanje korisnika
+        }
+
+    </script>
+    
+    
+</body>
