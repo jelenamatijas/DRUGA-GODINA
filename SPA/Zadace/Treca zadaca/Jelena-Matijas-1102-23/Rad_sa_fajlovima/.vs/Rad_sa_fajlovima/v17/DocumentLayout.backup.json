@@ -1,26 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\",
+  "WorkspaceRootPath": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\Rad_sa_fajlovima.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\Rad_sa_fajlovima.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|solutionrelative:Rad_sa_fajlovima.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\BTree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\BTree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|solutionrelative:BTree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\BTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\BTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|solutionrelative:BTree.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\Node.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|solutionrelative:Node.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\Node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|solutionrelative:Node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\Node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|solutionrelative:Node.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\Node.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{9A2817FA-BBD2-41CE-AE76-8ECF4392A7C5}|Rad_sa_fajlovima.vcxproj|solutionrelative:Node.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,11 +36,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Rad_sa_fajlovima.cpp",
-              "DocumentMoniker": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\Rad_sa_fajlovima.cpp",
+              "DocumentMoniker": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\Rad_sa_fajlovima.cpp",
               "RelativeDocumentMoniker": "Rad_sa_fajlovima.cpp",
-              "ToolTip": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\Rad_sa_fajlovima.cpp",
+              "ToolTip": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\Rad_sa_fajlovima.cpp",
               "RelativeToolTip": "Rad_sa_fajlovima.cpp",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAcAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABsAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-30T18:45:28.116Z",
               "IsPinned": true,
@@ -50,11 +50,11 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "BTree.h",
-              "DocumentMoniker": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\BTree.h",
+              "DocumentMoniker": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\BTree.h",
               "RelativeDocumentMoniker": "BTree.h",
-              "ToolTip": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\BTree.h",
+              "ToolTip": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\BTree.h",
               "RelativeToolTip": "BTree.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-30T19:19:44.353Z",
               "EditorCaption": ""
@@ -63,37 +63,37 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "BTree.cpp",
-              "DocumentMoniker": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\BTree.cpp",
+              "DocumentMoniker": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\BTree.cpp",
               "RelativeDocumentMoniker": "BTree.cpp",
-              "ToolTip": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\BTree.cpp",
+              "ToolTip": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\BTree.cpp",
               "RelativeToolTip": "BTree.cpp",
-              "ViewState": "AgIAAGAAAAAAAAAAAAAAAHMAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAH8AAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-30T19:23:33.421Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Node.h",
-              "DocumentMoniker": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\Node.h",
+              "DocumentMoniker": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\Node.h",
               "RelativeDocumentMoniker": "Node.h",
-              "ToolTip": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\Node.h",
+              "ToolTip": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\Node.h",
               "RelativeToolTip": "Node.h",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABIAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACkAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-30T18:49:03.188Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "Node.cpp",
-              "DocumentMoniker": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\Node.cpp",
+              "DocumentMoniker": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\Node.cpp",
               "RelativeDocumentMoniker": "Node.cpp",
-              "ToolTip": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Rad_sa_fajlovima\\Node.cpp",
+              "ToolTip": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\SPA\\Zadace\\Treca zadaca\\Jelena-Matijas-1102-23\\Rad_sa_fajlovima\\Node.cpp",
               "RelativeToolTip": "Node.cpp",
-              "ViewState": "AgIAAM0AAAAAeiEDVckqwB8BAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAIwBkAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-30T18:56:19.18Z",
               "EditorCaption": ""

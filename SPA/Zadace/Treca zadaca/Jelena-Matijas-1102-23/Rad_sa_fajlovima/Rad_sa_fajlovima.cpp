@@ -5,7 +5,7 @@
 using namespace std;
 
 FileInfo processFile(const string& fileName) {
-    string filePath = "files1\\" + fileName;
+    string filePath = "files\\" + fileName;
     ifstream file(filePath);
     if (!file.is_open()) {
         cout << "Error: File " << fileName << " could not be opened.\n";
@@ -29,7 +29,7 @@ FileInfo processFile(const string& fileName) {
 }
 
 void saveTextToFile(const string& text, const string& fileName) {
-    string filePath = "files1\\" + fileName;
+    string filePath = "files\\" + fileName;
     ofstream file(filePath);
     if (!file.is_open()) {
         cout << "Error: Could not create file " << fileName << ".\n";

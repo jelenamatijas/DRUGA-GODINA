@@ -19,5 +19,6 @@ public:
     void deleteFiles(int numWords);
     void sortByCharacter(int way);
 private:
+    void deleteFile(const FileInfo& file);
     void search(Node* node, int wordCount, vector<FileInfo*>& file);
 };

@@ -28,7 +28,7 @@ void BTree::insert(FileInfo file) {
         {
             Node* s = new Node(degree, false);
             s->children[0] = root;
-            s->splitChild(0, root);
+            s->splitNode(0, root);
 
             
             int i = 0;
@@ -70,28 +70,44 @@ void BTree::search(Node* node, int wordCount, vector<FileInfo*>& files) {
 void BTree::deleteFiles(int numWords)
 {
     if (!root) {
-        cout << "The tree is empty\n";
+        cout << "The tree is empty." << endl;
         return;
     }
 
     vector<FileInfo*> duplicates = this->search(numWords);
-    while (!duplicates.empty()) {
-        for (auto duplicate : duplicates) {
-            root->remove(*duplicate);
+    if (duplicates.size() == 0) {
+        cout << "There is no such files." << endl;
+    }
+    else
+    {
+        for (int i = 0;i < duplicates.size();i++) {
+            vector<FileInfo*> Duplicates = this->search(numWords);
+            FileInfo* duplicate = Duplicates[0];
+            cout << "Deleting file: " << duplicate->fileName << endl;
+            deleteFile(*duplicate);
         }
+    }
 
-        if (root->numKeys == 0) {
-            Node* temp = root;
-            if (root->isLeaf)
-                root = nullptr;
-            else
-                root = root->children[0];
-            delete temp;
-        }
+}
 
-        duplicates = search(numWords); 
+void BTree::deleteFile(const FileInfo& file) {
+    if (!root) {
+        cout << "The tree is empty." << endl;
+        return;
+    }
+
+    root->remove(file);
+
+    if (root->numKeys == 0) {
+        Node* temp = root;
+        if (root->isLeaf)
+            root = nullptr;  
+        else
+            root = root->children[0]; 
+        delete temp;        
     }
 }
+
 
 void BTree::sortByCharacter(int way) {
 
@@ -123,7 +139,9 @@ void BTree::sortByCharacter(int way) {
 
     for (FileInfo file:files)
     {
-        cout << " File name: " << file.fileName << ", number of words: " << file.numWords << ", number of characters: " << file.numCharacters << endl;
+        cout << " File name: " << file.fileName << ", number of words: ";
+        cout << file.numWords << ", number of characters: ";
+        cout << file.numCharacters << endl;
     }
 }
 

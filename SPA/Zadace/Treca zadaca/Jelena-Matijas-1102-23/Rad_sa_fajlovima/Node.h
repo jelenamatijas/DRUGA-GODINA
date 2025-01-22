@@ -24,7 +24,7 @@ public:
     void getFiles(vector<FileInfo>& files)const;
 
     void insertNonFull(FileInfo file);
-    void splitChild(int indexOfChild, Node* child);
+    void splitNode(int indexOfChild, Node* child);
     void traverse();
 
     Node* search(int key);  
@@ -37,8 +37,9 @@ public:
     void fill(int index);
     void borrowFromPrev(int index);
     void borrowFromsucc(int index);
-    void merge(int index);
+    void mergeNodes(int index);
     int findKey(int numWords);
+    int countEven(std::string &fileName);
 
     friend class BTree;
 private:

@@ -1,6 +1,7 @@
 #include "Node.h"
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 Node::Node(int maxDegree, bool isLeaf) :maxDegree(maxDegree),
                                         isLeaf(isLeaf),
@@ -11,6 +12,7 @@ Node::~Node() {
     delete[] keys;
     delete[] children;
 }
+
 void Node::traverse()
 {
     int i;
@@ -18,11 +20,33 @@ void Node::traverse()
     {
         if (!isLeaf)
             children[i]->traverse();
-        cout << " File name: "<< keys[i].fileName<<", number of words: "<<keys[i].numWords<<", number of characters: "<<keys[i].numCharacters<<endl;
+        cout << " File name: " << keys[i].fileName << ", number of words: ";
+        cout << keys[i].numWords << ", number of characters: ";
+        cout << keys[i].numCharacters;
+        cout << "  Even: " << countEven(keys[i].fileName) << endl;
     }
 
     if (!isLeaf)
         children[i]->traverse();
+}
+
+int Node::countEven(std::string &fileName) {
+    std::ifstream f("files\\" + fileName);
+    if (!f.is_open()) {
+        std::cout << "failed to open file." << std::endl;
+    }
+
+    int evenWordCount = 0;
+    std::string word;
+
+    while (f >> word) {
+        if (word.length() % 2 == 0) {
+            evenWordCount++;
+        }
+    }
+
+    f.close();
+    return evenWordCount;
 }
 
 void Node::insertNonFull(FileInfo file)
@@ -46,10 +70,9 @@ void Node::insertNonFull(FileInfo file)
         while (i >= 0 && keys[i].numWords > file.numWords)
             i--;
 
-        // See if the found child is full
         if (children[i + 1]->numKeys == 2 * maxDegree - 1)
         {
-            splitChild(i + 1, children[i + 1]);
+            splitNode(i + 1, children[i + 1]);
 
             
             if (keys[i + 1].numWords < file.numWords)
@@ -59,7 +82,15 @@ void Node::insertNonFull(FileInfo file)
     }
 }
 
-void Node::splitChild(int indexOfChild, Node* child)
+int Node::findKey(int numWords) {
+    int index = 0;
+    while (index < numKeys && keys[index].numWords < numWords) {
+        index++;
+    }
+    return index;
+}
+
+void Node::splitNode(int indexOfChild, Node* child)
 {
     Node* newNode = new Node(child->maxDegree, child->isLeaf);
     newNode->numKeys = maxDegree - 1;
@@ -67,7 +98,7 @@ void Node::splitChild(int indexOfChild, Node* child)
     for (int j = 0; j < maxDegree - 1; j++)
         newNode->keys[j] = child->keys[j + maxDegree];
 
-    if (child->isLeaf)
+    if (!child->isLeaf)
     {
         for (int j = 0; j < maxDegree; j++)
             newNode->children[j] = child->children[j + maxDegree];
@@ -81,7 +112,7 @@ void Node::splitChild(int indexOfChild, Node* child)
 
     children[indexOfChild + 1] = newNode;
 
-    for (int j = maxDegree - 1; j >= indexOfChild; j--)
+    for (int j = numKeys - 1; j >= indexOfChild; j--)
         keys[j + 1] = keys[j];
 
     keys[indexOfChild] = child->keys[maxDegree - 1];
@@ -103,14 +134,6 @@ Node* Node::search(int key)
     return children[i]->search(key);
 }
 
-int Node::findKey(int numWords) {
-    int index = 0;
-    while (index < numKeys && keys[index].numWords < numWords) {
-        index++;
-    }
-    return index;
-}
-
 void Node::remove(FileInfo file) {
     int index = findKey(file.numWords);
     if (index < numKeys && keys[index].numWords == file.numWords) {
@@ -120,8 +143,11 @@ void Node::remove(FileInfo file) {
             removefromNonleaf(index);
     }
     else {
-        if (isLeaf)
+        if (isLeaf) {
+            cout << "There is no the such file." << endl;
             return;
+        }
+            
         bool present = (index == numKeys);
         if (children[index]->numKeys < maxDegree) {
             fill(index);
@@ -133,16 +159,14 @@ void Node::remove(FileInfo file) {
         else {
             children[index]->remove(file);
         }
-        return;
     }
 }
 
 void Node::removeFromLeaf(int index) {
-    for (int i = index + 1; i < numKeys;i++) {
-        keys[i - 1] = keys[i];
+    for (int i = index; i < numKeys - 1; i++) {
+        keys[i] = keys[i + 1];
     }
-    numKeys--;
-    return;
+    numKeys--; 
 }
 
 void Node::removefromNonleaf(int index) {
@@ -159,10 +183,17 @@ void Node::removefromNonleaf(int index) {
         children[index + 1]->remove(succ);
     }
     else {
-        merge(index);
+        mergeNodes(index);
         children[index]->remove(file);
     }
-    return;
+}
+
+FileInfo Node::getSucc(int index) {
+    Node* temp = children[index + 1];
+    while (!temp->isLeaf) {
+        temp = temp->children[0];
+    }
+    return temp->keys[0];
 }
 
 FileInfo Node::getPrev(int index) {
@@ -171,14 +202,6 @@ FileInfo Node::getPrev(int index) {
         temp = temp->children[temp->numKeys];
     }
     return temp->keys[temp->numKeys - 1];
-}
-
-FileInfo Node::getSucc(int index) {
-    Node* temp = children[index+1];
-    while (!temp->isLeaf) {
-        temp = temp->children[0];
-    }
-    return temp->keys[0];
 }
 
 void Node::fill(int index) {
@@ -190,13 +213,38 @@ void Node::fill(int index) {
     }
     else {
         if (index != numKeys) {
-            merge(index);
+            mergeNodes(index);
         }
         else {
-            merge(index - 1);
+            mergeNodes(index - 1);
         }
     }
-    return;
+}
+
+void Node::borrowFromsucc(int index)
+{
+
+    Node* child = children[index];
+    Node* sibling = children[index + 1];
+
+    child->keys[child->numKeys] = keys[index];
+
+    if (!child->isLeaf)
+        child->children[child->numKeys + 1] = sibling->children[0];
+
+    keys[index] = sibling->keys[0];
+
+    for (int i = 1; i < sibling->numKeys; ++i)
+        sibling->keys[i - 1] = sibling->keys[i];
+
+    if (!sibling->isLeaf)
+    {
+        for (int i = 1; i <= sibling->numKeys; ++i)
+            sibling->children[i - 1] = sibling->children[i];
+    }
+
+    child->numKeys++;
+    sibling->numKeys--;
 }
 
 void Node::borrowFromPrev(int index) {
@@ -221,39 +269,10 @@ void Node::borrowFromPrev(int index) {
     keys[index - 1] = sibling->keys[sibling->numKeys - 1];
     child->numKeys++;
     sibling->numKeys--;
-    return;
+
 }
 
-void Node::borrowFromsucc(int index)
-{
-
-    Node* child = children[index];
-    Node* sibling = children[index + 1];
-
-    child->keys[(child->numKeys)] = keys[index];
-
-    if (!(child->isLeaf))
-        child->children[(child->numKeys) + 1] = sibling->children[0];
-
-    keys[index] = sibling->keys[0];
-
-    for (int i = 1; i < sibling->numKeys; ++i)
-        sibling->keys[i - 1] = sibling->keys[i];
-
-    if (!sibling->isLeaf)
-    {
-        for (int i = 1; i <= sibling->numKeys; ++i)
-            sibling->children[i - 1] = sibling->children[i];
-    }
-
-    child->numKeys++;
-    sibling->numKeys--;
-
-    return;
-}
-
-void Node::merge(int index)
-{
+void Node::mergeNodes(int index) {
     Node* child = children[index];
     Node* sibling = children[index + 1];
 
@@ -262,8 +281,7 @@ void Node::merge(int index)
     for (int i = 0; i < sibling->numKeys; ++i)
         child->keys[i + maxDegree] = sibling->keys[i];
 
-    if (!child->isLeaf)
-    {
+    if (!child->isLeaf) {
         for (int i = 0; i <= sibling->numKeys; ++i)
             child->children[i + maxDegree] = sibling->children[i];
     }
@@ -277,9 +295,9 @@ void Node::merge(int index)
     child->numKeys += sibling->numKeys + 1;
     numKeys--;
 
-    delete(sibling);
-    return;
+    delete sibling;
 }
+
 
 void Node::getFiles(vector<FileInfo>& files)const {
     this->getFilesArray(files);
