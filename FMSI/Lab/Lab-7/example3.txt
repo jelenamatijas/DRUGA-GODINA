@@ -1,0 +1,5 @@
+Another example file
+This file contains several test lines
+And it is meant to demonstrate the grep command
+Here we find the word 'test' again
+Should there be a todo comment here?

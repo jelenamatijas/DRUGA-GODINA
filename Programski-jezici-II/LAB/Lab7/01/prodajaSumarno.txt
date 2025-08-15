@@ -1,0 +1,3 @@
+Monitori 1600.0
+Racunari 7820.0
+Telefoni 1899.0

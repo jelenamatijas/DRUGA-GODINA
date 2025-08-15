@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2025-07-31T16:49:39.706813500Z</date>
+  <millis>1753980579706</millis>
+  <nanos>813500</nanos>
+  <sequence>0</sequence>
+  <logger>Banka</logger>
+  <level>WARNING</level>
+  <class>Banka</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>ValueException: Suma za koju treba umanjiti iznos na racunu je prevelika.</message>
+</record>
+</log>

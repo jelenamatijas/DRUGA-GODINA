@@ -1,0 +1,10 @@
+UniquelyLongWordOne
+uniquelylongwordtwo
+AnotherTestLine
+Short
+MediumLength
+TheQuickBrownFoxJumpsOverTheLazyDog
+1234567890
+abcdefghij
+A pattern that matches is not in this
+but Is is not is

@@ -1,0 +1,69 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\OOS\\FilozofiZaVecerom\\WindowsFormsApp1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{149D7F02-3E28-4120-BC01-C1BA5A8724AE}|FilozofiZaVecerom.csproj|c:\\users\\jm\\desktop\\druga-godina\\oos\\filozofizavecerom\\windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{149D7F02-3E28-4120-BC01-C1BA5A8724AE}|FilozofiZaVecerom.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{149D7F02-3E28-4120-BC01-C1BA5A8724AE}|FilozofiZaVecerom.csproj|C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\OOS\\FilozofiZaVecerom\\WindowsFormsApp1\\filozof.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{149D7F02-3E28-4120-BC01-C1BA5A8724AE}|FilozofiZaVecerom.csproj|solutionrelative:filozof.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{149D7F02-3E28-4120-BC01-C1BA5A8724AE}|FilozofiZaVecerom.csproj|C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\OOS\\FilozofiZaVecerom\\WindowsFormsApp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{149D7F02-3E28-4120-BC01-C1BA5A8724AE}|FilozofiZaVecerom.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\OOS\\FilozofiZaVecerom\\WindowsFormsApp1\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\OOS\\FilozofiZaVecerom\\WindowsFormsApp1\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T20:36:22.317Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Filozof.cs",
+              "DocumentMoniker": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\OOS\\FilozofiZaVecerom\\WindowsFormsApp1\\Filozof.cs",
+              "RelativeDocumentMoniker": "Filozof.cs",
+              "ToolTip": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\OOS\\FilozofiZaVecerom\\WindowsFormsApp1\\Filozof.cs",
+              "RelativeToolTip": "Filozof.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAADwv0IAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T10:14:43.528Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\OOS\\FilozofiZaVecerom\\WindowsFormsApp1\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\JM\\Desktop\\DRUGA-GODINA\\OOS\\FilozofiZaVecerom\\WindowsFormsApp1\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAYwFMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T18:28:06.869Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
