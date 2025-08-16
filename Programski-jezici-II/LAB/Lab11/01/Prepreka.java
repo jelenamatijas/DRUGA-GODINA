@@ -17,4 +17,10 @@ public class Prepreka {
     public void setVrstaPrepreke(String vrsta){
         vrstaPrepreke = vrsta;
     }
+
+    @Override
+    public String toString() {
+        return "Prepreka{vrsta=" + vrstaPrepreke + '}';
+    }   
+    
 }

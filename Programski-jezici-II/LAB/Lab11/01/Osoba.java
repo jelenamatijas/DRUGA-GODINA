@@ -1,5 +1,4 @@
 import java.util.Date;
-import java.util.AbstractMap.SimpleImmutableEntry;
 
 public class Osoba extends Thread{
     private String ime;
@@ -89,6 +88,14 @@ public class Osoba extends Thread{
                         System.out.println("Osoba u redu " + redNaMapi + " ne moze da savlada prepreku " + vrsta);
                         sleep(3000);
                     }
+
+                    if(Simulacija.mapa[redNaMapi][i] instanceof String == false){
+                        Simulacija.mapa[redNaMapi][i] = this;
+                    }
+
+                    if(i>0 && Simulacija.mapa[redNaMapi][i-1] instanceof String == false){
+                        Simulacija.mapa[redNaMapi][i-1] = null;
+                    }
                     
                 }
                 
@@ -96,5 +103,7 @@ public class Osoba extends Thread{
                 e.printStackTrace();
             }
         }
+        vrijemeKretanja = new Date().getTime() - pocetak;
+        System.out.println("Vrijeme kretanja: " + vrijemeKretanja);
     }
 }
