@@ -1,0 +1,32 @@
+
+PravnoLice{ime=Ime15, prezime=Prezime15, novac=34KM, jib=JIB15, nazivFirme=NazivFirme15, vozila=[KAMION, KAMION]}
+
+PravnoLice{ime=Ime19, prezime=Prezime19, novac=102KM, jib=JIB19, nazivFirme=NazivFirme19, vozila=[KAMION]}
+
+PravnoLice{ime=Ime17, prezime=Prezime17, novac=176KM, jib=JIB17, nazivFirme=NazivFirme17, vozila=[AUTOMOBIL, AUTOBUS, MOTOR, AUTOMOBIL]}
+
+PravnoLice{ime=Ime17, prezime=Prezime17, novac=176KM, jib=JIB17, nazivFirme=NazivFirme17, vozila=[AUTOMOBIL, AUTOBUS, MOTOR, AUTOMOBIL]}
+
+PravnoLice{ime=Ime17, prezime=Prezime17, novac=176KM, jib=JIB17, nazivFirme=NazivFirme17, vozila=[AUTOMOBIL, AUTOBUS, MOTOR, AUTOMOBIL]}
+
+PravnoLice{ime=Ime14, prezime=Prezime14, novac=180KM, jib=JIB14, nazivFirme=NazivFirme14, vozila=[MOTOR, AUTOMOBIL, MOTOR, AUTOMOBIL, KAMION]}
+
+PravnoLice{ime=Ime14, prezime=Prezime14, novac=180KM, jib=JIB14, nazivFirme=NazivFirme14, vozila=[MOTOR, AUTOMOBIL, MOTOR, AUTOMOBIL, KAMION]}
+
+PravnoLice{ime=Ime14, prezime=Prezime14, novac=180KM, jib=JIB14, nazivFirme=NazivFirme14, vozila=[MOTOR, AUTOMOBIL, MOTOR, AUTOMOBIL, KAMION]}
+
+FizickoLice{ime=Ime7, prezime=Prezime7, novac=169KM, jmbg=JMBG7, vozilo=AUTOBUS}
+
+PravnoLice{ime=Ime20, prezime=Prezime20, novac=145KM, jib=JIB20, nazivFirme=NazivFirme20, vozila=[AUTOBUS, MOTOR, MOTOR, AUTOMOBIL]}
+
+PravnoLice{ime=Ime20, prezime=Prezime20, novac=45KM, jib=JIB20, nazivFirme=NazivFirme20, vozila=[AUTOBUS, MOTOR, MOTOR, AUTOMOBIL]}
+
+PravnoLice{ime=Ime16, prezime=Prezime16, novac=103KM, jib=JIB16, nazivFirme=NazivFirme16, vozila=[MOTOR]}
+
+PravnoLice{ime=Ime12, prezime=Prezime12, novac=24KM, jib=JIB12, nazivFirme=NazivFirme12, vozila=[KAMION, MOTOR, AUTOBUS]}
+
+PravnoLice{ime=Ime18, prezime=Prezime18, novac=205KM, jib=JIB18, nazivFirme=NazivFirme18, vozila=[AUTOMOBIL, MOTOR, AUTOBUS, MOTOR, KAMION]}
+
+PravnoLice{ime=Ime18, prezime=Prezime18, novac=205KM, jib=JIB18, nazivFirme=NazivFirme18, vozila=[AUTOMOBIL, MOTOR, AUTOBUS, MOTOR, KAMION]}
+
+PravnoLice{ime=Ime18, prezime=Prezime18, novac=205KM, jib=JIB18, nazivFirme=NazivFirme18, vozila=[AUTOMOBIL, MOTOR, AUTOBUS, MOTOR, KAMION]}

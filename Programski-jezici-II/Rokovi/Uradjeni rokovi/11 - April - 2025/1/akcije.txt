@@ -1,0 +1,10 @@
+DODAJ;BanjaLuka;HRANA;105;Brasno 1kg;60;6
+DODAJ;Sarajevo;ELEKTRONIKA;204;Auto punjac;10;1
+PREMJESTI;BanjaLuka;Sarajevo;101;20
+PREMJESTI;Mostar;BanjaLuka;203;5
+PREMJESTI;Sarajevo;Mostar;103;10
+DODAJ;Mostar;HRANA;104;Cokolada;10;9
+DODAJ;Mostar;HRANA;106;Jogurt 1l;20;11
+PREMJESTI;BanjaLuka;Sarajevo;203;1
+PREMJESTI;Sarajevo;BanjaLuka;202;5
+DODAJ;Mostar;ELEKTRONIKA;201;USB punjac;5;2

@@ -1,0 +1,1 @@
+Zdravo! Kako si danas? Nadam se da si dobro. Ovaj tekst je test za program koji traži riječi dužine 4.

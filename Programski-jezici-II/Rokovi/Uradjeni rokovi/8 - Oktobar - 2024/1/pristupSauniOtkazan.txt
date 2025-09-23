@@ -1,0 +1,3 @@
+Ime: Ime2 Prezime: Prezime2 Godine: 20 Ima kupon: false Gost dolazi o licnom trosku i posjeduje 7.6153071985443015KM.
+Ime: Ime24 Prezime: Prezime24 Godine: 33 Ima kupon: false Gost dolazi o licnom trosku i posjeduje 10.81574718549215KM.
+Ime: Ime30 Prezime: Prezime30 Godine: 32 Ima kupon: false Gost dolazi o licnom trosku i posjeduje 9.131998905292829KM.

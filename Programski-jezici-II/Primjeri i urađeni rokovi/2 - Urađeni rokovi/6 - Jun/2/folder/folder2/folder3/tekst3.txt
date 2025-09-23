@@ -1,0 +1,1 @@
+Ovaj tekst sadrži nekoliko reči koje odgovaraju zadatoj dužini. Testiraj program sa njim, i proveri da li daje tačne rezultate.

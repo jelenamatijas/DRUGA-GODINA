@@ -1,0 +1,5 @@
+Novinar{ime=Ime8, prezime=Prezime8, godineStarosti=29, oblastInteresovanja= OblastInteresovanja8, biografija=Rijec8Rijec18Rijec28Rijec38Rijec48Rijec58Rijec68Rijec78Rijec2, OBLAST=Oblast2}
+Istoricar{ime=Ime5, prezime=Prezime5, godineStarosti=55, oblastInteresovanja= OblastInteresovanja5, biografija=Rijec5, PERIOD=Period1}
+TuristickiVodic{ime=Ime3, prezime=Prezime3, godineStarosti=15, oblastInteresovanja= OblastInteresovanja3, biografija=Rijec3Rijec1Rijec2Rijec25Rijec45Rijec19, DESTINACIJE=[Destinacija1, Destinacija2, Destinacija3]}
+TuristickiVodic{ime=Ime4, prezime=Prezime4, godineStarosti=25, oblastInteresovanja= OblastInteresovanja4, biografija=Rijec4, DESTINACIJE=[Destinacija4, Destinacija5, Destinacija6]}
+Programer{ime=Ime2, prezime=Prezime2, godineStarosti=35, oblastInteresovanja= OblastInteresovanja2, biografija=Rijec6Rijec7Rijec8Rijec9Rijec10Rijec11Rijec12, JEZICI=[Jezik4, Jezik5, Jezik6]}

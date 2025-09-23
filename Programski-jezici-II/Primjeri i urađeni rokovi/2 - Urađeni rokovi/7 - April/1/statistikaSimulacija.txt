@@ -1,0 +1,3 @@
+Datum simulacije: 2025-01-28T03:41:27.931257700
+Procenat podignutih knjiga: 0.09%
+Vrijeme trajanja simulacije: 2.324s.

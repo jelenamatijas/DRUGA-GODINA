@@ -1,0 +1,8 @@
+Ime vlasnika;Broj racuna;Stanje na racunu
+Korisnik1;1323;100
+Korisnik2;2434;79
+Korisnik3;3845;10
+Korisnik4;4175;125
+Korisnik5;5369;63
+Korisnik6;6284;80
+Korisnik7;7825;50

@@ -1,0 +1,7 @@
+Istoricar{ime=Ime6, prezime=Prezime6, godineStarosti=60, oblastInteresovanja= OblastInteresovanja6, biografija=Rijec6Rijec1Rijec80Rijec70Rijec55Rijec38, PERIOD=Period2}
+Novinar{ime=Ime7, prezime=Prezime7, godineStarosti=48, oblastInteresovanja= OblastInteresovanja7, biografija=Rijec7Rijec17Rijec127Rijec37Rijec47Rijec57Rijec67Rijec77, OBLAST=Oblast1}
+Novinar{ime=Ime8, prezime=Prezime8, godineStarosti=29, oblastInteresovanja= OblastInteresovanja8, biografija=Rijec8Rijec18Rijec28Rijec38Rijec48Rijec58Rijec68Rijec78Rijec2, OBLAST=Oblast2}
+TuristickiVodic{ime=Ime4, prezime=Prezime4, godineStarosti=25, oblastInteresovanja= OblastInteresovanja4, biografija=Rijec4, DESTINACIJE=[Destinacija4, Destinacija5, Destinacija6]}
+TuristickiVodic{ime=Ime3, prezime=Prezime3, godineStarosti=15, oblastInteresovanja= OblastInteresovanja3, biografija=Rijec3Rijec1Rijec2Rijec25Rijec45Rijec19, DESTINACIJE=[Destinacija1, Destinacija2, Destinacija3]}
+Programer{ime=Ime1, prezime=Prezime1, godineStarosti=30, oblastInteresovanja= OblastInteresovanja1, biografija=Rijec1Rijec2Rijec3Rijec4Rijec5, JEZICI=[Jezik1, Jezik2, Jezik3]}
+Programer{ime=Ime2, prezime=Prezime2, godineStarosti=35, oblastInteresovanja= OblastInteresovanja2, biografija=Rijec6Rijec7Rijec8Rijec9Rijec10Rijec11Rijec12, JEZICI=[Jezik4, Jezik5, Jezik6]}

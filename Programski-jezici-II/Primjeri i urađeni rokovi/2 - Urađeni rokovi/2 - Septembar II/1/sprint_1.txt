@@ -1,0 +1,1 @@
+Developer{ime=ime3, prezime=prezime3, godineRada=5, trajanjeRada=2s}: [Zadatak{naslov=naslov13, opis=opis13, prioritet=5, vrsta=task}, Zadatak{naslov=naslov17, opis=opis17, prioritet=5, vrsta=story}, Zadatak{naslov=naslov15, opis=opis15, prioritet=3, vrsta=bug}, Zadatak{naslov=naslov20, opis=opis20, prioritet=3, vrsta=story}]

@@ -1,0 +1,2 @@
+Ime1 Prezime1, iznos: 68
+Ime1 Prezime1, iznos: 104

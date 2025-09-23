@@ -1,0 +1,8 @@
+id; product_name; product_category; price; currency; quantity
+1; jabuke; voce; 300.0; EUR; 10.0
+2; banane; voce; 100.0; KM; 50.0
+3; kruske; voce; 200.0; EUR; 1000.0
+4; krastavac; povrce; 1000.0; KM; 40.0
+5; crveni luk; povrce; 200.0; KM; 40.0
+6; bijeli luk; povrce; 100.0; EUR; 100.0
+7; kruske; voce; 120.0; KM; 65

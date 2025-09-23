@@ -1,0 +1,16 @@
+vrsta(u=uplata,i=isplata,p=prenos);korisnik;iznos;korisnik za prenos
+u;Korisnik3;500
+u;Korisnik4;20
+i;Korisnik1;30
+p;Korisnik3;200;Korisnik6
+i;Korisnik2;40
+i;Korisnik5;50
+u;Korisnik2;100
+p;Korisnik7;200;Korisnik1
+p;Korisnik2;211;Korisnik4
+i;Korisnik4;50
+u;Korisnik4;20
+p;Korisnik1;100;Korisnik6
+i;Korisnik7;40
+p;Korisnik6;78;Korisnik2
+i;Korisnik4;-10

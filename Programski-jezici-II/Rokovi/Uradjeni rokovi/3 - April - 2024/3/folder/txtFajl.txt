@@ -1,0 +1,12 @@
+folder\fajl1.txt
+folder\folder2\folder4\fajl6.txt
+folder\folder3\fajl3.txt
+Broj skrivenih fajlova: 3
+Ukupan broj fajlova: 12
+Procenat: 25.0%
+folder\fajl1.txt
+folder\folder2\folder4\fajl6.txt
+folder\folder3\fajl3.txt
+Broj skrivenih fajlova: 3
+Ukupan broj fajlova: 8
+Procenat: 37.5%

@@ -1,0 +1,8 @@
+Student -> Indeks: 1102/24 Broj polozenih ispita: 1 Prosjek: 10.0 Detalji: 
+		OET-1
+Student -> Indeks: 1103/23 Broj polozenih ispita: 2 Prosjek: 8.0 Detalji: 
+		Matematika-1 Programiranje-1
+Student -> Indeks: 1111/24 Broj polozenih ispita: 2 Prosjek: 7.0 Detalji: 
+		ORT UTS
+Student -> Indeks: 1124/22 Broj polozenih ispita: 1 Prosjek: 6.0 Detalji: 
+		Matematika-2
