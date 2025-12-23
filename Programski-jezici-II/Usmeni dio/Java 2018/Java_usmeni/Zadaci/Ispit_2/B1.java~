@@ -1,0 +1,8 @@
+public abstract class B1{
+  public static void main(String[] args){
+    B3 b3 = new B3();
+    
+  }
+}
+
+public class B3{}

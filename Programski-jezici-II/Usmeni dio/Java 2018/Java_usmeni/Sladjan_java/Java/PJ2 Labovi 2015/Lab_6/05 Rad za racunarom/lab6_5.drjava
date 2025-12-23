@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="com/serializacija/AplikacijaZaObracunVremena.java" package="com.serializacija" timestamp="24-Apr-2015 10:58:22">
+        <select from="951" to="951"/>
+        <scroll column="392" row="0"/>
+      </file>
+      <file name="com/serializacija/Zaposleni.java" package="com.serializacija" timestamp="23-May-2010 23:30:44">
+        <select from="951" to="951"/>
+        <scroll column="392" row="0"/>
+      </file>
+      <file name="com/serializacija/ProracunVremena.java" package="com.serializacija" timestamp="14-Apr-2014 09:25:04">
+        <select from="951" to="951"/>
+        <scroll column="392" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

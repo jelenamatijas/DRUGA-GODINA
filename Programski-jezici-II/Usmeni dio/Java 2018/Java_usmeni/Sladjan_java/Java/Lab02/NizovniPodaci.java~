@@ -1,0 +1,20 @@
+package Lab02
+
+import java.lang.Object;
+import java.util.Scanner;
+
+
+public class NizovniPodaci
+{
+  private char[] nizSlova;
+  private int[][] tablicaMnozenja;
+  
+  NizovniPodaci()
+  {
+    this.nizSlova[] = new char [1];
+    this.nizSlova[0]='\0';
+    this.tablicaMnozenja[][] = new int [1][1];
+    this.tablicaMnozenja[0][0]=0;
+  }//podrazumijevani konstruktor
+  
+}//zatvorena klasa

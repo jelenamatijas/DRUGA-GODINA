@@ -1,0 +1,18 @@
+Identifikator ne smije pocinjati brojem i ne smije se poklapati sa rezervisanim rijecima.
+Char je neoznacen, sve je ostalo oznaceno.
+Greska prilikom kompajliranja dolazi ukoliko nije inicijalizovana lokalna promjenjiva.
+Moguce je iz nestacickog inicijalizacionog bloka inicijalizovati staticke atribute.
+Nije moguca implicitna konverzija sa sireg tipa na uzi. ( byte->short->int->long->float->double)
+Prilikom suzavanja reference moguce je da se baci ClassCastException.
+Ako kastovanje nije legalno, ne prolazi kompajliranje.
+Boxing primitivne u neki neodgovarajuci wrapper ne prolazi kompajliranje.
+Ako wrapper objekat ima null vrijednost baca se NullPointerException.
+
+byte = 1 bajt
+short = 2 bajta
+int = 4 bajta
+long = 8 bajta
+float = 4 bajta
+double = 8 bajta
+char = 2 bajta
+boolean = 1 bajt

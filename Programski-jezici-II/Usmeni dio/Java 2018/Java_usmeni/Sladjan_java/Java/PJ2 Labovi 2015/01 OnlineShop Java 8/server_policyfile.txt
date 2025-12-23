@@ -1,0 +1,4 @@
+
+grant codeBase "file:/Programski jezici 2 2015/Lab/Lab 11/01 OnlineShop/"{
+permission java.security.AllPermission;
+};

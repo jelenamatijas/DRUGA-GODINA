@@ -1,0 +1,13 @@
+package net.etfbl.package2;
+
+import net.etfbl.package1.*;
+
+public class PublicClass2 {
+
+ public static void main(String[] args) {
+  PublicClass publicClass = new PublicClass();
+  
+  //PackageClass packageClass = new PackageClass();
+ }
+
+}

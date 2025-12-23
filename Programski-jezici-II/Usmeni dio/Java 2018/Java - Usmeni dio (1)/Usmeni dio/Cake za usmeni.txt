@@ -1,0 +1,211 @@
+-runtime exception -> ne mora biti deklarisan
+
+-kod eksternizacije i serializacije je caka bila da su metode iz interfejsa Externializable implementirane kao privatne
+
+-main moze pozivati main (moze doci do stackoverflow-a; zavisi kako je implementiran main)
+
+-konstruktor ne moze biti pozvan unutar konstruktora iste vrste
+
+-this.join(5000) ekvivalentno sa sleep(5000)
+
+-nije moguce koristenje kljucne rijeci this u statickom kontekstu
+
+-pri nasljedjivanju je greska ako se deklarise novi izuzetak
+
+-vise nasljedjivanja i kastovanja i onda poziv metode koja je privatna (i koja nije, tj. ne moze biti naslijedjena)
+
+-kada se u konstruktoru poziva drugi konstruktor (iste klase), poziva se sa this(lista_parametara) ili sa new Konstruktor(lista_parametara)
+
+-redefinisanje metode i pri tom mijenjanje privilegija (npr. iz interfejsa mora biti public, ne default)
+
+-ukoliko zelimo pristupiti klasi iz drugog paketa, to mozemo uciniti samo ako je ona public! ako je default to nije moguce!
+
+-apstraktna klasa moze imati konstruktor
+
+-ukoliko imamo na primjer osnovnu klasu Zivotinja i naslijedjenu klasu Pas, kastovanje na sljedeci nacin je moguce:
+  Pas pas = new Pas();
+  Zivotinja zivotinja = pas;
+  //medjutim, na sljedeci  nacin nije moguce:
+  Zivotinja zivotinja = new Zivotinja();
+  Pas pas = zivotinja; //nece proci kompajliranje
+  //cak ni ovo nije dozvoljeno:
+  Pas pas = (Pas)zivotinja; //procice  kompajliranje, ali ce puci tokom pokretanja
+  
+-dakle, implicitno se kastuje naslijedjeni tip u super tip, dok se super tip ne moze kastovati u naslijedjeni tip implicitno,
+a cak i rucnim kastovanjem kad pokrenemo dobijemo gresku
+
+-metoda run():
+if this thread was constructed using a separate Runnable run object, then that Runnable object's run method is called; 
+otherwise, this method does nothing and returns.
+
+-ukoliko jedna klasa nasljedjuje drugu, i pozovemo metodu iz naslijedjene klase, koja ne postoji u roditeljskoj klasi, i to preko reference 
+prve klase,docice do greske pri kompajliranju OSIM AKO NE KASTUJEMO, na primjer:
+Zivotinja zivotinja = new Zivotinja(); //zivotinja jede
+Pas pas = new Pas(); //pas laje i jede
+zivotinja.laje(); //greska
+((Pas)zivotinja).laje(); //ok - dok ne pokrenemo, tada ce program puci jer ne mozemo kastovati PRAVU zivotinju u psa
+//da je bilo 
+//Zivotinja zivotinja = new Pas();
+//kompajliranje bi proslo i program ne bi pucao
+
+-klasa moze biti samo public, abstract i final; ne moze biti private ili protected, jer joj se tada ne bi moglo pristupiti, pa je zabranjeno!!!
+
+-kod catch klauzula, ne smije se roditeljska klasa pojaviti iznad klase djeteta, jer ce tako obuhvatiti oba slucaja
+
+-klase koje eksplicitno ne pripadaju nekom paketu, pripadaju default paketu, te sve klase u takvom paketu imaju pristup default clanovima
+ostalih klasa i protected clanovima ako se radi o nasljedjivanju
+
+-ovo je moguce (tj. prolazi kompajliranje):
+GenericHolder holder = new GenericHolder<Integer>();
+holder.set("10");
+GenericHolder<Byte> holder2 = holder;
+System.out.println(holder2.get()); //ispisace 10
+Byte s = holder2.get(); //program ce puci
+
+-moguce je da genericki tip naslijedi negenericki
+
+-moguce je da konkretan tip naslijedi parametrizovan tip
+
+-NIJE moguce da konkretan tip naslijedi genericki tip
+
+-moguce je zadati odredjene uslove za stvarne tipove, na primjer:
+GenericHolder<? extends Number> //stvarni tip je tipa Number ili neki koji ga nasljedjuje
+GenericHolder<? super Integer>  //stvarni tip je tipa Integer ili neki njegov super tip
+GenericHolder<? extends Number> //podtip ovakvog tipa moze biti npr. GenericHolder<? extends Integer>
+
+-pomocu Joker znakova "?" mozemo postavljati donje i gornje granice za konkretne tipove, inace samo gornju granicu
+
+-Joker znakovi se NE smiju koristiti u sljedecim situacijama:
+ 1. u zaglavlju deklaracije referencnog tipa
+ 2. u extends/implements klauzulama super tipova
+ 3. u izrazima za kreiranje instanci (tada definisemo stvarni tip)
+ 
+-bilo gdje gdje se pojavljuje izuzetak (recimo u metodi koja se poziva u main-u), on mora biti ili obradjen (sa try catch blokom - u catch
+bloku mora biti korektan tip izuzetka!) ili metoda mora biti deklarisana
+tako da je naznaceno da baca taj izuzetak!
+
+-ovo pravilo ne vazi za unchecked exceptions: Error i RuntimeExceptions
+
+-dakle, moguce ih je baciti, bez deklarisanja ili obrade
+
+-ako u main-u imamo npr. metode koje bacaju neke izuzetke, posmatra se njihova deklaracija; ukoliko u deklaraciji stoji npr. da metoda baca
+Throwable, a u catch klauzuli stoji Exception, docice do greske pri kompajliranju
+
+-ako koristimo Externalizable interfejs, tada se pri deserijalizovanju prvo poziva konstruktor, a zatim readExternal() metoda!
+
+-takodje, ako koristimo Externalizable interfejs, moramo imati podrazumijevani konstruktor i on mora biti public!
+
+-The methods and fields within the interface are public (not just by default, but always, period, no exceptions). 
+The interface itself is package access by default.
+ 
+-kod writeObject i readObject metoda pozivamo writeDefaultObject i readDefaultObject metode (nije obavezno)
+
+-kada kastujemo podklasu u nadklasu, pozivanjem metode koja je prisutna u nadklasi i redefinisana u podklasi, poziva se iskljucivo metoda
+podklase, bez obzira na kastovanje!
+
+-ukoliko kreiramo anonimnu klasu i dodamo extra metodu, jedini nacin da joj pristupimo jeste na sljedeci nacin:
+new Supertip {
+ //tijelo klase
+ public void novaMetoda() {
+ }
+}.novaMetoda();
+//ovo ne prolazi:
+Supertip s = new Supertip {
+ //tijelo klase
+ public void novaMetoda() {
+ }
+}.novaMetoda();
+//sto je i logicno, al nek bude zapisano
+
+-Integer objekti su immutable, sto znaci da vazi:
+Integer i = 5;
+Integer j = 5;
+System.out.println(i == j); //true
+System.out.println( i == (new Integer(5)); //false
+
+-null je referenca, a ne objekat
+String s = null;
+System.out.println(s instanceof Object); //false
+
+-objekat ugnjezdjene staticke klase kreiramo sa:
+Outer.Inner oi = new Outer.Inner();
+
+-objekat ugnjezdjene unutrasnje klase kreiramo sa:
+Outer.Inner oi = new Outer().new Inner();
+
+-It is not necessary to provide an Exception thrown by a method when the method is overriding a method defined with an exception 
+(using the throws clause).
+
+-ako imamo privatnu metodu u superklasi i identicnu metodu u naslijedjenoj klasi (koja ocigledno nije redefinisana), 
+tada u situaciji kada imamo; 
+neka je njen potpis metoda();
+RoditeljskaKlasa rk = new NaslijedjenaKlasa();
+rk.metoda(); // pozvace roditeljsku metodu
+((NaslijedjenaKlasa)rk).metoda(); //pozvace metodu naslijedjene klase
+-naravno, navedeni primjer vazi ako se izvodi u okviru roditeljske klase; u okviru naslijedjene klase uopste nemamo pristup privatnoj metodi roditeljske
+klase
+-cini se da je zakljucak sledeci: uvijek se gleda referenca, osim kad je redefinisanje u pitanju - tada kako god kastovali, sta god, 
+gleda se koji je objekat u sustini i njegova metoda se izvodi
+
+-you can't cast char to String; but you can cast int to Int (or assign without casting)
+
+class Dog {}
+Dog [][] theDogs = new Dog[3][]; 
+System.out.println(theDogs[2][0]); //throws NullPointerException - only first dimension of array is initialized; zapravo ne moze se pristupiti
+nijednom elementu dvodimenzionalnog niza theDogs dok se ne inicijalizuje 2. dimenzija na sljedeci nacin:
+theDogs[2] = new int[2];
+
+-it is not an override because of the change in the return type and it is also not an overload because the argument list has not changed:
+public class A {
+	public Integer getLength() 
+	{
+		return new Integer(4); 
+	} 
+}
+public class B extends A {
+	public Long getLength() 
+	{
+		return new Integer(5); 
+	} 
+}
+
+-switch works with 
+byte, 
+Byte, 
+short, 
+Short, 
+char, 
+Character, 
+int, 
+Integer, 
+enum, and 
+String 
+
+-remember that properly handled exceptions do not cause the program to stop executing(even if exception is Error)
+
+-case expression - must be constant expressions, but switch nope
+
+-do while(true); //nakon do nisu  potrebne zagrade {}, nego prateca konstrukcija while(uslov);
+
+-C is correct because the thread does not own the lock of the object it invokes wait() on. 
+If the method were synchronized, the code would run without exception
+
+-wait()/notify()/notifyAll() must all be called from within a synchronized context
+-a thread must own the lock on the object its invoking wait()/notify()/notifyAll() on
+
+- | non-shortcut or
+- || shortcut or
+
+-Classes in the default package cannot be imported by classes in packages. This is why you should not use the default package.
+
+-ukoliko definisemo 2 klase u istom fajlu, jedna od njih je public, druga default vidljivosti, ukoliko bismo u drugom paketu 
+importovali klasu koja ima default vidljivost, 
+ne bismo joj uspjeli pristupiti - ona je vidljiva samo u svom paketu
+
+-ako imamo klasu koja nasljedjuje Externizable interfejs, pri deserijalizaciji objekta takve klase, izvodice se podrazumijevani konstruktor (vec poznato), ali
+bitno je napomenuti da ako imamo situaciju u kojoj je jedno od polja transient, i inicijalizovano je, pri deserijalizaciji to polje ce opet dobiti tu vrijednost;
+ovo ne vazi ukoliko je primijenjen Serializable interfejs (bice 0)
+
+-konstante u interfejsima moraju biti inicijalizovane
+
+-metode interfejsa ne mogu biti: private, protected, final, abstract

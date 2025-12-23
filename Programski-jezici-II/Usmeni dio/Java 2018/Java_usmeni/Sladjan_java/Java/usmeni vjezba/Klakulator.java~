@@ -1,0 +1,11 @@
+public class Klakulator
+{
+  private int op1;
+  private int op2;
+  
+  ProsireniKalkulator()
+  {
+    super();
+  }
+  
+}

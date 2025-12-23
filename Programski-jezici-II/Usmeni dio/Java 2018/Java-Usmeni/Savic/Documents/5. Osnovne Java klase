@@ -1,0 +1,2 @@
+Samo literali se izracunavaju prilikom kompajliranja i sredjuju se tako da pokazuju na isti objekat.
+String i StringBuffer su thread-safe, StringBuilder nije.

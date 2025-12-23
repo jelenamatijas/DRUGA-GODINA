@@ -1,0 +1,35 @@
+class Tred extends Thread
+{
+  public static void main(String args[])
+  {
+    System.out.println("Pocetak");
+    try{
+      sleep(3000);
+    }
+    catch(Exception e)
+    {}
+    
+    B b=new B();
+    b.start();
+    System.out.println("Kraj");
+  }
+}
+class B extends Thread implements Runnable
+{
+  public void run()
+  {
+    System.out.println("--->");
+    try{
+     sleep(5000);
+    }
+    catch(Exception e)
+    {}
+    System.out.println("<---");
+  }
+  public static int i=2;
+  int b=4;
+  static
+  {
+    int x=i;
+  }
+}

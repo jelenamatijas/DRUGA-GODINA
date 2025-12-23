@@ -1,0 +1,9 @@
+-lokalne promjenjive se moraju rucno inicijalizovati, inace kompajler prijavljuje gresku
+
+-lokalne reference se moraju inicijalizovati, inace kompajler prijavljuje gresku
+
+-reference this i super nisu dostupne u statickom kontekstu
+
+-transient promjenjive se ne serijalizuju implicitno
+
+-volatile promjenjive - "sinhronizovane"

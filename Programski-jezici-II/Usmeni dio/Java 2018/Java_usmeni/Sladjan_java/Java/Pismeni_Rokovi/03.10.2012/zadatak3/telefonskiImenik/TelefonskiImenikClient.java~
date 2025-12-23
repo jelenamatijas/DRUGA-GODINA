@@ -1,0 +1,29 @@
+import java.rmi.*;
+import java.rmi.registry.*;
+
+
+
+public class TelefonskiImenikClient
+{
+  
+  public static void main(String[] args)
+  {
+    try
+    {
+      System.out.println("RMIClient started.....");
+      
+      System.setSecurityManager(new RMISecurityManager());
+      
+      TelefonskiImenik ti = (TelefonskiImenik) Naming.lookup("//localhost:1099/server");
+      
+      ti.pregledSadrzaja();
+      ti.prikazSortiranPoPrezimenu();
+    }
+    catch(Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+  }
+  
+}

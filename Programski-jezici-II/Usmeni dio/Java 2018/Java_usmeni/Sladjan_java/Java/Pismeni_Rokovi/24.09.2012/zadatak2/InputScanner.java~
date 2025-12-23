@@ -1,0 +1,10 @@
+
+import java.io.*;
+import java.net.*;
+
+
+public class InputScanner extends Thread
+{
+  public BufferedReader in;
+  
+  public Socket sock;

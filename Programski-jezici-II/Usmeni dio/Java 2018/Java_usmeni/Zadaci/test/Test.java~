@@ -1,0 +1,10 @@
+public class Test{
+  public void metoda(){
+    this.metoda();
+    System.out.println("M");
+  }
+  
+  public static void main(String[] args){
+    (new Test()).metoda();
+  }
+}

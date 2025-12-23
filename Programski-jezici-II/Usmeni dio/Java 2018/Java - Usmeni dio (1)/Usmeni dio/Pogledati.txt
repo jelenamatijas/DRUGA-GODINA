@@ -1,0 +1,24 @@
+Za usmeni detaljno preci:
+
+-uvod u javu
+-pakete
+-nasledjivanje(redoslje konstruktora staticki nestaticki kontektst ...)
+-interfejse
+-KASTOVANJE
+-izuzetke
+-Metode iz Object klase
+
+-Iz generika preci raw tipove i prezentacije
+-Iz IO bude uglavnom serijalizacija
+   -obratiti paznju na metode writeObject readObject
+   -Serializable interfejs
+   -Externalizable interfejs osnovne metode
+   -testirati serijalizaciju klase kod koje osnovna klasa ne implementira serializable (pozivace se podrazumevani konstruktor osnovne klase)
+ -Thread nauciti sinhronizaciju sleep join metode uglavnom bude ispis
+ 
+ 
+ -za ugnjezdene klase 
+  -Thinking in java Inner Classes
+  -Prezentacije etfbg Ugnezdeni tipovi
+  -i pogledati Java Tutorial Lessons 
+  

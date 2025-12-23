@@ -1,0 +1,14 @@
+public class A1{
+  private A1 a1;
+  public A1(){
+  System.out.println("A1");
+  }
+  public A1(A1 a1){
+  System.out.println("A1(a1)");
+  this.a1=a1;
+  }
+  public static void main(String args[]){
+  new A3();
+  }
+}
+  

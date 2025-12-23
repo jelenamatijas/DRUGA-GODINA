@@ -1,0 +1,2 @@
+class Proba implements Konj
+{}

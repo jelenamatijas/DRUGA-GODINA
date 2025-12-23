@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="film/PretragaFilmova.java" package="film" timestamp="07-Apr-2014 13:49:09">
+        <select from="209" to="209"/>
+        <scroll column="731" row="0"/>
+      </file>
+      <file name="film/AnimiraniFilm.java" package="film" timestamp="07-Apr-2014 10:43:09">
+        <select from="209" to="209"/>
+        <scroll column="731" row="0"/>
+      </file>
+      <file name="film/Film.java" package="film" timestamp="07-Apr-2014 13:01:27">
+        <select from="209" to="209"/>
+        <scroll column="731" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

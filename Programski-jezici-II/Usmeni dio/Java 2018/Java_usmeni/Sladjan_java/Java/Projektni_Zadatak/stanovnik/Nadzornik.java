@@ -1,0 +1,67 @@
+package Projektni_Zadatak.stanovnik;
+
+import Projektni_Zadatak.stanovnik.NeispravanMaticniBrojException.*;
+import java.lang.String;
+
+
+public class Nadzornik extends Stanovnik
+{
+  public Nadzornik () {};
+  
+  
+  public Nadzornik (String ime,String prezime,String jmbg) throws NeispravanMaticniBrojException
+  {
+    if (!Stanovnik.ispravanMaticniBroj(jmbg)) throw new NeispravanMaticniBrojException ("Neispravan maticni broj");
+    super.setIme(ime);
+    super.setPrezime(prezime);
+    super.setJMB(jmbg);
+   
+  }
+
+  @Override
+  public void setIme(String s)
+  {
+    super.setIme(s);
+  }
+  
+  @Override
+  public void setPrezime(String s)
+  {
+    super.setPrezime(s);
+  }
+  
+   @Override
+  public void setJMB (String s) throws NeispravanMaticniBrojException
+  {
+    if (!ispravanMaticniBroj(s)) throw new NeispravanMaticniBrojException("Neispravan maticni broj");
+    else super.setJMB(s);
+  }
+  
+  
+  @Override
+  public String getIme()
+  {
+    return super.getIme();
+  }
+  
+  @Override
+  public String getPrezime()
+  {
+    return super.getPrezime();
+  }
+  
+  @Override
+  public String getJMB()
+  {
+    return super.getJMB();
+  }
+  
+   @Override
+   public String toStirng()
+  {
+    return getClass() + super.toStirng();
+  }
+  
+  
+}
+  

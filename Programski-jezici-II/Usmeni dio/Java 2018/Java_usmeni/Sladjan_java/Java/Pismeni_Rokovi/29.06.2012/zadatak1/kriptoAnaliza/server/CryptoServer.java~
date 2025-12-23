@@ -1,0 +1,69 @@
+package kriptoAnaliza.server;
+
+import java.io.*;
+import java.lang.String;
+import java.net.*;
+
+public class CryptoServer
+{
+  
+  public static void main(String[] args)
+  {
+    Socket sock;
+    InetAddres ip;
+    
+    try
+    {
+      ip = InetAddrss.getByName("127.0.0.1");
+      
+      sock = new Socket(ip,9000);
+      
+      PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sock.getOutputStream())));
+      BufferedReader br = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+      
+      String input = new String();
+      
+      input = "";
+      
+      input = br.readLine();
+      
+      if ("1".equalsIgnoreCase(input))
+      {
+        System.out.println(input);
+      }
+      else if("2".equalsIgnoreCase(input))
+      {
+        File f1 = new File("kriptoAnaliza" + File.separator + "server" + File.separator + "originalText.txt");
+        
+        if (!orgFile.exists()) orgFile.createNewFile();
+        
+        InputStream ins = new FileInputStream(sock.getInputStream());
+        
+        byte[] buffer = new byte [1024 * 1024];
+        
+        int count = 0;
+        
+        OutputStream orgOut = new FileOutputStream(f1);
+        
+        while ((count = ins.read(buffer)) >= 0)
+        {
+          orgOut.write(buffer,0,count);
+        }
+        
+      }//zatvoren else if "2"
+      
+      
+    }//zatvoren try
+    
+  catch (Exception ex)
+  {
+    ex.printStackTrace();
+  }
+  
+  }//zatvoren main
+  
+}//zatvorena klasa
+          
+          
+      
+      

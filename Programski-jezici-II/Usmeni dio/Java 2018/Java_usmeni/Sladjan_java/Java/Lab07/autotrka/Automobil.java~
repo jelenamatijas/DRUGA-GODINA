@@ -1,0 +1,84 @@
+package lab07.autotrka;
+
+import java.util.Scanner;
+import java.lang.Random;
+import java.lang.String;
+
+
+public class Automobil extends Thread
+{
+  private String tip;
+  private String serijskiBroj;
+  private Object[3][15] staza;
+  private int trenutnaPozicija;
+  private int red;
+  public boolean kraj = false;
+  
+  public Automobil(Object[3][15] track,int r,String t,String s)
+  {
+    super();
+    setName(tip);
+    this.tip = tip;
+    this.serijskiBroj = s;
+    this.staza = track;
+    this.red = r;
+  }
+  
+  public void run()
+  {
+    trenutnaPozicija = 0;
+    
+    for(int i=0;i<15;i++)
+    {
+      if(kraj)
+      {
+        System.out.println("Automobil " + getName() + " serijskog broja " + this.serijskiBroj + " NIJE zavrsio PRVI");
+        break;
+      }
+      else
+      {
+        if(staza[red][i].equals("STOP"))
+        {
+          this.trenutnapPozicija = i;
+          System.out.println("STOP!!! " + this.toString()) + " Ostalo do kraja " + (15-i);
+          
+          try
+          {
+            sleep(5000);
+          }
+          catch(InterruptedExcetpion ex)
+          {
+            System.out.println("Automobil " + getName() + " serijskog broja " + this.serijskiBroj + " NIJE zavrsio PRVI");
+          }
+        }
+        else
+        {
+          this.trenutnaPozicija = i;
+          System.out.println(this.toString);
+          try
+          {
+            sleep(2000);
+          }
+          catch(InterruptedException ex)
+          {
+            System.out.println("Automobil " + getName() + " serijskog broja " + this.serijskiBroj + " NIJE zavrsio PRVI");
+          }
+        }
+      }
+      
+      if (i == 14)
+      {
+        System.out.println("Pobijedio je " + this.toString());
+        kraj = true;
+        interrupt();
+      }
+    }
+  }
+                           
+  
+
+  @Override
+  public String toString()
+  {
+    return "Auto " + this.tip + " serijski broj " + this.serisjkiBroj + " trenutna pozicija " + this.trenutnaPozicija + " ";
+  }

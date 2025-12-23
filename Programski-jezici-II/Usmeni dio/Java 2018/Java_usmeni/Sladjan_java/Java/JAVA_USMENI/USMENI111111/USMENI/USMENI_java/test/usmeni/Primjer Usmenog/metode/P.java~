@@ -1,0 +1,63 @@
+class P implements I
+{
+  static{
+    int a=5;
+    b=1;           
+  }
+  
+   static int b;
+  
+  public int in() 
+  {
+    return 5;
+  }
+  public void i()
+  {
+  System.out.println(" legenda");
+  }
+  
+  private void metoda(){
+ //  System.out.println("Privatna...");                   
+   }
+  P()
+  {
+   int a=9;                          
+  }
+   static void f()
+  {
+    System.out.println("Staticka");
+  }
+  public static void main(String[] args)
+  {
+    P p=new P();
+    p.metoda();  
+   
+    I i=new P(); 
+     i.i();
+    A a=new A();  
+    f();    
+    a.g(); 
+    a.g();
+  }
+}
+
+class A
+{
+  private void funkcija()
+  {
+    System.out.println("Privana A");
+  }
+   public void g()
+  {
+    System.out.println("Staticka");
+  }
+ 
+}
+
+interface I
+{
+  void i();
+  int in();
+//  void interf(){}  
+  
+}

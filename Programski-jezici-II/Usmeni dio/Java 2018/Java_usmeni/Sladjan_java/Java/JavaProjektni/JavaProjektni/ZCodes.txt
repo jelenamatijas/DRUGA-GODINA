@@ -1,0 +1,20 @@
++-------------------------------------------------------+-----------------------------------------------+
+| Client:						| Server:					|
++-------------------------------------------------------+-----------------------------------------------+
+| REG - registracija					| TRUE - validan podatak			|
+| LOG - prijava						| FALSE - nevalidan podatak			|
+| CHECK - provjera korisnickog imena			| ERR - greska					|
+| NOLOGIN - prijava nadzornika i prepravljaca		|						|
+| @<ime> - slanje poruke korisniku <ime>		|						|
++-------------------------------------------------------+-----------------------------------------------+
+
+
++-------------------------------------------------------+-----------------------------------------------+
+| Nadzornik:						| Server:					|
++-------------------------------------------------------+-----------------------------------------------+
+| SHOWMSG - prikaz poruke korisnika			|						|
+| SEARCHKEY - pretraga svih poruka sa kljucnom rijecju 	|						|
+| MKREP - pravljenje izvjestaja				|						|
+| SHOWDIR - prikaz foldera sa izvjestajima		|						|
+| SHOWREP - prikaz izvjestaja				|						|
++-------------------------------------------------------+-----------------------------------------------+

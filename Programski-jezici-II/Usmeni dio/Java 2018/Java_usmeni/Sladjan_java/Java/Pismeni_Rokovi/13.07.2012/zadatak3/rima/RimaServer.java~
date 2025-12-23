@@ -1,0 +1,153 @@
+import java.rmi.*;
+import java.rmi.registry.*;
+import java.rmi.server.*;
+
+
+public class RimaServer extends UnicastRemoteObject implements RimaInterface
+{
+  public boolean savrsenaRima(String[] strofa) throws RemoteException
+  {
+    for(int i=0;i<4;i++)
+    {
+      String stih = strofa.[i];
+      String stihovi = new String[4];
+    
+      
+      stih.toUpperCase();
+      int najveciIndeks = 0;
+      for(int j=0;j<stih.length();j++)
+      {
+        if(stih.charAt(j) == 'A' || stih.charAt(j) == 'E' || stih.charAt(j) == 'I' || stih.charAt(j) == 'O'
+             || stih.charAt(j) == 'U' || stih.charAt(j) == ' ')
+        {
+          if(j!= (stih.length()-1)) 
+          {
+            if(stih.charAt(j) == ' ')najveciIndex = j+1;
+            else najveciIndex = j;
+          }
+        }
+        
+        
+      }
+      
+      stih[i] = stih.substring(najveciIndex,stih.length());
+      
+    }
+    
+    if(stihovi[0].equalsIgnoreCase(stihovi[1]) && stihovi[0].equalsIgnoreCase(stihovi[2]) && stihovi[0].equalsIgnoreCase(stihovi[3])) return true;
+    else return false;
+    
+  }
+  
+  
+  public boolean ukrstenaRima(String[] strofa) throws RemoteException
+  {
+    for(int i=0;i<4;i++)
+    {
+      String stih = strofa.[i];
+      String stihovi = new String[4];
+    
+      
+      stih.toUpperCase();
+      int najveciIndeks = 0;
+      for(int j=0;j<stih.length();j++)
+      {
+        if(stih.charAt(j) == 'A' || stih.charAt(j) == 'E' || stih.charAt(j) == 'I' || stih.charAt(j) == 'O'
+             || stih.charAt(j) == 'U' || stih.charAt(j) == ' ')
+        {
+          if(j!= (stih.length()-1)) 
+          {
+            if(stih.charAt(j) == ' ')najveciIndex = j+1;
+            else najveciIndex = j;
+          }
+        }
+        
+        
+      }
+      
+      stih[i] = stih.substring(najveciIndex,stih.length());
+      
+    }
+    
+    if(stihovi[0].equalsIgnoreCase(stihovi[2]) && stihovi[1].equalsIgnoreCase(stihovi[3]) ) return true;
+    else return false;
+    
+  }
+  
+   
+  public boolean parnaRima(String[] strofa) throws RemoteException
+  {
+    for(int i=0;i<4;i++)
+    {
+      String stih = strofa.[i];
+      String stihovi = new String[4];
+    
+      
+      stih.toUpperCase();
+      int najveciIndeks = 0;
+      for(int j=0;j<stih.length();j++)
+      {
+        if(stih.charAt(j) == 'A' || stih.charAt(j) == 'E' || stih.charAt(j) == 'I' || stih.charAt(j) == 'O'
+             || stih.charAt(j) == 'U' || stih.charAt(j) == ' ')
+        {
+          if(j!= (stih.length()-1)) 
+          {
+            if(stih.charAt(j) == ' ')najveciIndex = j+1;
+            else najveciIndex = j;
+          }
+        }
+        
+        
+      }
+      
+      stih[i] = stih.substring(najveciIndex,stih.length());
+      
+    }
+    
+    if(stihovi[0].equalsIgnoreCase(stihovi[1]) && stihovi[2].equalsIgnoreCase(stihovi[3]) ) return true;
+    else return false;
+    
+  }
+  
+  
+   public boolean obgrljenaRima(String[] strofa) throws RemoteException
+  {
+    for(int i=0;i<4;i++)
+    {
+      String stih = strofa.[i];
+      String stihovi = new String[4];
+    
+      
+      stih.toUpperCase();
+      int najveciIndeks = 0;
+      for(int j=0;j<stih.length();j++)
+      {
+        if(stih.charAt(j) == 'A' || stih.charAt(j) == 'E' || stih.charAt(j) == 'I' || stih.charAt(j) == 'O'
+             || stih.charAt(j) == 'U' || stih.charAt(j) == ' ')
+        {
+          if(j!= (stih.length()-1)) 
+          {
+            if(stih.charAt(j) == ' ')najveciIndex = j+1;
+            else najveciIndex = j;
+          }
+        }
+        
+        
+      }
+      
+      stih[i] = stih.substring(najveciIndex,stih.length());
+      
+    }
+    
+    if(stihovi[0].equalsIgnoreCase(stihovi[3]) && stihovi[1].equalsIgnoreCase(stihovi[2]) ) return true;
+    else return false;
+    
+  }
+   
+   
+   
+}//zatvorena klasa
+                                 
+        
+
+        

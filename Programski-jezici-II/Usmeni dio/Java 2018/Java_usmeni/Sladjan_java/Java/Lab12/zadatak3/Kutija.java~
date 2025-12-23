@@ -1,0 +1,24 @@
+package Lab12.zadatak3;
+
+import java.util.Scanner;
+import java.lang.String;
+
+
+public class Kutija <T> 
+{
+  private T atribut;
+  
+  
+  public void set(T novo)
+  {
+    this.atribut = novo;
+  }
+  
+  public <T> get()
+  {
+    return this.atribut;
+  }
+  
+  
+  
+}

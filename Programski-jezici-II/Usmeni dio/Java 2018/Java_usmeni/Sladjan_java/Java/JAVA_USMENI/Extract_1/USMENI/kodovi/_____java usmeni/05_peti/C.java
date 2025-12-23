@@ -1,0 +1,61 @@
+public class C{
+  public static void main(String[] args){
+    F f=new F();
+    D d=new D(f);
+    E e=new E(f);
+    d.start();
+    e.start(); //new Thread(e).start();
+  }
+}
+
+class D extends Thread{
+  F f;
+  public D(F f){
+    this.f=f;
+  }
+  public void run(){
+    for(int i=1;i<6;i++)
+      f.ubaci(i);
+  }
+}
+
+class E implements Runnable{
+  F f;
+  public E(F f){
+    this.f=f;
+  }
+  public void run(){
+    for(int i=1;i<6;i++)
+      f.uzmi();
+  }
+}
+
+class F{
+  int niz[]=new int[6];
+  int ref=-1;
+  
+  public synchronized boolean ubaci(int i){
+    if(pun())
+      return false;
+    System.out.println("stavi: niz[" + ++ref + "] ="+i);
+    niz[ref]=i;
+    return true;
+  }
+  
+   public synchronized int uzmi(){
+    if(prazan())
+      return 0;
+    int i=niz[ref];
+    System.out.println("uzmi: niz[" + ref + "] ="+i);
+    niz[ref]=0;
+    ref--;
+    return i;
+  }
+   
+   private boolean prazan(){
+     return ref<0;
+   }
+   private boolean pun(){
+     return ref>=niz.length-1;
+   }
+}

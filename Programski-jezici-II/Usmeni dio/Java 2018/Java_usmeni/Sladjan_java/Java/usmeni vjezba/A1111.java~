@@ -1,0 +1,34 @@
+public class A1111{
+  {
+    System.out.println("nestaticki u A1");
+  }
+  static {
+    new A1111(null);
+  }
+  public A1111(){
+    System.out.println("A1()");
+  }
+  public A1111(Object o){
+    System.out.println("A1(o)");
+    new A1111();
+  }
+  public static void main(String [] args){
+    A1111 a = new A1111();
+    A1111 a1 = new A1111(null);
+  }
+}
+
+class A2 extends A1111{
+  static{
+    System.out.println("staticki u A2");
+  }
+  public A2(Object o){
+    System.out.println("A2(o)");
+  }
+}
+
+class A3 extends A2{
+  public A3(){
+    System.out.println("A3()");
+  }
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20130901-r5756">
+  <project autorefresh="false" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="Ticket.java" package="" timestamp="24-Mar-2014 12:48:28">
+        <select from="489" to="489"/>
+        <scroll column="4" row="0"/>
+      </file>
+      <file name="DuplicateValueException.java" package="" timestamp="22-Mar-2014 11:16:18">
+        <select from="489" to="489"/>
+        <scroll column="4" row="0"/>
+      </file>
+      <file name="ValueException.java" package="" timestamp="22-Mar-2014 11:17:08">
+        <select from="489" to="489"/>
+        <scroll column="4" row="0"/>
+      </file>
+      <file name="Game.java" package="" timestamp="24-Mar-2014 14:48:53">
+        <select from="489" to="489"/>
+        <scroll column="4" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

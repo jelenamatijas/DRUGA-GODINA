@@ -1,0 +1,52 @@
+klasa se moze deklarisati unutar interfejsa i ona postaje njen atribut(clan).
+
+interfejs se moze inicijalizovati nekom klasom koja ga implementira
+
+ako objekat nije inicijalizovan on nece biti true pri pozivu operatora instanceof
+
+apstraktne klase se mogu ne inicijalizovati ali mogu imati konstruktor i main ();
+
+apstraktne klase se mogu incijalizovati ako su sve njene metode redefinisane( new Konstruktrot(){ ovde se definisu metode
+i to mora da postoji svaki put pri pozivu konstruktora.};)
+
+externalizable mora da postoji podrazumijevani konstruktor koji mora biti public pri deserijalizaciji (readExternal) i 
+poziva se prije read metode (ako ne postoji bacice se izuzetak)
+
+(int[]) new String[]{"aa","aa"} neispravno za kompajliranje  pri izvrsavanju ce se baciti izuzetak !!!
+
+klasa se moze kastovati eksplicitno u interfejs koji naslijedjuje
+
+ako se izuzetak ne odradi u catch bloku on ce biti odradjen poslije izvrsavanja finally bloka
+
+kada se poziva konstruktor klase nasljednice prvo se pozove super() ili super(arg) ako je to prva linija u
+konstruktoru nasljednice, pa onda se inicijalizuju clanovi roditeljske klase klase pa onda se nastavi
+sa izvrsavanjem konstruktora.
+
+Prije konstruktora se pozivaju staticki blokovi. oni se pozivaju samo jednom, bez obzira koliko objekata se kreira
+
+klasa moze imati metodu koja se zove isto kao i konsutruktor
+
+obratiti paznju na private kod nasljedjivanja
+
+roditelj se ne moze kastovati u dijete, a dijete u roditelja moze. baca se izuzetak pri eksplicitnom kastovannju
+pri implicitnom nece proci kompajler !!!
+
+kod operatora se gleda koji je prvi i od njega zavisi kako ce se tumaciti (1 + 2 + "2")
+
+niti ne moraju redefinisati run() metodu (na poziv start() nista se nece dogoditi u tom slucaju)
+
+ako se pokrene nit.run() izvrsava se kao metoda a ne kao nit
+
+obratiti paznju na pokretanje niti koja implementira runable (new Thread (new klasa) .start();)
+
+obratiti paznju na maskiranje atributa klase sa argumentom funkcije
+
+kod generickih kalsa se ne moze znati sta su pa se moze dodati i integer i double u klasu ali 
+pri izvrsavanju se baca izuzetak.
+
+INTERFEJS.konstruktor neimenovane klase da li se on moze pozvati bez da klasa nasljedjuje taj interfejs. 
+!!!NE MOZE!!!  FT1.D2 aa = ft1.new D2();
+
+to string ako nije redefinisana sta ispsuje  - ime klase @ i neki broj... "A@d2323sda"
+
+

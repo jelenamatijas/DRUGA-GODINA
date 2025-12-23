@@ -1,0 +1,94 @@
+/*@authot Milan
+ * @since 31.7.2014.
+ * @version 1.1
+ * */
+package net.etfbl.labVjezba2.triangle;
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class TriangleMatrix {
+  private int mat[][];
+  public final int duzina,sirina;
+/* Constructor - kreira matricu za dimenzija unijetih tastaurom i popunjava ih
+ * prizvoljnim vrijednostima
+ * @params NO
+ * @return TriangleMatrix
+ * */
+  public TriangleMatrix(){
+    
+    try{
+    Scanner sc= new Scanner (System.in);
+    
+    if (sc.hasNextInt())
+     duzina=sc.nextInt();
+    else{ duzina=0;throw new TriangleMatrixException("prvi clan nije broj");}
+    if (sc.hasNextInt())
+     sirina=sc.nextInt();
+    else{sirina=0; throw new TriangleMatrixException("drugi clan nije broj");}
+    mat=new int [duzina][sirina];
+    for(int i=0; i<duzina;i++)
+    for(int j=0;j<sirina;j++)
+      mat[i][j]=(int)(Math.random()*10);
+    }
+    catch (TriangleMatrixException e){
+      System.out.println("Desila se greska: "+e.message());
+      //this.TriangleMatrix();
+    }
+  }
+ /*@Override
+  * Metoda ispisuje gornju trougaonu matricu
+  * @return String
+  * */
+  public String toString(){
+    
+    int manjaDimenzija= (this.duzina<this.sirina)? this.duzina:this.sirina;
+    int pom=manjaDimenzija;
+    String str="";
+    for (int j=0;j<manjaDimenzija;j++){
+      for(int i=0;i<pom;i++)
+      str+="  "+(mat[j][i]);
+     pom--;
+      str+="\n";
+    }
+    return str;
+  }
+ /*Metoda daje sumu elemenata gornje trougaone matrice
+  * @return int
+  * */
+  public static int matrixSum(TriangleMatrix mat1){
+    int sum=0;
+     int manjaDimenzija= (mat1.duzina<mat1.sirina)? mat1.duzina:mat1.sirina;
+       int pom=manjaDimenzija;
+    
+    for (int j=0;j<manjaDimenzija;j++){
+      for(int i=0;i<pom;i++)
+        sum+=mat1.mat[j][i];
+      pom--;
+    }
+     return sum;
+  }
+ /*Metoda daje sortiran niz elemenata sa sporedne diagonale
+  * @return int[]
+  * */
+  public  int[] diagonalSort(TriangleMatrix mat){
+    
+    int vecaDimenzija= (mat.duzina<mat.sirina)? mat.duzina:mat.sirina;
+    int[] pom= new int[vecaDimenzija];
+    for (int i=0;i<vecaDimenzija;i++){
+      pom[i]=this.mat[i][i];
+    }
+    Arrays.sort(pom);
+    return pom;
+  }
+}
+
+ class TriangleMatrixException extends Exception {
+  protected String message="";
+  protected TriangleMatrixException(String s){
+    message=s;
+  }
+  
+  protected String message(){
+    return this.message;
+  }
+}

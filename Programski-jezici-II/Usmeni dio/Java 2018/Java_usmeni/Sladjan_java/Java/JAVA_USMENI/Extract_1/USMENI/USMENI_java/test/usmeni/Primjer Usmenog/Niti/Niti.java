@@ -1,0 +1,40 @@
+class Niti implements Runnable
+{
+  public void run()
+  {
+    for(int i=0;i<10;i++)
+    {
+      System.out.println("Run "+i);
+      try{
+        if(i==5)
+          Thread.sleep(2500);  
+        
+      }
+      catch(Exception e)
+      {}
+    }
+  }
+  
+  public static void main(String[] args)
+  {
+    System.out.println("Pocetak meina...");
+    Niti a=new Niti();
+    Thread t=new Thread(a);
+    Klasa k=new Klasa();
+    t.run();
+    k.start();  
+    
+    
+    System.out.println("Kraj mejna...");
+  }
+}
+
+class Klasa extends Thread
+{
+  public void run(){
+    System.out.println(" legendo");
+  }
+}
+
+
+

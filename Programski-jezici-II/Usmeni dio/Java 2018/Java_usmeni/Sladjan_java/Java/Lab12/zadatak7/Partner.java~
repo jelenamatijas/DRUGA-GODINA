@@ -1,0 +1,65 @@
+import java.util.Scanner;
+import java.lang.String;
+import java.util.ArrayList;
+
+
+public class Partner
+{
+  private String naziv;
+  private String vlasnik;
+  private String adresa;
+  private String brojTelefona;
+  private String maticniGrad;
+  
+  public Partner() {};
+  
+  public Partner(String n,String v,String a,String bt,String mg)
+  {
+    this.naziv = new String();
+    this.vlasnik = new String();
+    this.adresa = new String();
+    this.brojTelefona = new String();
+    this.maticniGrad = new String();
+    
+    this.naziv = n;
+    this.vlasnik = v;
+    this.adresa = a;
+    this.brojTelefona = bt;
+    this.maticniGrad = mg;
+    
+  }
+  
+  public void upisi ()
+  {
+    File f;
+    try
+    {
+      f = new File("D:\\Jaba\\Lab12\\zadatak7\\registrator.txt");
+      PrintWriter out;
+      
+      if (f.exists() && !f.isDirectory())
+            {
+                   out = new PrintWriter (new BufferedWriter(new FileOutputStream(f)),true);
+                  out.println(this.naziv+"#"+this.vlasnik+"#"+this.adresa+"#"+this.brojTelefona+"#"+this.maticniGrad);
+               }
+      else
+            {
+                f.createNewFile();
+                 out = new PrintWriter (new BufferedWriter(new FileOutputStream(f)),true);
+                  out.println(this.naziv+"#"+this.vlasnik+"#"+this.adresa+"#"+this.brojTelefona+"#"+this.maticniGrad);
+                }
+                     
+    }
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    finally
+    {
+      out.close();
+    }
+    
+  }
+
+                                                                                    
+                                                                                    

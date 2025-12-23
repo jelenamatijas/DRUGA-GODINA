@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" main="" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file name="Oblik.java" package="" timestamp="24-Aug-2015 23:27:08">
+        <select from="579" to="579"/>
+        <scroll column="9" row="0"/>
+      </file>
+      <file name="Pravougaonik.java" package="" timestamp="24-Aug-2015 23:39:55">
+        <select from="579" to="579"/>
+        <scroll column="9" row="0"/>
+      </file>
+      <file name="Krug.java" package="" timestamp="24-Aug-2015 23:40:41">
+        <select from="579" to="579"/>
+        <scroll column="9" row="0"/>
+      </file>
+      <file name="PravougliTrougao.java" package="" timestamp="24-Aug-2015 23:40:41">
+        <select from="579" to="579"/>
+        <scroll column="9" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

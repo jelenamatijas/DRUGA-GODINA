@@ -1,0 +1,90 @@
+package net.etfbl.server.console;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import net.etfbl.server.Server;
+
+public class Console extends Thread {
+  
+  public static boolean paused = false;
+  public static String input = "";
+  public static Timer timer;
+  
+  public Console() {
+    start();
+  }
+  
+  @Override
+  public void run() {
+    Scanner scan = new Scanner(System.in);
+    
+    while (!(input = scan.nextLine()).equals("START"));
+    for (int i = 0; i < Server.list.size(); i++)
+      if ((!Server.list.get(i).getUsername().equals("Nadzornik")) && (!Server.list.get(i).getUsername().equals("Prepravljac")))
+        Server.list.get(i).sendToUser("START");
+    
+    try {
+      while ((!input.equals("ZAUSTAVI")) && (Server.run)) {
+        input = scan.nextLine();
+        
+        // Ako treba zaustaviti
+        if (input.equals("ZAUSTAVI")) {
+          for (int i = 0; i < Server.list.size(); i++)
+            Server.list.get(i).sendMessage("SERVER", "EXIT");
+          Server.run = false;
+          InetAddress ia = InetAddress.getByName("127.0.0.1");
+          Socket s = new Socket(ia,1729);
+          s.close();
+        }
+        
+        // Ako treba pauzirati
+        else if (input.equals("PAUZA")) {
+          if (paused)
+            System.out.println("Simulacija je vec pauzirana.");
+          else {
+            pauseClients();
+            paused = true;
+            timer = new Timer();
+            timer.schedule(new ShutdownTask(), 0, 5000);
+          }
+        }
+        
+        // Ako treba nastaviti
+        else if (input.equals("NASTAVI")) {
+          if (!paused)
+            System.out.println("Simulacija nije pauzirana.");
+          else {
+            notifyClients();
+            paused = false;
+            timer.cancel();
+            timer.purge();
+          }
+        }
+        
+        // U suprotnom
+        else {
+          System.out.println("Nepostojeca naredba.");
+        }
+      }
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+  
+  public static void pauseClients() {
+    for (int i = 0; i < Server.list.size(); i++)
+      Server.list.get(i).pauseClient();
+  }
+  
+  public static void notifyClients() {
+    for (int i = 0; i < Server.list.size(); i++)
+      Server.list.get(i).notifyClient();
+  }
+  
+  public static void killClients() {
+    for (int i = 0; i < Server.list.size(); i++)
+      Server.list.get(i).killClient();
+  }
+  
+}

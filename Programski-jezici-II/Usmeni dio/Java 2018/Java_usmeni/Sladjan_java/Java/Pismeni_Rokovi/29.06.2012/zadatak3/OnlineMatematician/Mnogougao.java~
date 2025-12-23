@@ -1,0 +1,50 @@
+public class Mnogougao extends Figure
+{
+  int bru;
+  double a;
+  double alfa;
+  double R;
+  
+  
+  public Mnogougao()
+  {
+    this.bru =0;
+    this.a = 0;
+    this.alfa = 0;
+    this.R = 0;
+    
+  }
+  
+  public Mnogougao(int bru, double a, double alfa, double R)
+  {
+    this.bru = bru;
+    this.a = a;
+    this.alfa = alfa;
+    this.R = R;
+  }
+  
+  @Override
+  public String volume()
+  {
+    double volume = (((int)bru)/2.0)*(Math.sin(alfa)) * (Math.pow(R,2));
+    
+    Double v = new Double (volume);
+    
+    return v.toString();
+  }
+  
+  @Override String surface()
+  {
+    double surface = 0;
+    
+    surface = ((double)bru)*a;
+    
+    Double s = new Double(surface);
+    
+    return s.toString();
+  }
+  
+}
+    
+    
+    

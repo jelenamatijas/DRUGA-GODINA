@@ -1,0 +1,14 @@
+public class Obj
+{
+  public Obj()
+  {
+    super();
+    System.out.println("Prolazi");
+  }
+  
+  public static void main (String[] args)
+  {
+    Obj o = new Obj();
+  }
+  
+}

@@ -1,0 +1,2 @@
+Tipskoj promjenjivoj se moze pristupiti iz nestatickog konteksta, nikako iz statickog.
+

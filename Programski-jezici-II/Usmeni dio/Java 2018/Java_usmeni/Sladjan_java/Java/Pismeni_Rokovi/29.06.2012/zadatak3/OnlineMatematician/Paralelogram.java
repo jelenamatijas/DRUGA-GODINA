@@ -1,0 +1,61 @@
+
+import java.io.*;
+import java.lang.Math;
+import java.lang.String;
+
+
+
+public class Paralelogram extends Figure implements Serializable
+{
+  double a;
+  double b;
+  double alfa;
+  
+  public Paralelogram ()
+  {
+    a = 0;
+    b = 0;
+    alfa = 0;
+  }
+  
+  public Paralelogram (double a,double b,double alfa)
+  {
+    this.a = a;
+    this.b = b;
+    this.alfa = alfa;
+  }
+  
+  @Override
+  public String volume()
+  {
+    double volume = 0;
+    
+    volume = 2.0*(a+b);
+    
+    Double d = new Double(volume);
+    
+    return d.toString();
+  }
+  
+  @Override
+  public String surface()
+  {
+    double surface =0;
+    
+    surface = (this.a) * (this.b) * Math.sin(this.alfa);
+    
+    Double s = new Double(surface);
+    
+    return s.toString();
+  }
+  
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    

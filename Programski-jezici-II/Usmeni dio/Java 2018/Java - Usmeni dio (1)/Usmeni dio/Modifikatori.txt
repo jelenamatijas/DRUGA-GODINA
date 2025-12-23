@@ -1,0 +1,27 @@
+-metoda ne smije biti private i abstract (inace ne moze biti redefinisana)
+
+-metoda ne smije biti static i abstract (inace ne moze biti redefinisana)
+
+-metoda ne smije biti final i abstract (inace ne moze biti redefinisana)
+
+-klasa koja ima modifikator final - njene metode ne mogu biti redefinisane i takva klasa ne moze biti naslijedjena
+
+-interfejs moze biti deklarisan kao apstraktan, ali je to redudantno
+
+-enum ne moze biti deklarisan kao apstraktan
+
+-klasa ne moze u isto vrijeme biti deklarisana kao abstract i final
+
+-u interfejsu su metode podrazumijevano public (greska ce se javiti samo u slucaju da ih deklarisemo kao private ili protected)
+
+-ukoliko redefinisemo metodu iz interfejsa i ne navedemo joj public kao modifikator pristupa, to znaci da je smanjena vidljivost, te ce se javiti greska
+
+-staticke metode na mogu biti definisane kao apstraktne (ne mogu biti redefinisane jer su staticke)
+
+-u drugim paketima se nasljedjuju samo varijable koje imaju public i protected dostupnost
+
+-klasa koja nije definisana kao public nece biti dostupna izvan svog paketa
+
+-sve varijable u interfejsu su public static i final
+
+-final reference uvijek pokazuju na isti objekat

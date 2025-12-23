@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="net/etfbl/server/izvjestaj/Izvjestaj.java" package="net.etfbl.server.izvjestaj" timestamp="25-Jun-2015 08:03:41">
+        <select from="35" to="35"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="net/etfbl/server/console/Console.java" package="net.etfbl.server.console" timestamp="24-Jun-2015 11:45:47">
+        <select from="35" to="35"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="net/etfbl/server/console/ShutdownTask.java" package="net.etfbl.server.console" timestamp="24-Jun-2015 11:45:55">
+        <select from="35" to="35"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="net/etfbl/server/Server.java" package="net.etfbl.server" timestamp="25-Jun-2015 04:43:40">
+        <select from="35" to="35"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="net/etfbl/server/ServerTeleekranThread.java" package="net.etfbl.server" timestamp="25-Jun-2015 04:44:32">
+        <select from="35" to="35"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="net/etfbl/server/ServerThread.java" package="net.etfbl.server" timestamp="25-Jun-2015 05:10:43">
+        <select from="35" to="35"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="net/etfbl/server/izvjestaj/GenerickiPrilog.java" package="net.etfbl.server.izvjestaj" timestamp="25-Jun-2015 08:03:40">
+        <select from="35" to="35"/>
+        <scroll column="0" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

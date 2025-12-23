@@ -1,0 +1,93 @@
+package Projektni_Zadatak.pricalo.client;
+
+import Projektni_Zadatak.pricalo.client.ClientRadnik;
+
+import java.lang.String;
+import java.net.*;
+import java.io.*;
+
+
+public class InputScannerThread extends Thread
+{
+  private Socket sock;
+  private BufferedReader in;
+  private PrintWriter out;
+  
+  public InputScannerThread ()
+  {
+    super();
+    boolean serverDostupan = false;
+    try
+    {
+      InetAddress ip = InetAddress.getByName("ASUS-PC");
+      this.sock = ClientRadnik.clientSocket;
+      if(ip.isReachable(10000)) serverDostupan = true;
+    }
+    catch (UnknownHostException uh)
+    {
+      System.out.println("Nedostupan host!!!");
+    }
+    catch (SecurityException se)
+    {
+      System.out.println("Security manager ne dozvoljava povezivanje");
+    }
+     catch(IOException ex)
+     {
+       System.out.println("Desio se IO Exception pri uspostavljanju veze");
+     }//zatvoren catch
+    
+    if(serverDostupan)
+    {
+      try 
+      {
+        in = ClientRadnik.in;
+        out = ClientRadnik.out;
+        
+        
+        
+        
+        
+      }
+      catch (Exception ex)
+      {
+        ex.printStackTrace();
+      }//zatvoren catch;
+      
+    }
+    
+  }//zatvoren konstrukor
+  
+  
+  public void run()
+  {
+    System.out.println("InputScannerThread je pokrenut");
+    
+    String s = new String();
+    
+    while (!ClientRadnik.stop)
+    {
+      try
+      {
+        if ((s = in.readLine()) != null) System.out.println("InputScanner ispisuje: "+s);
+      }
+      catch (Exception ex)
+      {
+        System.out.println("Izuzetak u InputScannerThread kod citanja");
+        ex.printStackTrace();
+      }
+    }//zatvoren while
+    
+    try
+    {
+      in.close();
+      out.close();
+    }
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+  }//zatvorena run metoda
+  
+  
+}//zatvorena klasa

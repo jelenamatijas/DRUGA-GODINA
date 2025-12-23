@@ -1,0 +1,20 @@
+package a;
+public class A {
+protected static int i = 1;
+protected int j = -3;
+public A() {
+System.out.println("konstruktor A");
+System.out.println("i: " + i + " j: " + j);
+
+}
+public int metoda() {
+System.out.println(i++);
+return j++;
+//System.out.println("i: " + i + " j: " + j);
+
+}
+public int metoda(int i) {
+System.out.println(--i);
+return i;
+}
+}

@@ -1,0 +1,39 @@
+package net.etfbl.server;
+import java.io.*;
+import java.net.*;
+
+public class ServerTeleekranThread extends Thread {
+  private BufferedReader in;
+  private PrintWriter out;
+  private Socket s;
+  public static ServerSocket ss;
+  
+  public ServerTeleekranThread(Socket s) {
+    try {
+      this.s = s;
+      in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+      out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(s.getOutputStream())), true);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+    start();
+  }
+  
+  @Override
+  public void run() {
+    while (Server.run);
+    try {
+      in.close();
+      out.close();
+      s.close();
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+  
+  public void send(String msg) {
+    out.println(msg);
+  }
+}

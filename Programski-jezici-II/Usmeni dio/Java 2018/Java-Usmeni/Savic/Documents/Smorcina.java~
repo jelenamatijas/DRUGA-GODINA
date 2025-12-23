@@ -1,0 +1,20 @@
+public class Smorcina
+{
+  public Smorcina()
+  {
+    System.out.println("Konstruktor");
+    s = "BLABLA";
+    System.out.println(s);
+  }
+  static{
+    System.out.println("STATIC");
+  }
+  {
+    System.out.println("NESTATIC" + " " + s);
+  }
+   String s = "Smorcina";
+  public static void main(String [] args)
+  {
+    new Smorcina();
+  }
+}

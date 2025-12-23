@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20130901-r5756">
+  <project autorefresh="false" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="collectgame/Simulation.java" package="collectgame" timestamp="28-Apr-2014 16:13:09">
+        <select from="249" to="249"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="collectgame/Coin.java" package="collectgame" timestamp="28-Apr-2014 16:15:47">
+        <select from="249" to="249"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="collectgame/TrafficLight.java" package="collectgame" timestamp="28-Apr-2014 16:19:36">
+        <select from="249" to="249"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="collectgame/Player.java" package="collectgame" timestamp="28-Apr-2014 16:20:32">
+        <select from="249" to="249"/>
+        <scroll column="0" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

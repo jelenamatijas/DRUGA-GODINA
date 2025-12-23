@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" main="" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="Partner.java" package="" timestamp="25-Aug-2015 23:24:37">
+        <select from="4288" to="4288"/>
+        <scroll column="3171" row="0"/>
+      </file>
+      <file name="Pretraga.java" package="" timestamp="25-Aug-2015 23:07:45">
+        <select from="4288" to="4288"/>
+        <scroll column="3171" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

@@ -1,0 +1,58 @@
+public class ThreadA extends Thread{
+  String name;
+  public ThreadA(String name){
+    this.name = name;
+  }
+  public void run(){
+    new Thread(){
+      public void run(){
+        for(int i=0; i<10; i++){
+          System.out.println(name + "2: " + i);
+        }
+      }
+    }.start();
+    for(int i=0; i<10; i++){
+          System.out.println(name + "2 dodatni: " + i);
+        }
+    System.out.println(name);
+  }
+  
+  public static void main(String[] args) throws InterruptedException{
+    System.out.println("Pocetak programa");
+    ThreadA a = new ThreadA("A");
+    ThreadB b = new ThreadB("B");
+    ThreadC c = new ThreadC("C", a);
+    a.start();
+    b.start();
+    a.join();
+    b.join();
+    System.out.println("Kraj programa");
+  }
+}
+
+class ThreadB extends ThreadA implements Runnable{
+  public ThreadB(String name){
+    super(name);
+  }
+}
+
+class ThreadC extends ThreadB{
+  Thread t;
+  public ThreadC(String name, Thread t){
+    super(name);
+    this.t = t;
+    start();
+  }
+  public void run(){
+    System.out.println("hhhhhhhhhhhhhhhhhhh");
+    try{
+      t.join();
+    } catch(InterruptedException e){
+      e.printStackTrace();
+    }
+    for(int i=0; i<10; i++){
+      System.out.println(name + "1: " + i);
+    }
+  }
+  
+}

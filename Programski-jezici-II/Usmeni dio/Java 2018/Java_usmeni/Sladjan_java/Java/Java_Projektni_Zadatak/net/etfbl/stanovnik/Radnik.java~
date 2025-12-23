@@ -1,0 +1,88 @@
+package net.etfbl.stanovnik;
+
+
+import java.lang.String;
+import java.util.Random;
+import Projektni_Zadatak.stanovnik.NeispravanMaticniBrojException.*;
+import java.io.*;
+
+
+
+public class Radnik extends Stanovnik implements Serializable
+{
+  private double plata;
+  
+  public Radnik ()
+  {
+    Random ran = new Random();
+    
+    this. plata = 1000.0 + 3450.0*ran.nextDouble();
+  }
+  
+  public Radnik (String ime,String prezime,String jmbg) throws NeispravanMaticniBrojException
+  {
+    if (!Stanovnik.ispravanMaticniBroj(jmbg)) throw new NeispravanMaticniBrojException ("Neispravan maticni broj");
+    super.setIme(ime);
+    super.setPrezime(prezime);
+    super.setJMB(jmbg);
+    Random ran = new Random();
+    double d = 1000.0 + 3450.0*ran.nextDouble();
+    this.plata = d;
+  }
+  
+  @Override
+  public void setIme(String s)
+  {
+    super.setIme(s);
+  }
+  
+  @Override
+  public void setPrezime(String s)
+  {
+    super.setPrezime(s);
+  }
+  
+  @Override
+  public void setJMB (String s) throws NeispravanMaticniBrojException
+  {
+    if (!ispravanMaticniBroj(s)) throw new NeispravanMaticniBrojException("Neispravan maticni broj");
+    else super.setJMB(s);
+  }
+  
+  
+  @Override
+  public String getIme()
+  {
+    return super.getIme();
+  }
+  
+  @Override
+  public String getPrezime()
+  {
+    return super.getPrezime();
+  }
+  
+  @Override
+  public String getJMB()
+  {
+    return super.getJMB();
+  }
+  
+  public void reduceSalary (int ammount)
+  {
+    this.plata -= ammount;
+  }
+  
+  public String getPlata()
+  {
+    return Double.toString(this.plata);
+  }
+  
+  @Override
+   public String toStirng()
+  {
+    return getClass() + super.toStirng();
+  }
+  
+ 
+}

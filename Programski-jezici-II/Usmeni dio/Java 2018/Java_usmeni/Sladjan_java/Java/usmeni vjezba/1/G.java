@@ -1,0 +1,25 @@
+public class G{
+  public static void main(String [] args){
+    G1 g = new G1<Integer>(1);
+    G1 g1 = new G1<String>("A");
+    System.out.println(g.clan);
+    System.out.println(g1.clan);
+    g1 = g;
+    System.out.println(g.clan);
+    System.out.println(g1.clan);
+  }
+}
+class G1<T>{
+  public T clan;
+  
+  public G1(){
+    
+  }
+  public G1(T t){
+    clan=t;
+  }
+}
+
+class G22<T> extends G1
+{
+}

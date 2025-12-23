@@ -1,0 +1,13 @@
+//idl interfejs - sacuvati sa ekstenzijom idl
+//generisanje java koda iz idl-a se vrsi sa     idlj -fall KAnaliza.idl
+module kriptoanaliza 
+{
+  interface KAnaliza
+  {
+  //potpisi metoda
+  //napomena: tipovi u idl interjesu i java tipovi se razlikuju po nazivima
+  //npr. String iz Jave je string u idl
+  //sva mapiranja mozete vidjeti na http://www.ibm.com/developerworks/library/co-corbajct4/
+    string vratiCezarovuSifru(in string otvoreniText);
+  };
+};

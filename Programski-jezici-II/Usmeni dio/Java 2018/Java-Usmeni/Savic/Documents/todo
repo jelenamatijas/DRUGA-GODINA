@@ -1,0 +1,37 @@
+--redefinisanje metode koja baca izuzetke
+--redoslijed izvrsavanja metoda prilikom instanciranja objekta
+--redefinisanje metode bazne klase
+--maskiranje - staticka metoda klase nasljednice
+--preklapanje metoda
+--interfejs bez tijela
+--enum tipovi
+--konstante moraju biti definisane i u interfejsima i klasama(prije koristenja)
+--toString objekata
+--StringBuffer sinhronizovana
+instance klase File su nepromjenjive
+--implicitno se tranzijentni i staticki clanovi ne serijalizuju
+reentrant
+--konstruktor se ne moze sinhronizovati
+--tipskoj promjenjivoj se ne moze pristupiti iz statickog konteksta
+--staticka abstract metoda
+volatile
+--throwable roditeljska klasa svih izuzetaka
+--potpis metode = naziv,tip te broj i redoslijed parametara metode
+--podinterfejs i redefinisane metode
+--dva puta start metode baca se izuzetak
+hash tabela ne smije imati null ni kljuc ni vrijednost
+--short, int, byte, enum i char mogu u switch
+--try - catch - finally ( sve zivo probati, probati i baciti null objekat )
+--metoda koja je slicna konstruktoru
+--isprobati paketski pristupiti
+--final inicijalizovati prije koristenja, final argument fje
+--staviti wrapper klasu u switch
+--no such method exception
+koristenje super
+--konstruktori i inicijalizacioni blokovi nisu nasledjeni
+--kovarijantni povratni tipovi
+--private i abstract
+--dva interfejsa polja - ambigious
+--boolean u switch
+--Boolean wrapper u if statement
+provjeriti clone

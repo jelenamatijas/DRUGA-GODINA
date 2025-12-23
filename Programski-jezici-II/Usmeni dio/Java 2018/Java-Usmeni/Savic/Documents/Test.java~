@@ -1,0 +1,6 @@
+public class Test{
+  public static void main(String args[]){
+  String d = "10";
+  Integer s =(Integer) d;
+  }
+}

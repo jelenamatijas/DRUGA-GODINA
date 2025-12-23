@@ -1,0 +1,58 @@
+//implementiranje klijenta
+import org.omg.CORBA.*;
+import org.omg.CosNaming.*;
+
+import java.util.Scanner;
+import Informator.*;
+import Informator.ISPackage.*;
+
+public class ISClient {
+  
+  public static int id =0;
+  
+  static
+  {
+    ++id;
+  }
+  
+  public static void main(String[] args) {
+    boolean logedin = false;
+    Scanner scan = new Scanner(System.in);
+    try {
+      // inicijalizuj ORB, prosledi mu command-line parametre
+      ORB orb = ORB.init(args, null);
+      
+      // pokupi osnovni Naming context
+      org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+      NamingContext ncRef = NamingContextHelper.narrow(objRef);
+// pokupi kanalizu
+      NameComponent nc = new NameComponent("IS", "");
+      NameComponent path[] = {nc};
+      IS a = ISHelper.narrow(ncRef.resolve(path));
+
+      // koristi CORBA servant objekat
+      String input = new String();
+      
+      Korisnik korisnik = new Korisnik();
+      Integer inte = new Integer(i);
+      korisnik.id = inte.toString();
+      do
+      {
+        System.out.println("OPCIJE:");
+        System.out.println("Za repertoar bioskopa unesite BIOSKOP");
+        System.out.println("Za loto kombinaciju unesite LOTO");
+        System.out.println("Za horoskop unesite HOROSKOP");
+        System.out.println("Za odjavu unesite ODJAVA");
+        
+        input = scan.nextLine();
+      
+      }
+      while(!logedin);
+      
+      
+
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    }
+  }
+}

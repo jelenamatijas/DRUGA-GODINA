@@ -1,0 +1,5 @@
+abstract class Oblik
+{
+  abstract public void iscrta();
+  abstract public double povrsina();
+}

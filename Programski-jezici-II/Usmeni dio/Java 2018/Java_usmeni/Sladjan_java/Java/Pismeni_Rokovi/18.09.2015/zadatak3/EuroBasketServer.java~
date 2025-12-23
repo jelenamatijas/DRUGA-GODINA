@@ -1,0 +1,70 @@
+import java.rmi.*;
+import java.rmi.registry.*;
+import java.util.Random;
+import java.util.HashMap;
+import java.util.ArrayList;
+
+
+public class EuroBasketServer extends UnicastRemoteObject
+{
+  public static ArrayList<String> danasnjeUtakmice = new ArrayList<String>();
+  
+  
+  public String pregledRezultataUtakmicaZaDanasnjiDatum() throws RemoteException
+  {
+    String response = new String();
+    (int i ;i< danasnjeUtakmice.size();i++) 
+    {
+      response += danasnjeUtakmice.get(i);
+      response += "#";
+    }
+    return response;
+  }
+  
+  public String pregledRezultataJednogTima(String tim)
+  {
+    String response = new String();
+    
+    File f = new File("rezlutati");
+    
+    try
+    {
+      
+      File[] listFiles = f.listFiles();
+      
+      for(File tempFile : listFiles)
+      {
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(tempFile));
+        
+        ArrayList<String> tempArray = (ArrayList<String>) ois.readObject();
+        
+        for(int i;i<tempArray.size();i++)
+        {
+          String s = new String();
+          s = tempArray.get(i);
+          
+          if(s.contains(tim)) 
+          {
+            response += s;
+            response += "#";
+          }
+        }
+        ois.close();
+      }
+      
+    }
+    catch(Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+  }
+  
+  
+  
+  
+}//zatvorena klasa
+      
+      
+    
+    

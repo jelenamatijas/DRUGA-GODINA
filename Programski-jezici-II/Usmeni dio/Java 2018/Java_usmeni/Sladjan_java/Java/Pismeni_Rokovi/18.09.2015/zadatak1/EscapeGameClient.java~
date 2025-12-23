@@ -1,0 +1,71 @@
+import java.net.*;
+import java.io.*;
+import java.util.Scanner;
+
+
+public class EscapeGameClient
+{
+  public static void Main(String args)
+  {
+    Scanner scan = new Scanner(System.in);
+    
+    InetAddress ip = InetAddress.getByName("127.0.0.1");
+    
+    try( Socket sock = new Socket(ip,9000);
+        BuffredReader br = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+        PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(sock.getOutputStream())),true);
+        InputStream in = sock.getInputStream();
+        OutputStream out = sock.getOutpuStream();
+        )
+    {
+      String response = new String();
+      
+      System.out.println(br.readLine());
+      
+      String input = new String();
+      
+      System.out.println("Unesite username: ");
+      input = scan.nextLine();
+      
+      pw.println(input);
+      
+      response = br.readLine();
+      
+      if(!"USROK".equalsIgnoreCase(response)) System.out.println("Neispravan USERNAME");
+      else
+      {
+        do
+        {
+          response = br.readLine();
+          System.out.println(response);
+          
+          System.out.println("Unesite odgovor:");
+          input = scan.nextLine();
+          pw.println(input);
+          
+        }
+        while(!"FINISH".equalsIgnoreCase(response));
+      
+      }
+      
+      
+    }
+      catch(Exception ex)
+      {
+        ex.printStackTrace();
+      }
+      
+  }
+  
+  
+}
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      

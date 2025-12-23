@@ -1,0 +1,41 @@
+/* koristenje XYLayout rasporedjivaca */
+
+/* importovanje paketa com.borland.jbcl.layout.*; */
+
+import com.borland.jbcl.layout.*;
+
+/* dodavanje komponenata na prozor */
+
+getContentPane().setLayout(new XYLayout());
+	
+getContentPane().add(nazivKomponente, new XYConstraints(a, b, c, d));
+
+/* a - udaljenost od lijeve ivice
+   b - udaljenost od vrha
+   c - duzina komponente
+   d - sirina komponente
+*/
+ 
+
+/* podesavanje default dugmeta */
+getRootPane().setDefaultButton(nazivDugmeta);
+
+/* iscrtavanje prozora na sredinu ekrana */
+
+Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+setLocation((d.width - getSize().width) / 2,
+
+(d.height - getSize().height) / 2);
+
+/* 'hvatanje' dogadjaja pritiska tastera ENTER */
+
+imeKomponente.addKeyListener(new KeyAdapter() {
+      public void keyReleased(KeyEvent ev) {
+        if (ev.getKeyCode() == KeyEvent.VK_ENTER){
+          //reakcija...
+	  //npr. nazivDugmeta.doClick();
+      }
+  }
+});
+
+/* VK_znak - odgovarajuci taster */

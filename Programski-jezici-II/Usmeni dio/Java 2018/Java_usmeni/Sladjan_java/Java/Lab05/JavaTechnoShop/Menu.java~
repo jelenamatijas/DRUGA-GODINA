@@ -1,0 +1,161 @@
+import java.util.Scanner;
+import java.lang.String;
+import java.lang.Math;
+
+
+public class Menu
+{
+  private Computer[] computerArray;
+  private Monitor[] monitorArray;
+  private Telephone[] telephoneArray;
+  private Software[] softwareArray;
+  
+  
+  public Menu () {};
+  public Menu  (Computer[] a,Monitor[] b,Telephone[] c,Software[] d)
+  {
+    
+    int count = 0;
+    if (a != null)
+    {
+      for (Computer temp : a) count ++;
+      this.computerArray = new Computer [count];
+      for (int i=0;i<count;i++)
+      {
+        this.computerArray[i] = new Computer ();
+        this.computerArray[i] = a[i];
+      }
+    }
+    else this.computerArray = null;
+    
+    count = 0;
+    if (b != null)
+    {
+      Monitor temp1 = new Monitor();
+      for (Monitor temp : b) count ++;
+      this.monitorArray = new Monitor [count];
+      for (int i=0;i<count;i++)
+      {
+        this.monitorArray[i] = new Monitor ();
+        this.monitorArray[i] = b[i];
+      }
+    }
+    else this.monitorArray = null;
+    
+    count = 0;
+    
+    if ( c != null)
+    {
+      for(Telephone temp2 : c) count++;
+      this.telephoneArray= new Telephone [count];
+      for (int i=0;i<count;i++)
+      {
+        this.telephoneArray[i] = new Telephone();
+        this.telephoneArray[i] = c[i];
+      }
+    }
+    else this.telephoneArray = null;
+    count = 0;
+    
+    if (d != null)
+    {
+      
+      for (Software temp3 : d) count ++;
+      this.softwareArray = new Software [count];
+    
+      for (int i=0;i<count;i++)
+      {
+        this.softwareArray[i] = new Software ();
+        this.softwareArray[i] = d[i];
+      }
+    }
+    else this.softwareArray = null;
+    
+  }
+  
+  public void printAll ()
+  {
+    String s = new String();
+    
+    if (computerArray != null)
+    {
+      for (Computer c : computerArray) s += c.toString();
+    }
+    
+    if (monitorArray != null)
+    {
+      for (Monitor m : monitorArray) s += m.toString();
+    }
+    
+    if (telephoneArray != null)
+    {
+      for (Telephone t : telephoneArray) s += t.toString();
+    }
+    
+    if (softwareArray != null)
+    {
+      for (Software p : softwareArray) 
+      {
+        s += p.toString();
+        s += "\n\n";
+      }
+    }
+    
+    System.out.println("PROIZVODI SHOPA\n\n" + s);
+   }
+  
+  public void searchCode (String code)
+  {
+    Integer p = Integer.valueOf(code);
+    int kod = p;
+    
+    if (computerArray != null)
+    {
+      for (Computer PC : computerArray)
+      {
+        if (PC.getCode() == kod) System.out.println(PC.toString());
+      }
+    }
+    if (monitorArray != null)
+    {
+      for (Monitor m : monitorArray)
+      {
+        if (m.getCode() == kod) System.out.println(m.toString());
+      }
+    }
+    
+    if (telephoneArray != null)
+    {
+      for (Telephone ph : telephoneArray)
+      {
+        if (ph.getCode() == kod) System.out.println(ph.toString());
+      }
+    }
+    
+    if (softwareArray != null)
+    {
+      for (Software sw : softwareArray)
+      {
+        if (sw.getCode() == kod) System.out.println(sw.toString());
+      }
+    }
+  }
+    
+   
+   
+   
+    
+  
+  public static void main(String args[])
+  {
+    Computer PC = new Computer("ASUS",1000,123456,new String[]{"ASUS","USA","asus@usa.org"},new String[]{"Intel dual core","DDR3 512MB","Intel HD","Western Digital"});
+    Computer PC2 = new Computer("DELL",1500,56793933,new String[]{"DELL","USA","dell@usa.org"},new String[]{"AMD quad core","DDR3 1024MB","NVIDIA","Samsung"});
+    
+    Menu m = new Menu (new Computer[]{PC,PC2},null,null,null);
+    
+    m.printAll();
+    
+    //System.out.println(PC.toString());
+  }
+  
+}

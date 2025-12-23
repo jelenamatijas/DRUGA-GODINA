@@ -1,0 +1,9 @@
+public class Test{
+  public Test(){
+    this.metoda();
+  }
+  
+  public void metoda(){
+    System.out.println("Metoda");
+  }
+}

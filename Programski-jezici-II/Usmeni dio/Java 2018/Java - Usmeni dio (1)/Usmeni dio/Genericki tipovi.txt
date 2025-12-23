@@ -1,0 +1,13 @@
+-tipskoj promjenjivoj T se ne moze pristupiti iz statickog konteksta
+
+-genericki tip moze naslijediti genericki tip
+
+-genericki tip moze naslijediti negenericki tip
+
+-konkretan tip moze naslijediti parametrizovan tip
+
+-konkretan tip ne moze naslijediti genericki tip
+
+-supertipovi u extends i implements klauzulama ne mogu sadrzavati znak ?
+
+-sa ? mozemo ograniciti tipove sa super i extends, dok sa T mozemo samo sa extends

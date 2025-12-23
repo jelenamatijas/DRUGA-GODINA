@@ -1,0 +1,77 @@
+package plivanje.bazen;
+
+import plivanje.staza.*;
+import java.lang.String;
+import java.lang.Math;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class Bazen extends Thread
+{
+  public static Object[][] bazen;
+  public static ArrayList<Staza> staze = new ArrayList<Staza>();
+  public static boolean stop = false;
+  
+  
+  public Bazen() {start();};
+  
+  public void run()
+  {
+    System.out.println("Bazen pokrenut...");
+    Scanner scan = new Scanner(System.in);
+    System.out.println("Unesite broj staza: ");
+    
+    int brojStaza = scan.nextInt();
+    
+    bazen = new Object[20][brojStaza];
+    
+    
+  //  for(int i=0;i<20;i++)
+   //  for(int j=0;j<brojStaza;j++) bazen[i][j] = null;
+    
+    for (int i=0;i<brojStaza;i++)
+    {
+      Staza s = new Staza(20);
+    }
+    
+    try
+    {
+      do
+      {
+        
+        sleep(1000);
+        
+        synchronized(bazen)
+        {
+          String s = new String();
+          s = "";
+          for(int i=0;i<20;i++)
+          {
+            for(int j=0;j<brojStaza;j++) 
+          {
+            System.out.println(bazen[i][j]);
+            if(bazen[i][j] == null) s+="   ";
+            else s+=" * ";
+          }
+            
+            System.out.println(s);
+            s="";
+          }
+          bazen.notifyAll();
+        }
+        
+      }
+      while(!stop);
+      
+    }
+    catch(Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+  }
+      
+  
+}

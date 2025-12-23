@@ -1,0 +1,56 @@
+1.
+
+tri klase sa statickim i nestatickim blokovima.. A1 extends A2 enxtends A3 
+
+kao argument prima String..  ali se koristio onaj konstruktor 
+
+String test1 = new String("abc")
+Sting test2 = new String("def")
+
+
+pa se kod mozivanja radilo ovo 
+
+a1 = A1(test1 + test2);
+a11 = A1("abcdef");
+
+i bilo jos nekoliko tih metoda..
+
+clone u jednoj od klasa.. bila je definisana i u interfejsu..
+i deklarisana u jednoj od tih A klasa..
+
+pa se u mainu pozivale te neke metode.. uglavnom bilo je poredjenje stringova sto smo gledale dan prije ispita :) :) :)
+
+equals.. clone nisam gledala sta radi nisam stigla.. bilo je == poredjenje ja mislim... 
+
+
+3. thredovi.. 
+
+bilo samo pozivanje konstruktora preko this..
+
+A2(){
+	this(3);
+}
+
+A(int id){
+	this.id = id;
+}
+
+
+bila je neka anonimna klasa.. u argumentu Timer konstruktora.. koja je imala neki run.. .. i nesto TimerTask.. nemam pojma..
+bilo je niz thredova.. reference E2.. a E3 extends E2
+
+ako je (id==5) onda kreira novi thred.. i pokrene ga u istoj liniji..
+to je u konstruktoru bilo ja mislim
+
+ 
+run je bio u samo jednoj klasi.. s tim da je jedna extendala Thread a druga implementirala Runnable
+
+
+
+
+OD PO BOD
+bilo je sabiranje int i double.. pa je to ja mislim bila caka
+
+kad saberes sa double da ispisuje decimalno
+i u tom zadatku je bilo sabiranje tipa i - --j
+

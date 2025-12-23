@@ -1,0 +1,14 @@
+import java.rmi.*;
+import java.util.Scanner;
+import java.lang.String;
+import java.util.Math;
+
+interface OnlineMatematicianInterface extends Remote
+{
+  
+  
+  
+  
+  
+  
+}

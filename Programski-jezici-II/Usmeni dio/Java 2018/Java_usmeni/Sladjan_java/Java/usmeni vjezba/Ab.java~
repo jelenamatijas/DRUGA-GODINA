@@ -1,0 +1,9 @@
+public class Ab 
+{
+  int x;
+}
+
+
+abstract class Abs exends Ab
+{
+}

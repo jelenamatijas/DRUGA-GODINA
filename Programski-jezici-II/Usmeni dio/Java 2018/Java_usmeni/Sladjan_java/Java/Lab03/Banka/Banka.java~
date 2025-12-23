@@ -1,0 +1,51 @@
+import java.util.Scanner;
+import java.lang.String;
+import java.util.Arrays;
+import java.util.Random;
+
+public class Banka
+{
+  private Klijent[] nizKlijenata;
+  private int brojKlijenata = 0;
+  
+  public Banka()
+  {
+    Scanner scan = new Scanner (System.in);
+    
+    System.out.println ("Unesite broj klijenata: ");
+    
+    brojKlijenata = scan.nextInt();
+    
+    nizKlijenata = new Klijent();
+    
+    for (int i=0;i<brojKlijenata;i++)
+    {
+      String a = new String();
+      String b = new String();
+      System.out.println("Unesite ime: ");
+      a = scan.next();
+      System.out.println("Unesiste prezime: ");
+      b = scan.next();
+      
+      nizKlijenata[i].randomUnos(a,b);
+    }
+    scan.close();
+  }
+  
+  public void ispis ()
+  {
+    for (int i=0;i<brojKlijenata;i++)
+    {
+      nizKlijenata[i].ispis();
+    }
+  }
+  
+  public static void main (String args[])
+  {
+    Banka bank1 = new Banka();
+    
+    bank1.ispis();
+    
+  }
+      
+      

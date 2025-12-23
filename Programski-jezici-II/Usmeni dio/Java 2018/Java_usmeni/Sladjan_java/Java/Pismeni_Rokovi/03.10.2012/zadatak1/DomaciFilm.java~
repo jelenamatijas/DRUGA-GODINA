@@ -1,0 +1,17 @@
+import java.io.*;
+import java.util.Calendar;
+import java.util.Date;
+
+
+public class DomaciFilm extends Film
+{
+  public DomaciFilm(){};
+  
+  public DomaciFilm(String name,String releaseDate,String scenario)
+  {
+    this.name = name;
+    this.releaseDate  = releaseDate;
+    this.scenario = scenario;
+  }
+  
+}

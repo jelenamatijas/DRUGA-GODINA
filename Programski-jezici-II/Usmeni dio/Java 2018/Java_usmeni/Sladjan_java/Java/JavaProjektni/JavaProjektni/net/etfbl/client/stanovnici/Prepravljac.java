@@ -1,0 +1,131 @@
+package net.etfbl.client.stanovnici;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import net.etfbl.client.*;
+
+public class Prepravljac extends Stanovnik {
+  public static ArrayList<String> file = new ArrayList<String>();
+  public static String path = "net" + File.separator + "etfbl" + File.separator + "client" + File.separator + "table.txt";
+  
+  public Prepravljac() { 
+    super("Nikola", "Blagojevic", "1801994120014");
+    tel = new Teleekran();
+    start();
+  }
+  
+  public Prepravljac(String name, String surname, String jmbg) {
+    super(name,surname,jmbg);
+  }
+  
+  @Override
+  public void run() {
+    String request = "";
+    String[] info;
+    Scanner scan = new Scanner(System.in);
+    
+    while ((!request.equals("EXIT")) && (Client.run)) {
+      request = scan.nextLine();
+      info = request.split(": ");
+      
+      if ((info[0].equals("SHOWMSG")) && (Client.run)) {
+        String[] argument = info[1].split(" ");
+        showMessage(argument[0], argument[1]);
+      }
+      
+      else if (Client.run) {
+        System.out.println("Nepostojeca naredba");
+      }
+    }
+  }
+  
+  public void showMessage(String jmbg, String date) {
+    String request = "";
+    Scanner scan = new Scanner(System.in);
+    
+    try {
+      Client.out.println("SHOWMSG: " + jmbg + ": " + date);
+      
+      int n = Integer.valueOf(Client.in.readLine());
+      System.out.println("Dostupno fajlova: " + n);
+      n = 0;
+      
+      while (!(request = Client.in.readLine()).equals("END"))
+        file.add(request);
+      
+      n = editMessages();
+      
+      for (int i = 0; i < file.size(); i++)
+        Client.out.println(file.get(i));
+      Client.out.println("END");
+      
+      System.out.println(Client.in.readLine());
+      
+      Client.out.println("@Nadzornik: " + n);
+    }
+    catch (IOException e) {
+      System.out.println("Exception in showMessage()");
+    }
+  }
+  
+  public int editMessages() {
+    int n = 0;
+    String[] word;
+    ArrayList<String> temp = new ArrayList<String>();
+    
+    // Promijenimo rijeci ako treba
+    for (int i = 0; i < file.size(); i++) {
+      word = file.get(i).split(" ");
+      for (int j = 1; j < word.length; j++)
+        if (shouldChange(word[j])) {
+          word[j] = change(word[j]);
+          n++;
+        }
+      
+      String t = word[0];
+      for (int j = 1; j < word.length; j++)
+        t += " " + word[j];
+      temp.add(t);
+    }
+    
+    file = temp;
+    return n;
+  }
+  
+  public boolean shouldChange(String word) {
+    try {
+      BufferedReader br = new BufferedReader(new FileReader(path));
+      String temp;
+      while ((temp = br.readLine()) != null)
+        if (temp.split("#")[0].equals(removePunctuation(word)))
+        return true;
+      return false;
+    }
+    catch (IOException e) {
+      return false;
+    }
+  }
+  
+  public String change(String word) {
+    try {
+      BufferedReader br = new BufferedReader(new FileReader(path));
+      String temp;
+      while ((temp = br.readLine()) != null)
+        if (temp.split("#")[0].equals(removePunctuation(word)))
+        return temp.split("#")[1];
+      return "";
+    }
+    catch (IOException e) {
+      return "";
+    }
+  }
+  
+  public String removePunctuation(String word) {
+    word = word.replace(".", "");
+    word = word.replace("?", "");
+    word = word.replace("!", "");
+    word = word.replace(",", "");
+    word = word.replace(";", "");
+    return word;
+  }
+}

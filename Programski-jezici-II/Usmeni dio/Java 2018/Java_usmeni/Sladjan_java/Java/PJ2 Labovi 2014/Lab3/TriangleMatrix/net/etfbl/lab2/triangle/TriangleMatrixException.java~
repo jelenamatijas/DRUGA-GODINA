@@ -1,0 +1,13 @@
+package net.etfbl.lab2.triangle;
+
+public class TriangleMatrixException extends Exception{
+  
+  public TriangleMatrixException(){
+    super();
+  }
+  
+  public TriangleMatrixException(String msg){
+    super(msg);
+  }
+  
+}

@@ -1,0 +1,6 @@
+
+grant codeBase "file:/E:/ETF BL/I CIKLUS/PROGRAMSKI JEZICI 2/2014/11/RMI/calculator"{
+permission java.net.SocketPermission "127.0.0.1:1099", "connect, resolve";
+permission java.net.SocketPermission "127.0.0.1:1024-", "connect, resolve";
+permission java.net.SocketPermission "localhost:1024-", "accept";
+};

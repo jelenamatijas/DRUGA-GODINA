@@ -1,0 +1,44 @@
+package net.etfbl.client.stanovnici;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import net.etfbl.client.Teleekran;
+
+public class Stanovnik extends Thread {
+  protected String name;
+  protected String surname;
+  protected String jmbg;
+  protected Teleekran tel;
+  
+  public Stanovnik() { }
+  
+  public Stanovnik(String name, String surname, String jmbg) {
+    this.name = name;
+    this.surname = surname;
+    this.jmbg = jmbg;
+  }
+  
+  @Override
+  public String toString() {
+    return name + "#" + surname + "#" + jmbg;
+  }
+  
+  public void set(String name, String surname, String jmbg, int salary) { }
+  
+  public boolean checksum() {
+    if (jmbg.length() < 13) return false;
+    int []niz = new int[12];
+    int k, m;
+    for (int i = 0; i < 12; i++)
+      niz[i] = jmbg.charAt(i) - 0x30;
+    
+    m = 11 - ((7 * (niz[0] + niz[6]) + 6 * (niz[1] + niz[7]) + 
+               5 * (niz[2] + niz[8]) + 4 * (niz[3] + niz[9]) + 
+               3 * (niz[4] + niz[10]) + 2 * (niz[5] + niz[11])) % 11);
+    if (m > 9) k = 0;
+    else k = m;
+    return k == jmbg.charAt(12) - 0x30;
+  }
+  
+  public void input() { }
+}

@@ -1,0 +1,30 @@
+interface Interfejs{}
+
+public class A implements Interfejs{
+  String s;
+  
+  public static void main(String[] args){
+    A a = new A();
+    
+    if(a instanceof Interfejs){
+      System.out.println("Ja sam interfejs");
+    }
+    else{
+      System.out.println("Ja nisam interfejs");
+    }
+    
+    if(a.s instanceof String){
+      System.out.println("Ja sam String");
+    }
+    else{
+      System.out.println("Ja nisam String");
+    }
+    
+    if(a.s instanceof Object){
+      System.out.println("Ja sa Object");
+    }
+    else{
+      System.out.println("Ja nisam Obect");
+    }
+  }
+}

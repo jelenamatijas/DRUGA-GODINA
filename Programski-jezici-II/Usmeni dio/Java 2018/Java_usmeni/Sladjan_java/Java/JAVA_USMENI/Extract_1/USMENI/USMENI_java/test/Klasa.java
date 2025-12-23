@@ -1,0 +1,5 @@
+class Klasa extends Proba
+{
+  
+
+}

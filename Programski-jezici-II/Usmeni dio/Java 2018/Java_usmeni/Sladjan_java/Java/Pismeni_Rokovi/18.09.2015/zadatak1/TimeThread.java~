@@ -1,0 +1,80 @@
+import java.io.*;
+import java.net.*;
+
+
+public class TimeThread extends Thread
+{
+  Socket sock;
+  BufferedReader br;
+  PrintWriter pw;
+  
+  Public TimeThread(Socket sock,BufferedReadr br,PrintWriter pw)
+  {
+    this.sock = sock;
+    this.br = br;
+    this.pw = pw;
+    start();
+  }
+  
+  
+  public void run()
+  {
+    try
+    {
+      int brojTacnihOdgovora = 0;
+      String odgovor = new String();
+      
+      pw.println("Kad je poceo II svjetski rat?");
+      odgovor = br.readLine();
+      
+      if("1939".equalsIgnoreCase(odgovor)) ++brojTacnihOdgovora;
+      
+      pw.println("Kad se desio kosovski boj?");
+      odgovor = br.readLine();
+      
+      if("1389".equalsIgnoreCase(odgovor)) ++brojTacnihOdgovora;
+      
+      pw.println("Sta je bio Nikola Telsa?");
+      odgovor = br.readLine();
+      if ("NAUCNIK".equalsIgnoreCase(odgovor)) ++brojTacnihOdgovora;
+      
+      if(brojTacnihOdgovora == 3) 
+      {
+        EscapeGameServerThread.omogucenNastavak = true;
+        pw.println("USPJESNO ZAVRSENA IGRA 1");
+      }
+      else
+      {
+        pw.println("NEUSPJESNO ZAVRSENA IGRA 1");
+        this.br.close();
+        this.pw.close();
+        this.sock.close();
+      }
+      
+    }
+    catch(InterruptedException iex)
+    {
+       pw.println("VRIJEME JE ISTEKLO");
+        
+       try
+       {this.br.close();
+        this.pw.close();
+        this.sock.close();
+       }
+       catch(Exception ex)
+       {
+         ex.printStackTrace();
+       }
+    }
+    catch(Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+  }
+      
+      
+      
+      
+      
+      

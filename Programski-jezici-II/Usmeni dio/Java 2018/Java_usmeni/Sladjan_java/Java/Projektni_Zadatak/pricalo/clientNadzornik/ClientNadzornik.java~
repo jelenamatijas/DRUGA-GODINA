@@ -1,0 +1,26 @@
+package Projektni_Zadatak.pricalo.clientNadzornik;
+
+import Projektni_Zadatak.stanovnik.*;
+import java.util.Scanner;
+import java.lang.String;
+import java.io.*;
+import java.net.*;
+
+
+public class ClientNadzornik
+{
+  public static BufferedReader in;
+  public static PrintWriter out;
+  
+  public ClientNadzornik ()
+  {
+    ClientThreadNadzornik ctn = new ClientThreadNadzornik();
+    
+  }
+  
+  public static void main (String[] args)
+  {
+    ClientThreadNadzornik ctn = new ClientThreadNadzornik();
+  }
+  
+}

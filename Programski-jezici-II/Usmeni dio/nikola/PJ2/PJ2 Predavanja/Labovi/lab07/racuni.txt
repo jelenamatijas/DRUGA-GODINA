@@ -1,0 +1,8 @@
+monitor#lg hc12#4#400
+monitor#samsung ic-23#1#450
+monitor#lg cc22#3#250
+telefon#htc xtreme#1#2300
+telefon#javaphone kek#23#170
+racunar#acer gma1#3#1200
+monitor#xanglong b1j#8#99
+racunar#hp c223#3#900

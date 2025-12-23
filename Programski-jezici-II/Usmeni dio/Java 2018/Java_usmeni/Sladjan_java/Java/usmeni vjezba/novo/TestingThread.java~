@@ -1,0 +1,18 @@
+public class TestingThread extends Thread
+{
+  public static Object lock = new Object();
+  
+  public void run()
+  {
+    lock.wait(20);
+  }
+ 
+  public static void main(String[] args)
+  {
+    TestingThread t = new TestingThread();
+    t.start();
+  }
+  
+  
+  
+}

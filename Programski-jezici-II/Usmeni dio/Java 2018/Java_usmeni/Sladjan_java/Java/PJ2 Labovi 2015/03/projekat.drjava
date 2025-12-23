@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" main="" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="net/etfbl/pj2/info/AuthServer.java" package="net.etfbl.pj2.info" timestamp="17-May-2015 13:33:52">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="net/etfbl/pj2/info/InfoServerThread.java" package="net.etfbl.pj2.info" timestamp="17-May-2015 13:38:22">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="net/etfbl/pj2/info/InfoServer.java" package="net.etfbl.pj2.info" timestamp="17-May-2015 13:48:34">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="net/etfbl/pj2/info/Client.java" package="" timestamp="17-May-2015 13:37:00">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="net/etfbl/pj2/info/AuthServerThread.java" package="net.etfbl.pj2.info" timestamp="17-May-2015 13:32:36">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

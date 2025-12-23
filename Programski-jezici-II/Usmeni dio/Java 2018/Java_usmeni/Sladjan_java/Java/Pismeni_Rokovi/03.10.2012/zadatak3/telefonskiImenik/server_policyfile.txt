@@ -1,0 +1,2 @@
+grant codeBase "file:/D:/Java/Pismeni_Rokovi/03.10.2012/zadatak3/telefonskiImenik"
+{permission java.security.AllPermission;};

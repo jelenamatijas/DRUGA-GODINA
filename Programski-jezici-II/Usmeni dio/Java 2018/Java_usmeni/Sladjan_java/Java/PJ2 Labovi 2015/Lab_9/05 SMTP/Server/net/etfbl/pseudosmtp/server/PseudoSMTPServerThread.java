@@ -1,0 +1,102 @@
+package net.etfbl.pseudosmtp.server;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.SocketException;
+import java.util.Random;
+
+public class PseudoSMTPServerThread extends Thread {
+ private Socket sock;
+ private BufferedReader in;
+ private PrintWriter out;
+
+ PseudoSMTPServerThread(Socket sock) {
+  this.sock = sock;
+  try {
+   // inicijalizuj ulazni stream
+   in = new BufferedReader(
+     new InputStreamReader(sock.getInputStream()));
+   // inicijalizuj izlazni stream
+   out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(
+     sock.getOutputStream())), true);
+  } catch (Exception ex) {
+   ex.printStackTrace();
+  }
+  start();
+ }
+
+ public void run() {
+  try {
+   String clientInput = in.readLine();
+   if (!PseudoSMTPUtilities.isThereAUser(clientInput + "@etfbl.net")) {
+    out.println(PseudoSMTPUtilities.chooseAnsware());
+    PseudoSMTPUtilities.addNewUser(clientInput + "@etfbl.net");
+
+   } else {
+    out.println("REJECT");
+   }
+   String toUser = "", fromUser = "";
+   while ((clientInput = in.readLine()) != null) {
+    if (clientInput.startsWith("HELLO")) {
+     if (PseudoSMTPUtilities
+       .checkDomain(clientInput.split(" ")[1]))
+      out.println("250 OK");
+     else {
+      out.println("550 WRONG");
+     }
+    }
+    if (clientInput.startsWith("MAIL FROM:")) {
+     if (PseudoSMTPUtilities
+       .isThereAUser(clientInput.split(":")[1])) {
+      out.println("250 OK");
+      fromUser = clientInput.split(":")[1];
+     } else {
+      out.println("550 WRONG");
+     }
+    }
+    if (clientInput.startsWith("RCPT TO:")) {
+     if (PseudoSMTPUtilities
+       .isThereAUser(clientInput.split(":")[1])) {
+      out.println("250 OK");
+      toUser = clientInput.split(":")[1];
+      System.out.println("slanje poruke ka " + toUser);
+     } else {
+      out.println("550 WRONG");
+     }
+    }
+    if (clientInput.startsWith("DATA")) {
+
+     Random r = new Random();
+     if (r.nextInt(1000) > 500)
+      out.println("340 OK");
+     else {
+      out.println("550 WRONG");
+     }
+
+    }
+    if (clientInput.endsWith("\\015\\012")) {
+     PseudoSMTPUtilities.saveMessage("Message from user: "
+       + fromUser + "\r\n" + clientInput, toUser);
+     out.println("250 OK");
+    }
+    if (clientInput.equals("QUIT"))
+     out.println("221");
+   }
+
+   in.close();
+   out.close();
+   sock.close();
+  } catch (SocketException ex) {
+   System.out.print("Klijent je raskinuo konekciju...");
+
+  } catch (IOException e) {
+   // TODO Auto-generated catch block
+   e.printStackTrace();
+  }
+ }
+}

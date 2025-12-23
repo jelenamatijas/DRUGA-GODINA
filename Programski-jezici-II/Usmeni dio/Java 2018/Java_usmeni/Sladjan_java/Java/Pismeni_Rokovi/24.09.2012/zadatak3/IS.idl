@@ -1,0 +1,26 @@
+module Informator{
+
+interface IS{
+
+struct Korisnik
+{
+string id;
+};
+
+struct Buffer{
+
+sequence <octet> buffer;
+};
+
+string prijava(in Korisnik korisnik);
+
+Buffer repertoar();
+
+string horoskop();
+
+string loto();
+
+string odjava(in Korisnik korisnik);
+
+};
+};

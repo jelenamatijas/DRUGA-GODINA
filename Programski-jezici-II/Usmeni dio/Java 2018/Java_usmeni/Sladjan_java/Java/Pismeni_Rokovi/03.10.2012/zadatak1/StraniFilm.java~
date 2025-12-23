@@ -1,0 +1,53 @@
+import java.io.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
+
+public class StraniFilm extends Film
+{
+  public StraniFilm(){};
+  
+  public StraniFilm(String name,String releaseDate,String scenario)
+  {
+    this.name = name;
+    this.releaseDate  = releaseDate;
+    this.scenario = scenario;
+    
+    String date = new SimpleDateFormat("YYYY:MM:dd").format(Calendar.getInstance().getTime());
+    
+    int releaseYear = Integer.valueOf(releaseDate.split(":")[0]);
+    int releaseMounth = Integer.valueOf(releaseDate.split(":")[1]);
+    int releaseDay = Integer.valueOf(releaseDate.split(":")[2]);
+    
+    int thisYear = Integer.valueOf(date.split(":")[0]);
+    int thisMounth = Integer.valueOf(date.split(":")[1]);
+    int thisDay = Integer.valueOf(date.split(":")[2]);
+    
+    this.durationTime += thisYear - releaseYear;
+    this.durationTime += ":";
+    this.durationTime += thisMounth - releaseMounth;
+    this.durationTime += ":";
+    this.durationTime += thisDay - releaseDay;
+    
+  }
+  
+  @Override
+  public void serialization(File f)
+  {
+    if (!f.exists()) System.out.println("Zadata putanja " + f + " ne postoji!");
+    else
+    {
+      try
+      {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f,true));
+        System.out.println("Objekat uspjesno upisan");
+      }
+      catch(Exception ex)
+      {
+        ex.printStackTrace();
+      }
+    }
+  }
+  
+}

@@ -1,0 +1,29 @@
+import java.util.Scacnner;
+import java.lang.Math;
+
+
+public class PravougliTrougao extends Oblik
+{
+  private int kateta;
+  private int visina;
+  
+  public PravougliTrougao () {};
+  
+  public PravougliTrouga (int a,int b)
+  {
+    this.kateta = a;
+    this.visina = b;
+  }
+  
+  @Override
+  public void iscrtaj()
+  {
+    System.out.println("Ovo je " + this.getClass() + ", kateta je " + this.kateta + ", visina je " + this.visina);
+  }
+  
+  @Override
+  public double povrsina()
+  {
+    return (this.kateta * this.visina)/((double)2);
+  }
+}

@@ -1,0 +1,30 @@
+interface PrviI extends DrugiI, TreciI {
+ void metoda();
+}
+interface DrugiI {
+ void metoda();
+}
+interface TreciI {
+ void metodaI3();
+}
+
+class Peta implements PrviI, TreciI {
+ public void metoda() {
+  System.out.println("metoda");
+ }
+ public void metodaI3() {
+  System.out.println("metoda I3");
+ }
+}
+
+class Dvanaesta{
+ public static void main(String [] args) {
+  Peta e = new Peta();
+  PrviI i = new Peta();
+  DrugiI i2 = e;
+  i.metoda();
+  e.metodaI3();
+  i.metodaI3();
+  i2.metoda();
+ }
+}

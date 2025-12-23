@@ -1,0 +1,61 @@
+class U extends S
+{
+  P p=new P();
+  P r=new P(1,1);
+  
+  U()
+  {
+    this(1);  
+    System.out.println("Kod posle this(1) u U()"); 
+  }
+  
+  U(int a)
+  {
+    this(1,1);  
+    System.out.println("Kod posle this(1,1) u U(int a)");.
+  }
+  
+  U(int a,int b) 
+  {          
+             
+    System.out.println("Kod konstrukotra u U(int a,int b)"); 
+  }
+  
+  public static void main(String[] args)
+  {
+    
+    U u=new U();
+  }
+}
+
+class P
+{
+  P()
+  {
+   
+    System.out.println("P()");
+  }
+  
+  P(int a,int b)
+  {
+    System.out.println("P(int a,int b)");
+  }
+}
+
+class S
+{
+  P p=new P();
+  S()
+  {
+   
+    System.out.println("S()");  
+  }
+  S(int a)
+  {
+    System.out.println("S(int a)");
+  }
+  S(int a,int b)
+  {
+    System.out.println("S(int a,int b)");
+  }
+}

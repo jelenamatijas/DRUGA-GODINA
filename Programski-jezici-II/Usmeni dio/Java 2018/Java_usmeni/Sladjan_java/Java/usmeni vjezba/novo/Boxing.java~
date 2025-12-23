@@ -1,0 +1,13 @@
+public class Boxing
+{
+  public static void main(String[] args)
+  {
+    Boolean a = new Boolean("TRue");
+    Boolean b = new Boolean("fAlse");
+    
+    System.out.println(a);
+    System.out.println(b);
+    
+  }
+  
+}

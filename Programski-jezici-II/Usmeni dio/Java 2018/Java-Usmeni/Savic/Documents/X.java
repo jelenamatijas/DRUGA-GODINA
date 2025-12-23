@@ -1,0 +1,30 @@
+public class X 
+{ 
+    public static long showStats()
+    {
+       long heapSize = Runtime.getRuntime().totalMemory(); 
+ long heapMaxSize = Runtime.getRuntime().maxMemory();
+ long heapFreeSize = Runtime.getRuntime().freeMemory();
+ System.out.println("Heap size " + heapSize);
+ System.out.println("MaxHeap size " + heapMaxSize);
+ System.out.println("Free size " + heapFreeSize);
+ System.out.println();
+ System.out.println();
+ return heapFreeSize;
+    }
+    public static void main(String [] args) 
+    {
+ long before = showStats();
+ //byte [] niz = new byte[16777216];
+ Object [] niz = new Object[1000*1000*2];
+ //niz[0] = new Object();
+ //Integer o = new Integer(50);
+ long after = showStats();
+ System.out.println(before - after);
+ int i = 0;
+ //while(i+=2)
+ {
+ 
+ }
+    }
+} 

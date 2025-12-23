@@ -1,0 +1,22 @@
+public class Roditelj
+{
+  int x;
+}
+
+public class Nasljednik1 extends Roditelj
+{
+  public void metoda1
+  {
+    System.out.println("metoda1");
+  }
+  
+}
+
+public class Nasljednik2 extends Roditelj
+{
+  public void metoda2
+  {
+    System.out.println("metoda2");
+  }
+  
+}

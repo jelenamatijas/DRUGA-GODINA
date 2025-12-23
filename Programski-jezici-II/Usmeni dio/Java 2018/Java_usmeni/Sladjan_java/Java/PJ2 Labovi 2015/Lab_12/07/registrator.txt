@@ -1,0 +1,10 @@
+Zekoslav Mrkva#Osoba Ce#Slavnih zekoslavaca 23#nema#Mrkvograd
+Moja kompanija#Dijana#Partizanska 217#370710#Prijedor
+JavaWorld#Java Sun#Java 123#235234#Javagrad
+Elektrotehnicki fakultet#Univerzitet u BL#Patre 5#221840#Banja Luka
+Izmedju jave i sna#Besposlena#Negdje izmedju#123456#Polje snova
+C++#Dusan Malbaski#Jovana Jovanovica Zmaja 12#nema#Novi Sad
+Macka Maca#macak Jovo#Slavnih macora 23#nema#Mrkvograd
+Tvoja kompanija#Ti#Banjalucka 44#370333#Prijedor
+JavaPeople#Java Sun#Java 444#235234#Javagrad
+Zekoslav Mrkva 2#Osoba Be#Slavnih zekoslavaca 25#nema#Mrkvograd

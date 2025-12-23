@@ -1,0 +1,21 @@
+package simple_client_server.client.client1;
+
+
+import Lab09.simple_client_server.server.*;
+import Lab09.simple_client_server.client.*;
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+import java.lang.String;
+import Lab09.simple_client_server.server.server1.*;
+
+
+public class Client 
+{
+  public static void main(String[] args)
+  {
+    ClientThread ct = new ClientThread();
+    ct.start();
+  }
+  
+}

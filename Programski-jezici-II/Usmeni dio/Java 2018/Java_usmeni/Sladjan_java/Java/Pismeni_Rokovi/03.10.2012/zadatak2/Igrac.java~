@@ -1,0 +1,68 @@
+import java.util.Random;
+
+
+public class Igrac extends Thread
+{
+  public String name;
+  public static boolean stop = false;
+  
+  public Igrac(){};
+  
+  public Igrac(String name)
+  {
+    this.name = name;
+  }
+  
+  public void run()
+  {
+    System.out.println("Igrac " + this.name + " je krenuo...");
+    
+    int zbir = 0;
+    
+    while(!stop)
+    {
+      synchronized(Spil.lock)
+      {
+        if(!"".equalsIgnoreCase(Spil.l))
+        {
+          System.out.println("Igrac " + name + " ceka...");
+          Spil.lock.wait();
+        }
+        else
+        {
+          Spil.l = "##BUSY##";
+          Random rand = new Random();
+          int slucajnaPozicija = rand.nextInt(52);
+          zbir += Spil.spil[slucajnaPozicija].value;
+          System.out.println("Igrac "+this.name+ " je izvukao kartu sa pozicije " + slucajnaPozicija + " sa vrijednoscu "+ Spil.spil[slucajnaPozicija].value);
+          Spil.l = "";
+          Spil.lock.notifyAll();
+          
+          
+          
+          if(zbir>= 70 && zbir<= 80)
+          {
+            stop = true;
+            System.out.println("Igrac " + name + " je pobjedio. Njegov zbir je " + zbir);
+            interupt();
+          }
+          
+        }
+        
+      }//synchronized
+      
+    }//while
+    
+    System.out.println("Igrac " + name + " nije pobjedio. Zbir je " + zbir);
+    
+  }//run
+  
+  
+}//klasa
+          
+          
+          
+          
+          
+          
+          

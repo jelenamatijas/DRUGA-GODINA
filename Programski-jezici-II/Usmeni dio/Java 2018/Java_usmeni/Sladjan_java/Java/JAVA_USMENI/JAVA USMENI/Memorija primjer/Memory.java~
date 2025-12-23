@@ -1,0 +1,21 @@
+public class Memory{
+    double[] d=new double[1000000000];
+    long[] l=new long[1000000000];
+    int[] i=new int[1000000000];
+    char[] c=new char[1000000000];
+    
+    public Memory(){
+        super();
+    }
+    
+    public Memory(Memory m){
+        new Memory();
+    }
+    
+    public static void main(String[] args){
+        Memory m1=new Memory();
+        Memory m2=new Memory(m1);
+        Memory m3=new Memory();
+    }
+    
+}

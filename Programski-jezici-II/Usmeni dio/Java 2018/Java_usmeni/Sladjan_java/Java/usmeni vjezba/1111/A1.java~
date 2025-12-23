@@ -1,0 +1,18 @@
+public class A1{
+  {
+    System.out.println("nestaticki u A1");
+  }
+  static {
+    new A1(null);
+  }
+  public A1(){
+    System.out.println("A1");
+  }
+  public A1(Object o){
+    System.out.println("A1(o)");
+  }
+  public static void main(String [] args){
+    A1 a = new A1();
+    A1 a1 = new A1(null);
+  }
+}

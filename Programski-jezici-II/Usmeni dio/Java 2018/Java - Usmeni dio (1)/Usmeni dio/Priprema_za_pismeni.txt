@@ -1,0 +1,122 @@
+4. BufferedReader/PrintWriter
+   BufferedReader input = new BufferedReader ( new InputStreamReader (sock.getInputStream()));
+   PrintWriter output = new PrintWriter ( new BufferedWriter ( new OutputStreamWriter ( sock.getOutputStream())));
+   
+5. ObjectInputStream/ObjectOutputStream
+   ObjectInputStream inputObject = new ObjectInputStream ( sock.getInputStream());
+   ObjectOutputStream outputObject = new ObjectOutputStream ( sock.getOutputStream());
+   
+6. citanje iz fajla
+   BufferedReader citajIzfajla = new BufferedReader (new FileReader("info.txt"));
+   String line = citajIzFajla.readLine();
+
+7. pisanje u fajl
+   sa dodavanjem na postojeci sadrzaj
+   PrintWriter upisiUFajl = new PrintWriter ( new BufferedWriter ( new FileWriter ("info.txt",true)));
+   bez dodavanja
+   PrintWriter upisiUFajl = new PrintWriter ( new BufferedWriter ( new FileWriter ("info.txt")));
+   
+8. slanje i primanje fajla preko socket-a 
+
+//slanje
+ServerSocket serverSocket = new ServerSocket(PORT);
+Socket socket = serverSocket.accept();
+InputStream in = socket.getInputStream();
+OutputStream out = new FileOutputStream("M:\\test2.xml");
+byte[] bytes = new byte[16*1024];
+int count;
+while ((count = in.read(bytes)) > 0) {
+	out.write(bytes, 0, count);
+} 
+
+//primanje
+Socket socket = null;
+String host = "127.0.0.1";
+socket = new Socket(host, 4444);
+File file = new File("M:\\test.xml");
+long length = file.length();
+byte[] bytes = new byte[16 * 1024];
+InputStream in = new FileInputStream(file);
+OutputStream out = socket.getOutputStream();
+int count;
+while ((count = in.read(bytes)) > 0) {
+	out.write(bytes, 0, count);
+}
+
+9. serijalizovanje/deserijalizovanje objekata u fajl/iz fajla
+//serijalizacija
+File fajl = new File ("serijalizovanFajl.ser");
+Object objekat = new Object();
+ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(fajl));
+output.WriteObject(objekat);
+output.close();
+
+//deserijalizacija
+Object objekat;
+File serijalizovaniFajl = new File("serijalizovaniFajl.ser");
+ObjectInputStream input = new ObjectInputStream(new FileInputStream(serijalizovaniFajl));
+objekat = input.readObject();
+input.close();
+
+10. datum
+Calendar datum = Calendar.getInstance();
+StringBuilder trenutniDatum = new StringBuilder();
+sb.append(datum.get(Calendar.DAY_OF_MONTH)).append("-").append(datum.get(Calendar.MONTH)).append("-").appenddatum.get((Calendar.YEAR));
+
+
+11.RMI
+
+//client_policyfile.txt
+grant {
+permission java.net.SocketPermission "localhost:127.0.0.1:1099", "connect,resolve";
+}
+
+//server_policyfile.txt
+grant codeBase "file:/D:/home/src/stagod" {
+permission java.net.SocketPermission "localhost:1099","connect";
+permission java.net.SocketPermission "localhost:1024-","accept,resolve";
+}
+
+//RMIInterface.java
+import java.rmi.*;
+public interface RMIInterface extends Remote {
+  public boolean dodaj(Object o) throws RemoteException;
+  public boolean kupi(Object o) throws RemoteException;
+}
+
+//RMIKlijent.java 
+import java.rmi.*;
+public RMIKlijent {
+
+  public static void main (String[] args) throws Exception{
+    System.setSecurityManager(new RMISecurityManager());
+    RMIInterface rmii = (RMIInterface)Naming.lookup("//localhost:1099/RMIServer");
+    //rmii.dodaj(new Object());
+    //rmii.kupi(new Object());
+  }
+}
+
+//RMIServer.java
+import java.rmi.*;
+
+public class RMIServer extends UnicastRemoteObject implements RMIInterface {
+
+  //polja
+  //metode (sve bacaju RemoteException)
+  
+  public RMIServer() throws RemoteException{
+    super();
+  }
+  
+  public static void main (String[] args) {
+    RMIServer rmis;
+	System.setSecurityManager(new RMISecurityManager());
+	try {
+	  rmis = new RMIServer();
+	  Naming.rebind("//localhost:1099/RMIServer",rmis);
+	}
+	catch(Exception e) {
+	  e.printStackTrace();
+	}
+  }
+}

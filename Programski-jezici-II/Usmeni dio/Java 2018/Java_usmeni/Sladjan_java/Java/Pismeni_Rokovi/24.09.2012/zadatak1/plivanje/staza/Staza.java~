@@ -1,0 +1,84 @@
+package plivanje.staza;
+
+import plivanje.plivac.*;
+import plivanje.bazen.*;
+import java.lang.String;
+import java.lang.Math;
+import java.util.ArrayList;
+
+
+public class Staza extends Thread
+{
+  private int lenght;
+  private int row;
+  private int collumn;
+  public static int k=0;
+  public static String controlCommand;
+  
+  
+  public Staza(int lenght)
+  {
+    this.lenght = lenght;
+    synchronized(Bazen.staze)
+    {
+      Bazen.staze.add(this);
+    }
+    this.collumn = k;
+    
+    k++;
+    
+    
+    start();
+  }
+  
+  public void run()
+  {
+    System.out.println("Staza pokrenuta...");
+    double swimmerSpeed = 0;
+    this.row = 0;
+    
+    Plivac p = new Plivac(1.6,0);
+   do
+   {
+     System.out.println("DO STAZA");
+     int position = 0;
+     for(int i=0;i<100;i++)
+     {
+       try
+       {
+       sleep(100);
+       }
+       catch(Exception ex)
+       {
+         ex.printStackTrace();
+       }
+       swimmerSpeed += p.currentSpeed();
+     }
+     swimmerSpeed /= 10.0;
+    
+     position += swimmerSpeed;
+     
+     int tempPosition = (int)position;
+     
+     //p.setWay(position);
+     synchronized(Bazen.bazen)
+     {
+       for(int i=0;i<tempPosition;i++)
+       {
+         System.out.println("DDDDDD");
+         String ut = new String();
+         ut = "*";
+         if(i == (tempPosition-1)) Bazen.bazen[i][this.collumn] = ut;
+         else Bazen.bazen[i][this.collumn] = null;
+         Bazen.bazen.notifyAll();
+       }
+     }
+     
+   }
+   while(!"STOP".equalsIgnoreCase(controlCommand));
+   
+   
+  }
+    
+  
+}

@@ -1,0 +1,7 @@
+package Projektni_Zadatak.server.izvjestaj;
+
+
+public class GenerickiPrilog<T> implements Serializable
+{
+   T t;
+}

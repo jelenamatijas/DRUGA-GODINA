@@ -1,0 +1,40 @@
+package net.etfbl.server;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import net.etfbl.server.console.Console;
+
+public class Server {
+  public static int SERVER_PORT = 1729;
+  public static int TEL_PORT = 1337;
+  public static boolean run = true;
+  public static ArrayList<ServerThread> list = new ArrayList<ServerThread>();
+  public static Console c;
+  
+  public static void main(String[] args) throws IOException, InterruptedException {
+    ServerSocket ss = new ServerSocket(SERVER_PORT);
+    c = new Console();
+    
+    System.out.println("Server has started, awaiting connections...");
+    while (run)
+      list.add(new ServerThread(ss.accept()));
+    
+    // Zavrsavanje i ciscenje
+    c = null;
+    for (int i = 0; i < list.size(); i++)
+      list.get(i).join();
+    ss.close();
+    ServerThread.ss.close();
+    
+    System.in.read();
+  }
+  
+  public static ServerThread getUserThread(String name) {
+    for (int i = 0; i < list.size(); i++) {
+      ServerThread temp = list.get(i);
+      if (name.equals(temp.getUsername()))
+        return temp;
+    }
+    return null;
+  }
+}

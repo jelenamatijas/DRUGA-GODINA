@@ -1,0 +1,96 @@
+package net.etfbl.fabrika;
+
+import net.etfb.fabrika.Proizvod;
+
+import java.util.Scanner;
+import java.util.Random;
+import java.lang.String;
+import java.io.*;
+import java.text.DateFormat;
+import java.Date;
+
+public class Traka extends Thread
+{
+  private String jedinstveniBroj;
+  private int brzina;
+  
+  public Traka(String broj)
+  {
+    super();
+    this.jedinstveniBroj = broj;
+    
+    Random ran = new Random();
+    
+    this.brzina = ran.nextInt(2000+1);
+  }
+  
+  public void run()
+  {
+    System.out.println("Traka broj " + this.jedinstveniBroj + " je krenula sa radom. Brzina trake je " + this.brzina);
+    boolean kvar = false;
+    
+    for (int i=0;i<10;i++)
+    {
+      Random ran = new Random();
+    int temp = ran.nextInt(100+1);
+    boolean zastoj = false;
+    if (temp>=0 && temp<10) zastoj = true;
+    
+    
+    temp = ran.nextInt(100+1);
+    if (temp>=0 && temp<10) kvar = true;
+    
+    if (kvar)
+    {
+     System.out.println("Traka broj " + this.jedinsveniBroj + " je u KVARU!!!");
+     break;
+    }
+    else
+    {
+      try
+      {
+        sleep(this.brzina);
+        if(zastoj) 
+        {
+          sleep(5000);
+          System.out.println("Traka broj " + this.jedinstveniBroj +" ZASTOJ 5s");
+        }
+      }
+      catch (InterruptedException)
+      {
+        System.out.println("Traka broj " + this.jedinstveniBroj + " je prekinuta INTERRUPTED");
+      }
+      
+      String sn = new String();
+      sn = Integer(this.jedinstveniBroj).toString() + new Date.getTime();
+      Proizvod p = new Proizvod ("KAFA",sn);
+      File file = new File("proizvodi");
+      
+      if(file.exists() && file.isDirectory())
+      {
+        
+        FileOutputStream pisac = new FileOutputStream("\\proizvodi\\"+ this.jedinstveniBroj +"_" + i);
+        ObjectOutputStream out = new ObjectOutputStream(pisac);
+        out.write(p);
+      }
+      else
+      {
+        file.mkDir();
+        FileOutputStream pisac = new FileOutputStream("\\proizvodi\\"+ this.jedinstveniBroj +"_" + i);
+        ObjectOutputStream out = new ObjectOutputStream(pisac);
+        out.write(p);
+      }
+      
+      
+    }
+    }
+    
+    if(kvar) interrupt();
+  }
+  
+  
+  
+  
+  
+  
+}

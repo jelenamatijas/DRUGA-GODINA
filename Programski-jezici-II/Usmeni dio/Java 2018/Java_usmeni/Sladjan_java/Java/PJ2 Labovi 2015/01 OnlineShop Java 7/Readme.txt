@@ -1,0 +1,22 @@
+1) Prevedu se svi .java fajlovi
+
+2) Pokrene se rmic:
+rmic CalculatorServer
+
+3) startuje se rmiregistry:
+Win32: start rmiregistry
+Solaris: rmiregistry &
+
+4) startuje se server:
+java CalculatorServer
+java -Djava.security.policy=server_policyfile.txt CalculatorServer
+
+5) startuje se klijent:
+java CalculatorClient
+java -Djava.security.policy=client_policyfile.txt CalculatorClient
+
+
+Dodatno:
+6) .java.policy -> smjesta se u user.home -> u ovom slucaju nije potrebno navoditi -Djava.security.policy kod pokretanja servera i klijenta
+java CalculatorServer
+java CalculatorClient	

@@ -1,0 +1,65 @@
+package net.etfbl.simulation;
+
+import java.net.*;
+import java.io.*;
+import java.util.Scanner;
+import java.lang.String;
+
+
+public class Simulation
+{
+  private Socket sock;
+  private PrintWriter out;
+  private BufferedReader in;
+  
+  
+  public static void main (String[] args)
+  {
+    String serverIP = new String();
+    try
+    {
+      File f = new File("net" + File.separator + "etfbl" + File.separator + "simulacija" + File.separator + "serverIP.txt");
+      
+      if (f.exitst() && f.isFile())
+      {
+        BufferedReader readIP = new BufferedReader (new FileReader (f));
+        
+        serverIP = readIP.readLine();
+   
+          InetAddress ip = InetAddress.getByName(serverIP);
+          this.sock = new Socket(ip,9000);
+          
+          in = new BufferedReader(new InputStreamReader(this.sock.getInputStream()));
+          out = new PrintWriter(new OutputStreamWriter(this.sock.getOutputStream()));
+      }
+      
+      String control = new String();
+      
+      if ("OK".equalsIgnoreCase(control))
+      {
+        System.out.println("Veza sa serverom uspostavljena.");
+      }
+      
+    }
+    catch(SocketException se)
+    {
+      System.out.println("Nije uspostavljena veza sa serverom, problem sa socket-om.");
+    }
+    catch(IOException ioex)
+    {
+      System.out.println("Problem sa streamom");
+    }
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+  }//zatvoren main
+  
+}//zatvorena klasa Simulation
+      
+      
+      
+      
+      
+          

@@ -1,0 +1,32 @@
+Suma sumarum za izuzetke:
+
+-It is not necessary to provide an Exception thrown by a method when the method is overriding a method defined
+with an exception (using the throws clause)
+
+-ukoliko u nekoj metodi bacamo izuzetak sa throw new Throwable() (bilo sta osim unchecked exception), tada moramo uraditi jednu od dvije stvari:
+1. deklarisati metodu tako da se zna da baca taj izuzetak
+2. formirati try-catch blok za taj izuzetak u bas toj metodi
+
+-medjutim, kao sto je gore navedeno, ukoliko je metoda u kojoj bacamo izuzetak override-ovana , a metoda superklase 
+koju override-ujemo ima deklarisano da baca izuzetak, 
+nije potrebno uraditi nista sto se tice nove override-ovane metode; 
+potrebno je, medjutim tu gdje se ona poziva formirati try-catch blok
+
+-if it is a checked exception and must be specified in the throws clause, if you don't handle that particular exception
+
+-moguce je da redefinisana metoda baca Error ili RuntimeException iako metoda u roditeljskoj klasi ne baca nijedan izuzetak
+
+-to ne vazi za Throwable
+
+-nakon try bloka MORA se pojaviti nesto od navedenog
+1. jedan+ catch blokova
+2. jedan+ catch blokova i finally blok
+3. finally blok
+
+-ukoliko postoji vise catch blokova, u bloku iznad ne smije biti supertip izuzetka ispod
+
+-sleep(), close(), join() moraju biti u try/catch bloku
+
+-Error i RuntimeException ne moraju biti uhvaceni u catch bloku
+
+-finally blok se uvijek izvrsava; cak i ako je novi izuzetak bacen u catch bloku (nije bitno da li je obradjen ili nije)

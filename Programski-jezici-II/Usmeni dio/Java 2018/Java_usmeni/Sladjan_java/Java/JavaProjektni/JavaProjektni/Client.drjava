@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="net/etfbl/client/stanovnici/Nadzornik.java" package="net.etfbl.client.stanovnici" timestamp="25-Jun-2015 04:32:29">
+        <select from="5637" to="5637"/>
+        <scroll column="3240" row="6"/>
+      </file>
+      <file name="net/etfbl/client/stanovnici/Stanovnik.java" package="net.etfbl.client.stanovnici" timestamp="16-Jun-2015 16:48:20">
+        <select from="5637" to="5637"/>
+        <scroll column="3240" row="6"/>
+      </file>
+      <file name="net/etfbl/client/interfejsi/UpravljaIzvjestajima.java" package="net.etfbl.client.interfejsi" timestamp="16-Jun-2015 22:41:33">
+        <select from="5637" to="5637"/>
+        <scroll column="3240" row="6"/>
+      </file>
+      <file name="net/etfbl/client/agencija/Agencija.java" package="net.etfbl.client.agencija" timestamp="19-Jun-2015 09:17:49">
+        <select from="5637" to="5637"/>
+        <scroll column="3240" row="6"/>
+      </file>
+      <file name="net/etfbl/client/stanovnici/Radnik.java" package="net.etfbl.client.stanovnici" timestamp="24-Jun-2015 11:44:57">
+        <select from="5637" to="5637"/>
+        <scroll column="3240" row="6"/>
+      </file>
+      <file name="net/etfbl/client/Teleekran.java" package="net.etfbl.client" timestamp="25-Jun-2015 04:42:51">
+        <select from="5637" to="5637"/>
+        <scroll column="3240" row="6"/>
+      </file>
+      <file name="net/etfbl/client/stanovnici/Prepravljac.java" package="net.etfbl.client.stanovnici" timestamp="25-Jun-2015 05:11:17">
+        <select from="5637" to="5637"/>
+        <scroll column="3240" row="6"/>
+      </file>
+      <file name="net/etfbl/client/Client.java" package="net.etfbl.client" timestamp="25-Jun-2015 05:11:49">
+        <select from="5637" to="5637"/>
+        <scroll column="3240" row="6"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

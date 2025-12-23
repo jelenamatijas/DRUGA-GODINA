@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20130901-r5756">
+  <project autorefresh="false" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="net/etfbl/lab2/triangle/TriangleMatrix.java" package="net.etfbl.lab2.triangle" timestamp="24-Mar-2014 09:47:32">
+        <select from="419" to="419"/>
+        <scroll column="359" row="2"/>
+      </file>
+      <file name="net/etfbl/lab2/NizovniPodaci.java" package="net.etfbl.lab2" timestamp="07-Mar-2014 15:10:29">
+        <select from="419" to="419"/>
+        <scroll column="359" row="2"/>
+      </file>
+      <file name="net/etfbl/lab2/triangle/TriangleMatrixException.java" package="net.etfbl.lab2.triangle" timestamp="24-Mar-2014 08:34:32">
+        <select from="419" to="419"/>
+        <scroll column="359" row="2"/>
+      </file>
+      <file name="net/etfbl/lab2/TestMatrixes.java" package="net.etfbl.lab2" timestamp="24-Mar-2014 12:25:03">
+        <select from="419" to="419"/>
+        <scroll column="359" row="2"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

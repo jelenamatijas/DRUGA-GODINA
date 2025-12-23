@@ -1,0 +1,8 @@
+class Spoljasnja
+{
+  public class Unutrasnja
+  {
+    static int x;
+  }
+  
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20130901-r5756">
+  <project autorefresh="false" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="fabrika/ProizvodnaTraka.java" package="fabrika" timestamp="05-May-2014 14:16:19">
+        <select from="2337" to="2337"/>
+        <scroll column="866" row="0"/>
+      </file>
+      <file name="fabrika/Proizvod.java" package="fabrika" timestamp="04-May-2014 12:29:01">
+        <select from="2337" to="2337"/>
+        <scroll column="866" row="0"/>
+      </file>
+      <file name="fabrika/Fabrika.java" package="fabrika" timestamp="05-May-2014 14:16:05">
+        <select from="2337" to="2337"/>
+        <scroll column="866" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

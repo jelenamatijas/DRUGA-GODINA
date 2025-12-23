@@ -1,0 +1,15 @@
+class MyOuter 
+{
+  static{
+    System.out.println("staticki SPOLJASNJA");
+  }
+    public static class MyInner 
+    {
+      static int x;
+      static 
+      {
+        System.out.println("staticki UNUTRASNJA");
+      }
+        public static void foo() { }
+    }
+}

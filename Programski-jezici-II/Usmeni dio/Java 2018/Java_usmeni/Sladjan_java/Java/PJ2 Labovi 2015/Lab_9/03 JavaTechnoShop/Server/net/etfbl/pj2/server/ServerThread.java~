@@ -1,0 +1,86 @@
+package net.etfbl.pj2.server;
+
+import java.io.*;
+import java.net.*;
+import java.util.ArrayList;
+import net.etfbl.pj2.proizvodi.Proizvod;
+
+public class ServerThread extends Thread {
+
+    private Socket sock;
+    //redni broj klijenta
+    private int value;
+    private ObjectOutputStream oos;
+    private ObjectInputStream ois;
+    private ArrayList<Proizvod> racun = new ArrayList<>();
+
+    public ServerThread(Socket sock, int value) {
+        this.sock = sock;
+        this.value = value;
+        try {
+            oos = new ObjectOutputStream(sock.getOutputStream());
+            // inicijalizuj izlazni stream
+            ois = new ObjectInputStream(sock.getInputStream());
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        start();
+    }
+
+    //implementiraj run metodu
+    public void run() {
+        try {
+            String option = "";
+            while (!option.equals("END")) {
+                option = (String) ois.readObject();
+                System.out.println(option);
+                if ("LIST".equals(option)) {
+                    oos.writeObject(Server.cjenovnik);
+                    oos.flush();
+                } else if ("VIEW".equals(option)) {
+                    oos.writeObject(racun);
+                    oos.flush();
+                } else if (option.startsWith("BUY")) {
+                    String sifra = option.split("#")[1];
+                    //nadji proizvod i dodaj na racun
+                    boolean found = false;
+                    for (Proizvod p : Server.cjenovnik) {
+                        if (p.getSifra().equals(sifra)) {
+                            racun.add(p);
+                            found = true;
+                            oos.writeObject(p);
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        oos.writeObject(null);
+                    }
+                } else if (option.startsWith("DEL")) {
+                    String sifra = option.split("#")[1];
+                    //nadji proizvod i dodaj na racun
+                    boolean found = false;
+                    for (Proizvod p : Server.cjenovnik) {
+                        if (p.getSifra().equals(sifra)) {
+                            racun.remove(p);
+                            found = true;
+                            oos.writeObject(p);
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        oos.writeObject(null);
+                    }
+                }
+            }
+
+            oos.close();
+            ois.close();
+            sock.close();
+            System.out.println("[Client " + value + "] se odjavio");
+        } catch (IOException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+}

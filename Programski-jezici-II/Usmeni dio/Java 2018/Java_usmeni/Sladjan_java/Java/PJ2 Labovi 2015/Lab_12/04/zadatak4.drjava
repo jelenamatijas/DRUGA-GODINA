@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20130901-r5756">
+  <project autorefresh="false" main="" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="net/etfbl/pj2/lab11z1/Test.java" package="net.etfbl.pj2.lab11z1" timestamp="19-May-2014 09:36:14">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="net/etfbl/pj2/lab11z1/SerializationUtil.java" package="net.etfbl.pj2.lab11z1" timestamp="19-May-2014 09:37:58">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="net/etfbl/pj2/lab11z1/SerializableClass2.java" package="net.etfbl.pj2.lab11z1" timestamp="19-May-2014 09:34:48">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="net/etfbl/pj2/lab11z1/SerializableClass1.java" package="net.etfbl.pj2.lab11z1" timestamp="19-May-2014 09:34:34">
+        <select from="0" to="0"/>
+        <scroll column="0" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

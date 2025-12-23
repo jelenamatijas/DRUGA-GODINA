@@ -1,0 +1,32 @@
+import java.io.*;
+import java.net.*;
+import java.lang.String;
+
+
+
+public class CitacObjekata
+{
+  public static void main(String[] args)
+  {
+  try
+  {
+    ServerSocket ss = new ServerSocket(9000);
+    System.out.println("Server started....");
+    int j = 0;
+    while(true)
+    {
+      CitacObjekataThread cot = new CitacObjekataThread(ss.accept());
+      ++j;
+      System.out.println("Client " + j + " accepted");
+    }
+    
+  }
+  catch(Exception ex)
+  {
+    ex.printStackTrace();
+  }
+  }
+  
+  
+  
+}

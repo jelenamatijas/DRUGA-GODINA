@@ -1,0 +1,10 @@
+import java.rmi.*;
+import java.rmi.registry.*;
+
+
+public interface EuroBasketInterface extends Remote
+{
+  public String pregledRezultataUtakmicaZaDanasnjiDatum() throws RemoteException;
+  public String pregledRezultataJednogTima(String tim) throws RemoteException;
+  
+}

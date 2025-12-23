@@ -1,0 +1,16 @@
+import java.io;
+
+public class TestSet { 
+  public static void main(String[] args) {
+    HashSet<String> set = new HashSet<String>();
+    
+    System.our.println(set.add("Nikola"));
+    System.our.println(set.add("Nikola"));
+    System.our.println(set.add("Nik" + "ola"));
+    
+    System.our.println(set.add(""));
+    
+    Iterator<String> it = set.iterator();
+    
+    while(it.hasNext())
+      System.our.println(it.next());

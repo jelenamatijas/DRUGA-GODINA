@@ -1,0 +1,73 @@
+import java.lang.String;
+import java.util.ArrayList;
+import java.io.*;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import informator.ISPackage.*;
+import informator.*;
+
+public class ISServant extends ISPOA{
+  
+  public static ArrayList<Korisnik>
+  
+  static
+  {
+    
+    try
+    {
+      ObjectInputStream in = new ObjectInputStream(new FileInputStream("OglasiCORBA" + File.separator + "list.li"));
+     adList = (ArrayList<Ad>) in.readObject();
+    }
+    catch(Exception ex)
+    {
+      ex.printStackTrace();
+    }
+  }
+  
+  @Override
+  public boolean createAd(String data)
+  {
+    String dt = new SimpleDateFormat("DD:MM:YY").format(Calendar.getInstance().getTime());
+    Author au = new Author(data.split("#")[0],data.split("#")[1]);
+    Ad adv = new Ad(au,data.split("#")[2],data.split("#")[3],dt);
+    
+    synchronized(adList)
+    {
+      adList.add(adv);
+      try
+      {
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("OglasiCORBA" + File.separator + "list.li"));
+        
+        out.writeObject(adList);
+        
+        out.close();
+      }
+      catch(Exception ex)
+      {
+        ex.printStackTrace();
+      }
+      
+    }
+    return true;
+    
+  }
+  
+  public Ad viewOne(Ad ad)
+  {
+    if(adList.size() > 0) return adList.get(0);
+    else return null;
+  }
+  
+  public Ads viewAll()
+  {
+    Ad[] niz = new Ad[adList.size()];
+    
+    for(int i=0;i<adList.size();i++) niz[i] = adList.get(i);
+    
+    Ads ads = new Ads(niz);
+    
+    return ads;
+  }
+    
+
+}

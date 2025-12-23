@@ -1,0 +1,34 @@
+public class C1{
+  public static void main(String args[]){
+    C2 e= new C2();
+    I1 i= new C2();
+    I2 i2=e;
+    i.metoda();
+    e.metoda3();
+    i.metoda3();
+    i2.metoda();
+  }
+}
+
+interface I1 extends I2, I3{
+  void metoda();
+}
+
+interface I2{
+  void metoda();
+}
+
+interface I3{
+  void metoda3();
+}
+
+class C2 implements I1, I3{
+  public void metoda(){
+    System.out.println("metoda");
+  }
+  
+  public void metoda3(){
+    System.out.println("metoda3");
+  }
+}
+

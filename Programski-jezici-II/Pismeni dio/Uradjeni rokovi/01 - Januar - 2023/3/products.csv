@@ -1,0 +1,14 @@
+id;product_name;product_category;price;currency;quantity
+1;Laptop;Electronics;1200.0;EUR;30
+2;Smartphone;Electronics;800.0;EUR;60
+3;Headphones;Electronics;150.0;USD;55
+4;Desk;Furniture;300.0;EUR;40
+5;Chair;Furniture;120.0;EUR;65
+6;Bookshelf;Furniture;250.0;USD;20
+7;Milk;Groceries;1.5;BAM;100
+8;Bread;Groceries;1.2;BAM;55
+9;Cheese;Groceries;5.0;EUR;70
+10;Apple;Groceries;0.5;BAM;60
+11;T-Shirt;Clothing;20.0;EUR;45
+12;Jeans;Clothing;50.0;EUR;75
+13;Jacket;Clothing;120.0;USD;15

@@ -1,0 +1,27 @@
+package net.etfbl.lab2;
+import net.etfbl.lab2.triangle.*;
+
+public class TestMatrixes {
+ public static void main(String args[]) {
+    NizovniPodaci n = new NizovniPodaci();
+    n.printTablicaMnozenja();
+    char [] slova = {'j', 'a', 'v', 'a'};
+    n.setSlova(slova);
+    n.printSlova();
+    
+    TriangleMatrix t=null;
+    while(t==null){
+      try{
+        t = new TriangleMatrix();
+        System.out.println(t);
+        System.out.println("Suma elemenata gornje trougaone matrice je: " + TriangleMatrix.matrixSum(t));
+        t.printSortedDiagonalValues();
+      }catch(TriangleMatrixException e){
+        System.out.println(e);
+      }
+      catch (java.util.InputMismatchException ex){}
+    }
+  }
+
+
+}

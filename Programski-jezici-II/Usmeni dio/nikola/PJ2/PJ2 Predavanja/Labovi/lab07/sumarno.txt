@@ -1,0 +1,3 @@
+Telefoni: 6210.0
+Racunari: 6300.0
+Monitori: 3592.0

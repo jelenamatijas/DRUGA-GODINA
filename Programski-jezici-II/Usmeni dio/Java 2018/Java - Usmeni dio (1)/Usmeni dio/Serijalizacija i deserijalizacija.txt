@@ -1,0 +1,33 @@
+Suma sumarum za serijalizaciju/deserijalizaciju:
+
+-transient promjenjive se ne serijalizuju, osim ako to ne uradimo eksplicitno
+
+-ako klasa implementira interfejs Serializable, a ima referencu koja referencira klasu koja ne implementira Serializable, docice do greske
+
+-pri implementiranju Externalizable interfejsa, konstruktor mora biti ili default ili javan
+
+-ukoliko implementiramo Externizable interfejs, moramo redefinisati metode writeExternal i readExternal
+
+-njihove deklaracije:
+public void writeExternal(ObjectOutput out)
+                   throws IOException
+				   
+public void readExternal(ObjectInput in)
+					throws  IOException, ClassNotFoundException
+							
+-metode writeExternal i readExternal moraju biti javne
+
+-ako implementiramo Externalizable interfejs, tada se pri deserijalizovanju prvo poziva konstruktor, 
+a zatim readExternal() metoda
+
+-ako koristimo metode writeObject i readObject, one moraju biti private, inace ce biti ignorisane; takodje, ove metode
+nisu dio niti jednog interfejsa niti klase, njih poziva JavaVM ukoliko ih pronadje u klasi koja implementira Serializable interfejs
+
+-njihove deklaracije:
+ private void writeObject(java.io.ObjectOutputStream out)
+     throws IOException
+ private void readObject(java.io.ObjectInputStream in)
+     throws IOException, ClassNotFoundException;
+ private void readObjectNoData()
+     throws ObjectStreamException;
+

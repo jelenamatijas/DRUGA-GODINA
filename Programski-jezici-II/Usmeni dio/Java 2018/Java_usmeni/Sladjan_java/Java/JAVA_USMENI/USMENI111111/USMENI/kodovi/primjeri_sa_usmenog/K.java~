@@ -1,0 +1,21 @@
+public class K implements Runnable{
+  static String s = "string";
+  Thread T = new Thread();
+  
+  public static void main(String args[]){
+    K k = new K();
+    k.metoda(s);
+    System.out.println(s);
+  }
+  public void metoda(String s){
+    T.start();
+    s = s + " test";
+  }
+  
+  public void run(){
+    for(int i=0; i<100; i++){
+      s=s+" "+i;
+    }
+  }
+}
+    

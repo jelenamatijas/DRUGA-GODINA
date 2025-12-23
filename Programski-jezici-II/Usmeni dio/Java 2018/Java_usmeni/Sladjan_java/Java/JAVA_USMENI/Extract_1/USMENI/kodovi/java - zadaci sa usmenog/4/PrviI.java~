@@ -1,0 +1,3 @@
+interface PrviI extends DrugiI, TreciI {
+	void metoda();
+}

@@ -1,0 +1,17 @@
+class Ruuun
+{
+  public static void main(String arg[])
+  {
+    Proba a=new Proba();
+    Klasa b=new Klasa();
+    
+    if(a instanceof Konj)
+      System.out.println("Uredu");
+    else
+      System.out.println("Nije.");
+    
+     if(b instanceof Konj)
+      System.out.println("Uredu");
+    else
+      System.out.println("Nije.");
+  }

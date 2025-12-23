@@ -1,0 +1,14 @@
+import java.io.*;
+import java.net.*;
+
+
+public class CitacObjekataThread extends Thread
+{
+  public Socket sock;
+  
+  public CitacObjekataThread() {};
+  
+  public CitacObjekataThread(Socket s)
+  {
+    this.sock = s;
+    

@@ -1,0 +1,1 @@
+grant codeBase "file:/D:/Java/Pismeni_Rokovi/29.06.2012/zadatak3/OnlineMatematician"{permission java.security.AllPermission;};

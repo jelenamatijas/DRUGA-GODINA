@@ -1,0 +1,31 @@
+module pracenjenaucnihkonferencija{
+interface NaucneKonferencije{
+
+struct Rad{
+long idRada;
+string naziv;
+string kratakSadrzaj;
+long brojStranica;
+};
+
+struct Ucesnik{
+string korisnickoIme;
+string ime;
+string prezime;
+};
+
+struct Radovi{
+sequence <Rad> radovi;
+};
+
+struct RadZaUpload{
+sequence <octet> sadrzaj;
+string naziv;
+};
+
+boolean dodavanjeRada(in Rad rad);
+Radovi pregledRadova();
+boolean uploadRada(in RadZaUpload rad);
+
+};
+};

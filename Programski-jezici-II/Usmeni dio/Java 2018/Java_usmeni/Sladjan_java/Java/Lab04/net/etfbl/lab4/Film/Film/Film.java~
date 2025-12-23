@@ -1,0 +1,48 @@
+package net.etfbl.lab4.Film.Film;
+
+import java.util.Scanner;
+import java.util.Arrays;
+import java.lang.Math;
+import java.lang.String;
+
+
+public class Film
+{
+  protected String nazivFilma;
+  protected int godinaObjavljivanja;
+  protected double prosjecnaOcjena;
+  protected String glumci[];
+  protected String EXCEPTION_PORUKA = "Niz glumaca ne moze biti veci od 6!!!";
+  public Film()
+  {
+  }
+  
+  public Film(String s,int g,double p,String[] h) throws Exception
+  {
+    if (h==null || h.lenght>6)throw new Exception(EXCEPTION_PORUKA);
+    else 
+    {
+      nazivFilma = s;
+      godinaObjavljivanja = g;
+      prosjecnaOcjena = p;
+      glumci = new String [h.lenght];
+      for(int i=0;i<h.lenght;i++) glumci[i] = h[i];
+    }
+  }
+  
+  @Override
+  public String toString()
+  {
+    String s = new String();
+    for (int i=0;i<glumci.lenght;i++)
+    {
+      s+=glumci[i];
+      if (i!=glumci.lenght-1) s+=", ";
+    }
+    
+    return "Film: " + nazivFilma + "\nGodina objavljivanja: " + godinaObjavljivanja + "\nProsjecna ocjena: " + prosjecnaOcjena + "\nGlumci: " + glumci;
+    
+  }
+  
+  
+}

@@ -1,0 +1,239 @@
+******************************************************************************
+******************************************************************************
+******************************************************************************
+
+public class S{
+	static int x = 3;
+
+	public static void main(String[] args){
+	new S();
+}
+
+S(){
+S(2);
+}
+
+S(int x){
+System.out.println(x);
+}
+
+}
+
+******************************************************************************
+******************************************************************************
+******************************************************************************
+
+
+public class B{
+public int x,y;
+public B(int x, int y){
+	this.x = x;
+	this.y = y;
+}
+
+int razlika(){ //ili je ovde bio void
+razlika();
+System.out.println("nesto"); //ne znam da li je bio system ili je bio return
+//ako je bo int povratni tip a nije bilo returna onda... hahahah
+// return x - y;
+}
+
+int zbir(){}
+
+public static void main(String[] args){
+	B b  = new B(1,2);
+	System.out.println(b.razlika());
+	System.out.println(b.zbir());
+}
+}
+
+******************************************************************************
+******************************************************************************
+******************************************************************************
+
+
+public class T extends Thread{
+	String naziv = "";
+	T(String naziv){
+	this.naziv = naziv;
+}
+
+public static void main(String[] args){
+	T t1 = new T("Jedan");
+	t1.run();
+	T t2 = new T("Dva");
+	t2.run();
+	
+}
+
+public void run(){
+
+	for(int i = 0; i < 2; i++){
+	System.out.println(naziv);
+//ovde je jos bio poziv sleep i yield
+}
+}
+
+}
+
+
+******************************************************************************
+******************************************************************************
+******************************************************************************
+
+
+//bio je neki zadatak klase se medjusobno nasledjuju
+//N ima privatnu metodu, main je u M klasi
+//kreira je objekat N i pozove se privatna metoda u mainu
+
+
+
+******************************************************************************
+******************************************************************************
+******************************************************************************
+
+public class Klasa{
+	public static void main(String[] args){}
+
+void metoda(){}
+
+
+}
+
+interface Interfejs{
+void metoda();
+}
+
+******************************************************************************
+******************************************************************************
+******************************************************************************
+
+
+zadaci po 5
+
+
+
+******************************************************************************
+******************************************************************************
+******************************************************************************
+
+
+
+
+//generike klase
+bilo je na pocetku puno klasa
+
+a na kraju je bilo
+
+
+class Klasa<T,T2> implements Interfejs<T2>{}
+
+class KlasaDva extends Interfejs<T1>{}
+
+interface Interfejs<T1>{}
+
+//obratiti paznju i na ove oznake T1 u Interfejsu, pa se gore mijenja sa T2
+//extends Interfejs
+//greska je bila u sabiranju objekata
+
+******************************************************************************
+******************************************************************************
+******************************************************************************
+
+
+Exceptions
+
+Kreira se objekat C1, pozove se metoda, poziva se metoda iz metode
+dodje se u C3 koji ima atribut C2 c2; nad c2 se pozove metoda pa je to NullPointerException
+
+u mainu try-catch blok
+catch: CE2, CE1, Error, Throwable
+nakon catcha sa Throwable ide finally u kojem se nesto ispisuje
+nakon finally pisalo je C3 c3 = new C3();
+c3.metoda();
+
+i metodi se baca i hvata izuzetak CE1 pa se baca izuzetak CE2
+
+
+
+}
+
+
+******************************************************************************
+******************************************************************************
+******************************************************************************
+
+Serializable i Externializable
+
+F4 f4 = new F4();
+F4 implementira Externializable
+F2 f2 = new F5();
+F5 implementira Serializable
+oos.writeObject(f4);
+oos.writeObject(f2);
+Svi imaju transient 
+i svi imaju atributute tipa - F4 ima atribut F32 a = new F32(); 
+i svaki konstruktor svake klase nesto ispisuje
+
+
+F2 ima privatnu metodu writeObject() - mozda F2 a mozda F5 hahahha (sad mi je doslo da je F2 imao tu metodu)
+ali nema metodu readObject
+
+
+******************************************************************************
+******************************************************************************
+******************************************************************************
+
+Tredovi
+
+
+E3 extends E2
+
+E2 je imao run
+
+u konstruktruktoru E2 se kreirao i startao novi tred ako je id bio 5
+
+U mainu se kreirao niz od 5 objekata E3(1), E3(2), E2(), E3(5), E3(6), mozda tako nekako ne znam
+uglavnom oda ide ono nesto cudno hahahhau a onda prolazi kroz niz i provjerava da lije e instance of E3, ako jeste pokrene ga ako nije onda e.start() e.join()
+Pa onda Runnable r = new Runnable(){
+
+@Override run 
+
+};
+r.start() = cini mi, ne mogu se sjetiti
+
+
+******************************************************************************
+******************************************************************************
+******************************************************************************
+
+ostalo se nista ne sjecam, mozda se sjecam malo memorije pa cu zapisati
+
+
+M1{
+int id;
+float [] f = new float[10 000 000] // ili long
+double [] d = new double[10 000 000]
+M1[][] arrays = new M1[3][2];
+
+
+M1(tu se nesto prosledjuje){
+
+for(int i = 0; i < arrays.length; i++){
+	arrays[i%3][i%2] = new M2(); bio je neki ne znam koji
+}
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

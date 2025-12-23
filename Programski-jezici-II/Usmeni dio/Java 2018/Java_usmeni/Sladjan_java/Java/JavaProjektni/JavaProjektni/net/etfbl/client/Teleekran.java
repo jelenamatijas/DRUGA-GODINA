@@ -1,0 +1,73 @@
+package net.etfbl.client;
+import java.io.*;
+import java.net.*;
+
+public class Teleekran extends Thread {
+  public static int TEL_PORT = 1337;
+  private Socket s;
+  private InetAddress ia;
+  private BufferedReader in;
+  private PrintWriter out;
+  
+  public Teleekran() {
+    try {
+      ia = InetAddress.getByName("127.0.0.1");
+      s = new Socket(ia, TEL_PORT);
+      in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+      out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(s.getOutputStream())), true);
+      start();
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+  
+  @Override
+  public void run() {
+    String request = "", response = "";
+    while ((request != null) && (!request.equals("SERVER: EXIT"))) {
+      try {
+        request = in.readLine();
+        
+        if ((request != null) && (request.equals("WAKE UP!"))) {
+          Client.pause = false;
+          synchronized (Client.stanovnik) {
+            Client.stanovnik.notifyAll();
+          }
+        }
+        
+        else if ((request != null) && (request.equals("KILL IT!"))) {
+          Client.run = false;
+          synchronized (Client.stanovnik) {
+            Client.stanovnik.notifyAll();
+          }
+        }
+        
+        else if ((request != null) && (request.equals("PAUSE!"))) {
+          Client.pause = true;
+        }
+        
+        else if ((request != null) && (request.equals("SERVER: EXIT")))
+          Client.run = false;
+        
+        else if (request != null)
+          System.out.println(request);
+      }
+      catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+    System.out.println("\nZAVRSILA JE SIMULACIJA");
+    Client.run = false;
+    
+    // Zatvaranje konekcije
+    try {
+      in.close();
+      out.close();
+      s.close();
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+}

@@ -1,0 +1,394 @@
+package net.etfbl.pricalo.clientNadzornik;
+
+
+import Projektni_Zadatak.stanovnik.*;
+
+import java.util.Scanner;
+import java.lang.String;
+import java.io.*;
+import java.net.*;
+import java.util.HashMap;
+import java.util.ArrayList;
+
+
+public class ClientThreadNadzornik extends Thread
+{
+  private Socket sock;
+  private BufferedReader in;
+  private PrintWriter out;
+  private HashMap <String,File> temporaryData = new HashMap<String,File>();
+  private ArrayList<String> temporaryDataNameList = new ArrayList<String>();
+  public static boolean back = false;
+  
+  
+  public ClientThreadNadzornik()
+  {
+     super();
+    boolean serverDostupan = false;
+    try
+    {
+      InetAddress ip = InetAddress.getByName("ASUS-PC");
+      this.sock = new Socket (ip,9000);
+     // ClientRadnik.clientSocket = this.sock;
+      if(ip.isReachable(10000)) serverDostupan = true;
+    }
+    catch (UnknownHostException uh)
+    {
+      System.out.println("Nedostupan host!!!");
+    }
+    catch (SecurityException se)
+    {
+      System.out.println("Security manager ne dozvoljava povezivanje");
+    }
+     catch(IOException ex)
+     {
+       System.out.println("Desio se IO Exception pri uspostavljanju veze");
+     }//zatvoren catch
+    
+    if(serverDostupan)
+    {
+      try 
+      {
+        in = new BufferedReader(new InputStreamReader(this.sock.getInputStream()));
+        out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(this.sock.getOutputStream())),true);
+        
+        
+        ClientNadzornik.in = this.in;
+        ClientNadzornik.out = this.out;
+        
+        
+      }
+      catch (Exception ex)
+      {
+        ex.printStackTrace();
+      }//zatvoren catch;
+      
+    }
+    start();
+  }//zatvoren konstrukor
+  
+  public void run()
+  {
+    Scanner scan = new Scanner(System.in);
+    boolean logedout = false;
+    String keyboardInput = new String();
+    
+    try
+    {
+      if (("OK").equalsIgnoreCase(readInput()))
+      {
+        System.out.println("Veza sa serverom uspostavljena");
+        out.println("NADZORNIK");
+        
+        do
+        {
+          System.out.println("OPCIJE:");
+          System.out.println("Za pregled poruka radnika unesite 1");
+          System.out.println("Za pretragu fajlova po kljucnim rijecima unesite 2");
+          System.out.println("Za prikaz poruka radnika iz preuzetih fajlova unesite 3");
+          System.out.println("Za odjavu unesite LOGOUT");
+          
+          keyboardInput = scan.nextLine();
+          
+          if("1".equalsIgnoreCase(keyboardInput))searchByJMB();
+          else if ("2".equalsIgnoreCase(keyboardInput))searchByKeyword();
+          else if ("3".equalsIgnoreCase(keyboardInput))messageReview();
+          else if ("LOGOUT".equalsIgnoreCase(keyboardInput)) logedout = logout();
+          else System.out.println("Nepravilno unesena opcija!!!");
+        }
+        while(!"1".equalsIgnoreCase(keyboardInput) && !"2".equalsIgnoreCase(keyboardInput) && !"LOGOUT".equalsIgnoreCase(keyboardInput) || !logedout);
+        
+      }//zatvoren if(OK)
+      else System.out.println("Veza sa serverom nije uspostavljena, restartujte aplikaciju.");
+      
+    }//zatvoren try blok
+   
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+    
+  }//zatvorena run metoda
+  
+  public boolean searchByJMB()
+  {
+    Scanner scan = new Scanner(System.in);
+    String keyboardInput = new String();
+    String streamInput = new String();
+    
+    out.println("1");
+    System.out.println("Unesite JMB radnika i datum od interesa za pretragu u formatu JMB DATUM(npr. JMB GGGG#MM#DD");
+    
+    keyboardInput = scan.nextLine();
+    
+    if (!"BACK".equalsIgnoreCase(keyboardInput))
+    {
+      out.println(keyboardInput);
+    }
+    try
+    {
+      streamInput = readInput();
+      
+      if ("0".equalsIgnoreCase(streamInput))
+      {
+        streamInput = readInput();
+        if("NOFILES".equalsIgnoreCase(streamInput)) System.out.println("Nije pronadjen nijedan fajl za unesene podatke!");
+      }
+      else
+      {
+        int k = 0;
+        System.out.println("Broj nadjenih fajlova je " + streamInput);
+        k=Integer.valueOf(streamInput);
+        streamInput = readInput();
+        
+        System.out.println("Fajlovi su: ");
+        for(int i=0;i<k;i++) System.out.println(streamInput.split(" ")[i]);
+        System.out.println("Unesite broj fajlova za preuzimanje: ");
+        keyboardInput = scan.nextLine();
+        out.println(keyboardInput);
+        if (Integer.valueOf(keyboardInput) != 0)
+        {
+          for (int i=0;i<Integer.valueOf(keyboardInput);i++)
+          {
+            String incomingFile = new String();
+            incomingFile = "";
+            incomingFile = readInput();
+            File q = new File("Projektni_Zadatak" + File.separator + "pricalo" + File.separator + "clientNadzornik" + File.separator + incomingFile);
+            
+            temporaryDataNameList.add(incomingFile);//ove dvije linije koda upisuju svako ime preuzete i novokreirane datoteke u ArrayList-u, a opet
+            temporaryData.put(incomingFile,q);//ime fajla i njegova apsolutna putanja se pomocu fajl objekta upisuje u HashMap-u sve radi 
+                                               //lakseg pretrazivanja opcije prikazivanja jednog fajla i kasnijeg brisanja
+            
+            
+            PrintWriter printMsgFile = new PrintWriter(new BufferedWriter(new FileWriter("Projektni_Zadatak" + File.separator + "pricalo"
+                                                                 + File.separator + "clientNadzornik" + File.separator + incomingFile )),true);
+            do
+            {
+              incomingFile = readInput();
+              if (!"##EOF##".equalsIgnoreCase(incomingFile))printMsgFile.println(incomingFile);
+            }while (!"##EOF##".equalsIgnoreCase(incomingFile));
+            printMsgFile.close();
+          }//zatvoren for za upis
+        }//zatvoren if za provjeru broja fajlova za preuzimanje
+            
+      }
+    }//zatvoren try blok u metodi searchByJMB
+     catch(IOException ioex)
+     {
+       System.out.println("Greska pri citanju sa input streama.");
+     }
+     catch (Exception ex)
+     {
+       ex.printStackTrace();
+     }
+      
+      
+    return true;
+    
+  }//zatvorena metoda searchByJMB
+  
+  public synchronized void messageReview()
+  {
+     System.out.println("Za pregled poruka iz jednog fajla unesite redni broj fajla koji ce biti prikazani u formatu, REDNI_BROJ IME FAJLA");
+    Scanner scan = new Scanner(System.in);
+    try
+    {
+      if (temporaryDataNameList.size()>0)
+      {
+        
+        for(int i=0;i<temporaryDataNameList.size();i++) System.out.println((i+1) + ". " + temporaryDataNameList.get(i));
+        String keyboardInput = new String();
+        
+        
+        keyboardInput = scan.nextLine();
+        
+        int input = Integer.valueOf(keyboardInput);
+        
+        File f = temporaryData.get(temporaryDataNameList.get(input-1));
+        
+        if (f.exists())
+        {
+          System.out.println("");
+          System.out.println("==============================================================");
+          System.out.println("Sadrzaj fajla " + temporaryDataNameList.get(input-1));
+          BufferedReader readFile = new BufferedReader(new FileReader(f));
+          String str = new String();
+          str = "";
+          do
+          {
+            str = readFile.readLine();
+            if (str != null) System.out.println(str);
+          }
+          while (str != null);
+          readFile.close();//zatvoren reader fajla
+        }
+        System.out.println("");
+        System.out.println("==============================================================");
+        System.out.println("");
+      }
+      else System.out.println("Nema preuzetih fajlova sa porukama");
+    }
+    catch (IOException ioex)
+    {
+      System.out.println("Greska pri citanju iz fajla u metodi reviewMsg.");
+    }
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
+        
+  }
+  
+  public void searchByKeyword()
+  {
+    String keywords = new String();
+    
+    do
+    {
+    System.out.println("Pretragu kljucnih rijeci unijetu u formatu BROJ_KLJUCNIH_RIJECI KLJUCNA_RIJEC KLJUCNA_RIJEC...");
+    
+    Scanner scan = new Scanner(System.in);
+    
+    
+    keywords = scan.nextLine();
+    if(keywords.contains(" "))
+    {
+      out.println("2");
+      out.println(keywords);
+      
+      String response = new String();
+      
+      try
+      {
+        
+        response = readInput();
+        
+        
+        if ("FILESFOUND".equalsIgnoreCase(response))
+        {
+          response = readInput();
+          int numberOfSuspects = Integer.valueOf(response);
+          
+          System.out.println("Broj nadjenih radnika za date kljucne rijeci je: " + numberOfSuspects);
+          
+          response = readInput();
+          
+          for(int i=0;i<numberOfSuspects;i++)
+          {
+            System.out.println((i+1) + ". " + response.split(" ")[i]);
+          }
+          
+          System.out.println("");
+          System.out.println("");
+        }
+        else
+        {
+          System.out.println("Nema snimljenih razgovora radnika za pretragu.");
+        }
+        
+      }
+     
+      catch (Exception ex)
+      {
+        ex.printStackTrace();
+      }
+    }
+    }while(!keywords.contains(" ") && !"BACK".equalsIgnoreCase(keywords));
+  }//zatvorena funkcija searchByKeyword
+  
+  
+  public boolean logout()
+  {
+    out.println("LOGOUT");
+    
+    String response = new String();
+    
+    response = "";
+    try
+    {
+      response = readInput();
+      
+      if ("LOGOUTOK".equalsIgnoreCase(response))
+      {
+        in.close();
+        out.close();
+        System.out.println("U arraylisiti ima " + temporaryDataNameList.size());
+        int tempFileCounter = temporaryDataNameList.size();
+        for (int i=0;i< tempFileCounter;i++)
+        {
+          String st = new String();
+          st = temporaryDataNameList.get(i);
+          File f = temporaryData.get(st);
+          System.out.println("F.exists = "+ f.exists());
+          System.out.println("st.endsWith = " + st.endsWith(".txt"));
+          if (f.exists() && st.endsWith(".txt"))
+          {
+            
+            temporaryData.remove(st);
+            f.delete();
+          }
+        }
+          
+        System.out.println("Uspjesno ste se odjavili.");
+        
+        return true;// vraca istinitu vrijednost za logedout(boolean)
+      }
+      else
+      {
+        System.out.println("Greska pri odjavljivanju.");
+        back = true;
+      }
+    }
+    catch(IOException ioex)
+    {
+      System.out.println("Greska pri citanju sa streama pri odjavi.");
+    }
+    catch(Exception ex)
+    {
+      ex.printStackTrace();
+    }
+      
+    return false;
+      
+  }//zatvorena funkcija logout
+      
+  
+  
+   public String readInput()
+  {
+      String s = new String();
+      try
+      {
+    synchronized (ClientNadzornik.lock)
+    {
+     
+      if (ClientNadzornik.serverMsg.equals("")) 
+      {
+       
+        ClientNadzornik.lock.wait();
+        //wait();
+        //notifyAll();
+        
+        s = readInput();
+      }
+      else
+      {
+       
+        s = ClientNadzornik.serverMsg;
+         ClientNadzornik.serverMsg = "";
+         ClientNadzornik.lock.notifyAll();
+     }
+
+    }
+      }//zatvoren TRY blok
+      catch (Exception ex)
+      {
+        System.out.println("Izuzetak kod ocitavanja serverMsg-a");
+      }
+    return s;
+  }//zatvoren read
+  
+    
+  
+}//zatvorena klasa

@@ -1,0 +1,47 @@
+package net.etfbl.lab4.Predmet;
+
+import java.util.Scanner;
+import java.util.Arrays;
+import java.lang.Math;
+import java.lang.String;
+
+public class Kvadar extends Predmet
+{
+  protected double a,b,c;
+  
+  public Kvadar (double specificnaTezina)
+  {
+    super (specificnaTezina);
+    this.identifikator = super.ID;
+  }
+  
+  @Override
+  public void print()
+ {
+    System.out.print ("Predmet KVADAR \nBroj predmeta "+ID);
+    System.out.println ("Specificna tezina je "+ST);
+    System.out.println ("Zapremina je "+this.zapremina());
+  }
+    
+  @Override
+  public double zapremina ()
+  {
+    return  a*b*c;
+  }
+  
+  @Override
+  public void read ()
+  {
+    Scanner scan = new Scanner(System.in);
+    System.out.println ("Unesite podatke za predmet SFERA.");
+    System.out.println ("Identifikacioni broj je "+this.ID);
+    System.out.println ("Unesite ivicu KVADRA a: ");
+    this.a = scan.nextDouble();
+    System.out.println ("Unesite ivicu KVADRA b: ");
+    this.b = scan.nextDouble();
+    System.out.println ("Unesite ivicu KVADRA c: ");
+    this.c = scan.nextDouble();
+    
+  }
+  
+}

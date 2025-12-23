@@ -1,0 +1,57 @@
+package net.etfbl.pj2.server;
+
+import java.io.*;
+import java.net.*;
+import java.util.Random;
+
+public class ServerThread extends Thread {
+
+    public ServerThread(Socket sock, int value) {
+        this.sock = sock;
+        this.value = value;
+        try {
+            // inicijalizuj ulazni stream
+            in = new BufferedReader(
+                    new InputStreamReader(
+                            sock.getInputStream()));
+            // inicijalizuj izlazni stream
+            out = new PrintWriter(
+                    new BufferedWriter(
+                            new OutputStreamWriter(
+                                    sock.getOutputStream())), true);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        start();
+    }
+
+    //implementiraj run metodu
+    public void run() {
+        try {
+            //obrada klijentskih zahtjeva 
+            /*klijent posalje zahtjev, u vidu neke poruke, server ocita zahtjev, u zavisnosti od 
+             same poruke izvrsi odredjenu akciju, i vrati klijentu odgovor*/
+            // procitaj zahtjev
+            String request;
+            while (!"KRAJ".equals(request = in.readLine())) {
+                System.out.println("[Client " + value + " ]: " + request);
+                //obradi zahtjev i vrati poruku
+                Random rand = new Random();
+                out.println("Temperatura za mjesto " + request + " je " + (rand.nextInt(70) - 20));
+
+            }
+            // zatvori konekciju
+            in.close();
+            out.close();
+            sock.close();
+            System.out.println("[Client " + value + "] se odjavio");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    private Socket sock;
+    //redni broj klijenta
+    private int value;
+    private BufferedReader in;
+    private PrintWriter out;
+}

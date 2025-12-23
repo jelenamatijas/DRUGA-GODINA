@@ -1,0 +1,45 @@
+public class Nit
+{
+  public static void main(String [] args) throws InterruptedException
+  {
+     Thread r = new Thread("Zasto bas ti moja ikono sa zida"){
+ public void run()
+ {
+   while(true)
+   System.out.println(getName());
+ }
+      };
+      AnonymBase ab = new AnonymBase(){
+ int x = 3;
+ void f()
+ {
+   System.out.println("SKROZ ANONIMNA");
+ } 
+      };
+      g(AnonymBase(){
+ void f()
+ {
+   System.out.println("FUNKCIJSKI");
+ }
+      });
+      /*r.setDaemon(true);
+      r.start();
+      Thread.sleep(500);*/
+      ab.f();
+      System.out.println(ab.x + " " + Thread.MAX_PRIORITY);
+     // r.join();
+  }
+  public static void g(AnonymBase b)
+  {
+      b.f();
+  }
+}
+
+class AnonymBase
+{
+   int x = 5;
+   void f()
+   {
+      System.out.println("AnonymBase");
+   }
+}

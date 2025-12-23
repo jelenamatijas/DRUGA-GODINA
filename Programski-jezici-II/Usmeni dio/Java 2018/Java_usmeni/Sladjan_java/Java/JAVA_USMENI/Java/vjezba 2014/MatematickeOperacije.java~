@@ -1,0 +1,39 @@
+/** @author Milan @version 1.1 {www.mboookcase.com}*/
+public MatematickeOperacije {
+  double operand1, operand2;
+  MatematickeOperacije (double o1, double o2){
+    operand1=o1;
+    operand2=o2;
+  }
+  MatematickeOperacije(){
+    operand1=Math.random()*10;
+    operand1=Math.random()*10;
+  }
+  public int proizvod (){
+    return operand1*operand2;
+  }
+  public float kolicnik (){
+    return operand1/operand2;
+  }
+  public boolean prviJeVeci(){
+    if (operand1>operand2) return true;
+    else return false;
+  }
+  public sumaPrvih20CjelobrojinihBrojeva(){
+    int sum=0;
+    for(int i=1;i<21;i++)sum+=i;
+    return sum;
+  }
+  public int razlikaBrojevaDjeljivihSa3{
+    int razlika=0;
+    int i=100;
+    for(i ;i>0;i--)
+      if(i%3==0){
+      razlika=i;
+      break;
+    }
+    for (i;i>0;i--)
+      if(i%3==0)razlika-=i;
+  }
+  return razlika;
+}

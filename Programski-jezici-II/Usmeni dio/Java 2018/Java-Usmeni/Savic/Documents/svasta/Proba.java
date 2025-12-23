@@ -1,0 +1,27 @@
+public class Proba
+{
+    Nesto x = new Nesto();
+    public Proba()
+    {
+      System.out.println("Proba");
+    }
+
+    public static void main(String [] args)
+    {
+      Proba p = new Proba();
+      System.out.println(p.x);
+      
+      String x = new String("xyz");
+      String y = "xyz";
+      System.out.println(x == y);
+    }
+
+}
+
+class Nesto
+{
+  public Nesto()
+  {
+     System.out.println("Nesto");
+  }
+}

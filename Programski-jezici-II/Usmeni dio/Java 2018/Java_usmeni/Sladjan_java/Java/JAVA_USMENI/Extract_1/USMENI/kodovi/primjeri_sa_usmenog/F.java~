@@ -1,0 +1,17 @@
+public class F{
+  static int x=3;
+  public static void main(String args[]){
+    new F();
+  }
+ 
+  F(){
+    new F(2);
+  }
+  
+   F(int x){
+    System.out.println(x);
+  }
+  
+  
+}
+    

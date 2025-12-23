@@ -1,0 +1,108 @@
+package net.etfbl.client.stanovnici;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import net.etfbl.client.*;
+
+public class Radnik extends Stanovnik {
+  private int salary;
+  public static String[] message = { "Zdravo.", "Kako se zoves?", "Moje ime nije vazno.", 
+                                     "Eppur si muove.", "Une fleur dans le coeur.", "Carpe diem.", "Dum spiro, spero.",
+                                     "Alea iacta est.", "Ovaj projektni zasluzuje 30 bodova."};
+  
+  public Radnik() {
+    salary = (new Random()).nextInt(3551) + 1000;
+    tel = new Teleekran();
+  }
+    
+  public Radnik(String name, String surname, String jmbg, int salary) { 
+    super(name,surname,jmbg);
+    this.salary = salary;
+    tel = new Teleekran();
+    start();
+  }
+  
+  public void input() {
+    Scanner scan = new Scanner(System.in);
+    System.out.print("Unesite ime: ");
+    name = scan.nextLine();
+    System.out.print("Unesite prezime: ");
+    surname = scan.nextLine();
+    System.out.print("Unesite JMBG: ");
+    jmbg = scan.nextLine();
+    while (!checksum()) {
+      System.out.print("Neispravan JMBG! Unesite ponovo: ");
+      jmbg = scan.nextLine();
+    }
+  }
+  
+  @Override
+  public String toString() {
+    return super.toString() + "#" + salary;
+  }
+  
+  @Override
+  public void run() {
+    String request = "", response;
+    Random rand = new Random();
+    Scanner scan = new Scanner(System.in);
+    
+    try {
+      while (!Client.in.readLine().equals("START"));
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
+    
+    Client.update();
+    System.out.println("Korisnik: " + Client.username);
+    
+    while ((!request.equals("EXIT"))) {
+      try {
+        sleep(1000);
+      }
+      catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+      
+      Client.update();
+      // Nadje drugog prijavljenog korisnika
+      String name = Client.login.get(rand.nextInt(Client.login.size())).split("#")[0];
+      while ((Client.run) && ((!isLoggedIn(name)) || (name.equals(Client.username))))
+        name = Client.login.get(rand.nextInt(Client.login.size())).split("#")[0];
+      
+      // Salje mu poruku
+      response = "@" + name + ": " + message[rand.nextInt(message.length)];
+      if ((Client.run) && (!Client.pause))
+        Client.out.println(response);
+      
+      try {
+        if ((Client.run) && (Client.pause)) {
+          synchronized(this) {
+            while (Client.pause)
+              wait();
+          }
+        }
+        
+        if (!Client.run)
+            request = "EXIT";
+      }
+      catch (Exception e) {
+        e.printStackTrace();
+        request = "EXIT";
+      }
+    }
+    System.out.println("Press any key to continue...");
+    scan.nextLine();
+  }
+  
+  public boolean isLoggedIn(String name) {
+    try {
+      Client.out.println("ON: " + name + ": " + Client.username);
+      return Boolean.valueOf(Client.in.readLine());
+    }
+    catch (Exception e) {
+      return false;
+    }
+  }
+}

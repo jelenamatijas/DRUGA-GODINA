@@ -1,0 +1,9 @@
+-nije moguce uraditi konverziju:
+	long a = 5L;
+	int b = a;
+	
+-medjutim, moguce je kastovati:
+	long a = 5L;
+	int b = (int)a;
+	
+-nad boolean tipom se mogu primijeniti &,|,^ osim operatora ~

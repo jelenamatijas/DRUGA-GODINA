@@ -1,0 +1,15 @@
+import java.util.Scanner;
+import java.lang.String;
+import java.lang.Math;
+
+
+public class Cjenovnik
+{
+  private 
+  public static void main(String args[])
+  {
+    Computer PC = new Computer("ASUS",1000,123456,new String[]{"ASUS","USA","asus@usa.org"},new String[]{"Intel dual core","DDR3 512MB","Intel HD","Western Digital"});
+    
+  }
+  
+}

@@ -1,0 +1,104 @@
+package Projektni_Zadatak.pricalo.server;
+
+import Projektni_Zadatak.pricalo.server.Server;
+import java.lang.String;
+import java.net.*;
+import java.io.*;
+import java.util.HashMap;
+
+
+public class ServerThreadRadnik extends Thread
+{
+  private Socket sock;
+  private BufferedReader in;
+  private PrintWriter out;
+  private String username;
+  
+  public ServerThreadRadnik(Socket s)
+  {
+    super();
+    this.sock = s;
+    try
+    {
+      in = new BufferedReader(new InputStreamReader( this.sock.getInputStream()));
+      out = new PrintWriter (new BufferedWriter (new OutputStreamWriter(this.sock.getOutputStream())),true);
+      
+      
+    }//zatvoren TRY Blok
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+  }//zatvoren konstruktor
+  
+  
+  public void run()
+  {
+    
+      boolean usrOK = false;
+      boolean loginOK = false;
+      String str = new String();
+      try
+      {
+        //str = in.readLine();
+        String user = new String();
+        out.println("OK");
+        out.println("Druga poruka");
+        out.println("Treca poruka");
+        out.println("Cetvrta poruka");
+        
+        if (str.equalsIgnoreCase("LOGIN"))
+        {
+          while (!loginOK)
+          {
+            str = in.readLine();
+            synchronized (Server.radniciRegistar)
+            {
+              for(String temp : Server.radniciRegistar.keySet())
+              {
+                user = temp;
+                if ((str.split("#")[0]).equalsIgnoreCase(user.split("#")[0]))
+                { 
+                  out.println("PASS");
+                  usrOK = true;
+                  break;
+                }
+              }
+              if (usrOK)
+              {
+                if ((str.split("#")[1]).equalsIgnoreCase(user.split("#")[1]))
+                {
+                  loginOK = true;
+                  out.println("LOGINOK");
+                }
+                else
+                {
+                  out.println("INVALIDPASS");
+                }
+              }
+              else
+              {
+                out.println("INVALIDUSRNAME");
+              }
+            }//zatovoren Synchronized blok
+            
+          }//zatvoren While
+          
+        }//zatvoren If za login
+         out.close();
+        in.close();
+       
+      }//zatvoren TRY blok
+      catch (Exception ex)
+      {
+        ex.printStackTrace();
+      }
+      
+      
+  }//zatvoren RUN
+          
+      
+                           
+  
+}//zatvorena klasa

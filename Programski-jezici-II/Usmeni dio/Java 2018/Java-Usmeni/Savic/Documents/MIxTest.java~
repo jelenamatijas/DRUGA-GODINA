@@ -1,0 +1,20 @@
+class GenericHolder<T>{
+ T v;
+
+  public void set(T v){
+  this.v = v;
+  }
+
+  public T get(){
+  return v;
+  }
+}
+
+public class MIxTest{
+  public static void main(String atgs[]){
+  GenericHolder<Object> holder = new GenericHolder<Integer>();
+  holder.set("10");
+  System.out.println((Integer)holder.get());
+}
+}
+  

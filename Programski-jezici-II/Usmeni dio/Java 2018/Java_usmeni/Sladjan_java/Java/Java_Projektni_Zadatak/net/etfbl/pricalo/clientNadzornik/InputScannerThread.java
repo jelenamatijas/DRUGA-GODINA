@@ -1,0 +1,138 @@
+package net.etfbl.pricalo.clientNadzornik;
+
+import net.etfbl.pricalo.clientNadzornik.ClientNadzornik;
+
+import java.lang.String;
+import java.net.*;
+import java.io.*;
+
+
+public class InputScannerThread extends Thread
+{
+  private Socket sock;
+  private BufferedReader in;
+  private PrintWriter out;
+  public static boolean logedout = false;
+  
+  public InputScannerThread ()
+  {
+    super();
+    boolean serverDostupan = false;
+   
+        in = ClientNadzornik.in;
+        out = ClientNadzornik.out;
+        
+        
+
+    start();
+    
+  }//zatvoren konstrukor
+  
+  
+  public void run()
+  {
+    boolean logedout = false;
+    System.out.println("InputScannerThread je pokrenut");
+    
+//    if(!ClientRadnik.inputNeeded)try
+//    {
+//      sleep(2500);
+//    }
+//    catch(Exception ex)
+//    {
+//      System.out.println("Greska kod uspavljivanja inputStreamThread-a");
+//      ex.printStackTrace();
+//    }
+    
+    
+    while (!ClientNadzornik.stop && !logedout)
+    {
+      readLine();
+    }//zatvoren while
+    
+    try
+    {
+      in.close();
+      out.close();
+    }
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+  }//zatvorena run metoda
+  
+  public  String getServerMsg ()
+  {
+    String s = new String();
+    try
+    {
+      s = in.readLine();
+    }
+    catch (Exception ex)
+    {
+      System.out.println("Greska u getServerMsg metodi");
+    }
+    return s;
+  }
+  
+  public void  readLine()
+  {
+    
+    String s = new String();
+    try
+      {
+     
+        
+        if ((s = in.readLine()) != null) 
+        {
+          
+          
+          if (!s.startsWith("MSG")&&!s.startsWith("TELEEKRAN"))
+          {
+            if ("##STOP##".equalsIgnoreCase(s))
+            {
+              System.out.println("Aplikacija zaustavljena!!!");
+              
+              ClientThreadNadzornik.logedout = true;
+              ClientNadzornik.ref.interrupt();
+              this.interrupt();
+            }
+            else
+            {
+            synchronized (ClientNadzornik.lock)
+            {
+              
+              if(!ClientNadzornik.serverMsg.equals(""))
+              {
+                ClientNadzornik.lock.wait();
+              }
+              ClientNadzornik.serverMsg = s;
+              ClientNadzornik.lock.notifyAll();
+            }
+            }
+           }//zatvoren if od provjere da li je dobijena poruka poruka korisnika ili servera
+          
+          else System.out.println(s);
+          
+        }
+      }
+     catch (SocketException se)
+      {
+        logedout = true;
+      }
+     catch (IOException ioe)
+     {
+       logedout = true;
+     }
+      catch (Exception ex)
+      {
+        System.out.println("Izuzetak u InputScannerThread kod citanja");
+        ex.printStackTrace();
+      }
+     
+      
+  }
+  
+  
+}//zatvorena klasa

@@ -1,0 +1,41 @@
+class St
+{
+  public static void main(String[] args)
+  {
+    StringBuilder sb=new StringBuilder("Darko");
+    StringBuffer buf=new StringBuffer("Darko");
+    
+    StringBuilder sd=new StringBuilder("Darko");
+   
+    if(sb.equals(sd))   // kako StringBuilder i StringBuffer ne redefinisu klasu equals, rezultat ce biti 
+      System.out.println("Isti"); //nisu isti ,i ako sadrze istu sekvencu karaktera
+    else
+      System.out.println("Nisu isti");
+    
+    String a="pero";
+    String b="kovljenic";
+    /* !!!!!!!!!!!! metode koje prouzrokuju promjenu objekta klase String uvjek vracaju novi objaket te klase */
+    
+  //  String s=(String)sb; reference klase StringBuilder i StringBuffer,ne mogu se dovesti u realaciju sa String 
+                           //referencama cak ni eksplicitnim kastovanjem, kompajelr prijavljuje gresku
+  //  String s=sb;
+  //   sb=buf;      sve tri klase implicitno nasledjuju Object klasu nema nikakve veze izmedju nih i ako su jako slicne
+  StringBuilder nova;
+  nova=sb;
+  if(nova==sb)
+  {
+    System.out.println("reference nova i sb su iste,tj referenciraju isti objekat");
+  }
+  nova=sb.deleteCharAt(3);
+  System.out.println(nova);
+  
+  if(nova.equals(sb))
+  {
+    System.out.println("reference nova i sb su iste,tj referenciraju isti objekat");
+  }
+  else
+  {  
+    System.out.println("reference nova i sb nisu iste");
+  }
+  }
+}

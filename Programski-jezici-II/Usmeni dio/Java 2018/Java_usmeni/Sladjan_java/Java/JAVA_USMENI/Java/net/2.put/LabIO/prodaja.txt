@@ -1,0 +1,3 @@
+racunar#pentium#1#1000
+monitor#lg#2#200
+racunar#amd#2#1050

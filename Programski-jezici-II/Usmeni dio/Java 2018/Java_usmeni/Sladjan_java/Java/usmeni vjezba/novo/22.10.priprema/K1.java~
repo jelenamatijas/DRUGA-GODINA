@@ -1,0 +1,58 @@
+public abstract class K1
+{
+  String  name;
+  
+  public K1()
+  {
+    super();
+    System.out.println("Konstruktor K1");
+  }
+  
+  public static void main(String[] args)
+  {
+    K3 k3 = new K3();
+    K4 k4 = new K4();
+  }
+  
+}
+
+
+public abstract class K2 extends K1
+{
+  String name;
+  
+  public K2
+  {
+    super();
+    System.out.println("Konstruktor K2");
+  }
+  
+}
+
+class K3 extends K2
+{
+  String name;
+  
+  public K3()
+  {
+    super();
+    System.out.println("Konstruktor K3");
+  }
+}
+
+class K4 extends K3
+{
+  String name;
+  
+  public K4()
+  {
+    super();
+    System.out.println("Konstruktor K3");
+  }
+  
+}
+  
+  
+  
+  
+  

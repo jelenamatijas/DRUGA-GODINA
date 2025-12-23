@@ -1,0 +1,15 @@
+
+public class Spil
+{
+  public static Karta[] spil = new Karta[52];
+  
+  public Spil()
+  {
+    for(int i=0;i<52;i++)
+    {
+      spil[i] = new Karta();
+    }
+    
+  }
+  
+}

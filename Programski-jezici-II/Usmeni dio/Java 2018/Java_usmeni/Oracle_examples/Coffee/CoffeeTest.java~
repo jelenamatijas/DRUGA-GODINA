@@ -1,0 +1,13 @@
+enum CoffeeSize { BIG, HUGE, OVERWHELMING };  // ne moze biti private, ni protected
+ 
+ public class Coffee{
+  CoffeeSize size;
+ }
+
+ public class CoffeeTest{
+  public static void main(String[] args){
+   Coffee drink = new Coffee(); 
+   drink.size = CoffeeSize.BIG;
+
+  }
+ }

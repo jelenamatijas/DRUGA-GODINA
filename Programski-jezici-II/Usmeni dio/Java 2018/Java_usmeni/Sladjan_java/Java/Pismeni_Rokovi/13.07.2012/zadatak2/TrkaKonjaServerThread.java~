@@ -1,0 +1,71 @@
+import java.io.*;
+import java.net.*;
+
+public class TrkaKonjaServerThread extends Thread
+{
+  public Socket sock;
+  public BufferedReader br;
+  public PrintWriter pw;
+  
+  
+  
+  public TrkaKonjaServerThread(Socket sock)
+  {
+    this.sock = sock;
+  
+    
+  }
+  
+  
+  public void run()
+  {
+    boolean usernameOk = false;
+    try(
+        br = new BufferedReader(new InputStreamReader(this.sock.getInputStream()));
+        pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(this.sock.getOutputStream())),true);
+        )
+    {
+      
+      
+      do
+      {
+        pw.println("##USR##");
+      
+      String username = new String();
+      
+      username = br.readLine();
+      
+      synchronized(TrkaKonjaServer.usernames)
+      {
+        
+        if(!TrkaKonjaServer.usernames.contains(username))
+        {
+          pw.println("##USROK##");
+          TrkaKonjaServer.usernames.add(username);
+          usernameOk = true;
+        }
+        else
+        {
+          pw.println("##USRNOK##");
+        }
+      }
+      
+      }while(!usernameOK);
+      
+      String request = new String();
+      
+      request = br.readLine();
+      
+      if ("ZAHTJEV".equalsIgnoreCase(request))
+      {
+        String response = new String();
+        
+        for(int i;i<TrkaKonjaServer
+        
+        response 
+            
+            
+            
+      
+      
+      

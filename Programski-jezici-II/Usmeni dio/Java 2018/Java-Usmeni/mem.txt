@@ -1,0 +1,76 @@
+public class M1 {
+  int id;
+  M1 m;
+  M2 m2;
+  char lm[] = new char[10000000];
+  int im[] = new int[5000000];
+  M2 mArray[][] = new M2[3][2];
+
+  public M1(int id) {
+    System.out.println("M1: " + id);
+    this.id = id;
+  }
+
+  public M1(M1 m, int id, M2 m2) {
+    System.out.println("M1: " + id);
+    this.m = m;
+    this.id = id;
+    this.m2 = m2;
+  }
+
+  @Override
+  protected void finalize() {
+    System.out.println(id + ": finalize");
+  }
+
+  public static void main(String args[]) {
+    M1 m10 = new M1(10);
+    M2 m21 = new M2(m10, 21);
+    M1 m11 = new M1(m10, 11, m21);
+    M2 m22 = new M2(m11,22);
+    M1 m12 = new M1(m11,12,m22);
+    M2 niz[]=new M2[50];
+    m12.mArray[0][0] = m22;
+    m12.mArray[1][1] = new M2(23);
+    m12.mArray[2][1] = new M2(24);
+    m12.mArray[1] = null;
+    m12.mArray[2] = null;
+    System.gc();
+    m10.mArray[1][0] = new M2(25);
+    m11.m2 = m10.mArray[1][0];
+    m21 = null;
+    System.gc();
+    m10.mArray[2][2] = new M2(new M1(1000), 26); 
+    System.gc();
+  }
+}
+
+class M2 {
+  float lm[] = new float[2500000];
+  public  M1 m1 = new M1(999);
+  private int id2;
+
+
+  public M1 ispis(){
+    return m1;
+  }
+  public M2(M1 m1, int id) {
+    System.out.println("M2: " + id);
+    this.m1 = m1;
+    this.id2 = id;
+  }
+
+  public M2(int id) {
+    System.out.println("M2: " + id);
+    this.id2 = id;
+  }
+
+//    {
+//    System.out.println("nestaticki blok M2 " + id2);
+//  }
+
+  @Override
+  protected void finalize() {
+    System.out.println(id2 + ": finalize");
+  }
+}

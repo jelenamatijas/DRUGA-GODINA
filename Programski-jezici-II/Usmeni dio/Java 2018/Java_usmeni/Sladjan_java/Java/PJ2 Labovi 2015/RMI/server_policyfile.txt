@@ -1,0 +1,4 @@
+
+grant codeBase "file:/C:/Users/Win/Desktop/RMI"{    
+permission java.security.AllPermission;
+};

@@ -1,0 +1,30 @@
+public class T extends Thread
+{
+  public T ()
+  {
+    start();
+  }
+  
+  public void run()
+  {
+    int i = 0;
+    Runnable r = new Runnable()
+    {
+      public void run()
+      {
+        synchronized(i)
+        {
+          i = 1;
+        }
+      }
+    }
+    new Thread(r).start();
+    
+    synchronized(i)
+    {
+      System.out.println(i);
+    }
+    
+  }
+  
+}

@@ -1,0 +1,38 @@
+public class Mainy{
+      int id;
+      double[] doubles = new double[10_000_000];
+      long[] longs = new long[6_000_000];
+      Mainy[] mys = new Mainy[3];
+      Mainy m;
+      Dumb d;
+      public Mainy(Mainy m){
+            this.m = m;
+            if(m!=null)
+		 id = m.id + 1;
+   }
+      public static void main(String[] args){
+            Mainy m0 = new Mainy(null);
+            Mainy m1 = new Mainy(m0);
+            Mainy m2 = new Mainy(m1);
+            Mainy m3 = new Mainy(m2);
+            Mainy m4 = m3;
+            Mainy m5 = new Mainy(m0);
+            Mainy[] ms = new Mainy[3];
+            ms[0] = new Mainy(m2);
+            ms[1] = new Mainy(m3);
+            ms[2] = new Mainy(m2);
+            m1 = m2 = m3 = m5 = null;
+            System.gc();   //1                 //pozivanje  garbage collectora
+            ms[0] = new Mainy(ms[0]);
+            ms[1] = new Mainy(ms[1]);
+            ms[2] = new Mainy(ms[2]);
+            ms[2].m = ms[0];
+            m3 = new Mainy(ms[0] = null);
+            ms[0] = new Mainy(ms[0]);
+            System.gc();  //2
+            }
+       }
+class Dumb {
+  float[] flaots = new float[20000000];
+  int[] ints = new int[40000000];
+}

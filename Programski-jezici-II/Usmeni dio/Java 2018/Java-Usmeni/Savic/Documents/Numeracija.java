@@ -1,0 +1,21 @@
+public enum Numeracija
+{
+  A(1), B(2), C(3), D;
+  
+  Numeracija()
+  {
+  
+  }
+  int x;
+  Numeracija(int x)
+  {
+    this.x = x;
+  }
+  public static void main(String [] args)
+  {
+    for(Numeracija n : Numeracija.values())
+    {
+      System.out.print(n.x + " ");
+    }
+  }
+}

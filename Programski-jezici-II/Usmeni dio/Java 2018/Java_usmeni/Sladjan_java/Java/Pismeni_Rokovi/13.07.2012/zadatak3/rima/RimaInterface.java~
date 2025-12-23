@@ -1,0 +1,12 @@
+import rmi.*;
+import rmi.registry.*;
+
+
+public interface RimaInterface extends Remote
+{
+  public boolean savrsenaRima(String[] strofa) throws RemoteException;
+  public boolean ukrstenaRima(String[] strofa) throws RemoteException;
+  public boolean obgrljenaRima(String[] strofa) throws RemoteException;
+  public boolean parnaRima(String[] strofa) throws RemoteException;
+  public String rima (String[] pjesma) throws RemoteException;
+}

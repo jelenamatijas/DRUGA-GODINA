@@ -1,0 +1,10 @@
+-ukoliko je neka metoda protected u roditeljskoj klasi, u naslijedjenoj klasi joj (ne) mozemo pristupiti ovako:
+RoditeljskaKlasa rk = new RoditeljskaKlasa();
+rk.metoda();//nije ok
+metoda();//ok
+
+-ne moze se naslijediti final klasa
+
+-ne moze se redefinisati private metoda roditeljske klase
+
+-ukoliko roditeljska klasa nema default konstruktor, a mi ga pozovemo u konstruktoru naslijedjene klase, desice se greska

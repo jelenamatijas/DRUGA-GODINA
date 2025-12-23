@@ -1,0 +1,4 @@
+interface Komedija
+{
+  Stirng genre = "KOMEDIJA";
+}

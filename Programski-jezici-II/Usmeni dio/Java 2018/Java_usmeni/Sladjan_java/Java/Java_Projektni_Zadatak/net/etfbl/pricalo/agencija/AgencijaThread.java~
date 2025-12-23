@@ -1,0 +1,68 @@
+package net.etfbl.pricalo.agencija;
+
+
+
+import java.util.Scanner;
+import java.lang.String;
+import java.io.*;
+import java.net.*;
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Random;
+
+
+public class AgencijaThread extends Thread
+{
+  private Socket sock;
+  private BufferedReader in;
+  private PrintWriter out;
+  private HashMap <String,File> temporaryData = new HashMap<String,File>();
+  private ArrayList<String> temporaryDataNameList = new ArrayList<String>();
+  public static boolean back = false;
+  
+  
+  public ClientThreadPrepravljac()
+  {
+     super();
+    boolean serverDostupan = false;
+    try
+    {
+      InetAddress ip = InetAddress.getByName("ASUS-PC");
+      this.sock = new Socket (ip,9000);
+     // ClientRadnik.clientSocket = this.sock;
+      if(ip.isReachable(10000)) serverDostupan = true;
+    }
+    catch (UnknownHostException uh)
+    {
+      System.out.println("Nedostupan host!!!");
+    }
+    catch (SecurityException se)
+    {
+      System.out.println("Security manager ne dozvoljava povezivanje");
+    }
+     catch(IOException ex)
+     {
+       System.out.println("Desio se IO Exception pri uspostavljanju veze");
+     }//zatvoren catch
+    
+    if(serverDostupan)
+    {
+      try 
+      {
+        in = new BufferedReader(new InputStreamReader(this.sock.getInputStream()));
+        out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(this.sock.getOutputStream())),true);
+        
+        
+        Agencija.in = this.in;
+        Agencija.out = this.out;
+        
+        
+      }
+      catch (Exception ex)
+      {
+        ex.printStackTrace();
+      }//zatvoren catch;
+      
+    }
+    start();
+  }//zatvoren konstrukor

@@ -1,0 +1,32 @@
+package net.etfbl.server.console;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import net.etfbl.server.Server;
+
+public class ShutdownTask extends TimerTask {
+  public void run() {
+    try {
+      Thread.sleep(15000);
+    }
+    catch (Exception e) { }
+    
+    if (Console.paused) {
+      // Zaustavi klijente
+      Console.killClients();
+      
+      // Zaustavi server
+      Server.run = false;
+      try {
+        InetAddress ia = InetAddress.getByName("127.0.0.1");
+        Socket s = new Socket(ia,1729);
+        s.close();
+      }
+      catch (Exception e) { }
+      
+      Server.c.interrupt();
+      Console.timer.cancel();
+      Console.timer.purge();
+    }
+  }
+}

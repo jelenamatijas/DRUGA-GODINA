@@ -1,0 +1,30 @@
+public class P2 extends P1
+{
+  int x;
+  String f;
+  
+  
+  
+  public static void main(String[] args)
+  {
+    P2 k = new P2();
+    System.out.println(k.f);
+  }
+}
+
+class P1 
+{
+  int y;
+  
+  public P1(int o)
+  {
+    y=o;
+  }
+  
+//  public static void main(String[] args)
+//  {
+//    P2 k = new P2();
+//    System.out.println("x je : " + k.f);
+//  }
+  
+}

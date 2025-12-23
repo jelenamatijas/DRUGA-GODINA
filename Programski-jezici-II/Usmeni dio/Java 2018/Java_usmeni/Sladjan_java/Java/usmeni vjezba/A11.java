@@ -1,0 +1,19 @@
+public class A1
+{
+  public int x;
+  
+  public static void main(String[] args)
+  {
+    A1 a = new A1();
+    A2 b = new A2();
+    
+    
+    if (a instanceof A2) System.out.println("Jeste");
+  }
+}
+
+
+class A2 extends A1
+{
+  int y;
+}

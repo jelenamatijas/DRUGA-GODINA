@@ -1,0 +1,86 @@
+package plivanje.plivac;
+
+import plivanje.bazen.*;
+import plivanje.staza.*;
+import java.lang.String;
+import java.util.Scanner;
+import java.lang.Math;
+import java.util.Random;
+
+
+public class Plivac extends Thread
+{
+  static int k = 0;
+  private String id;
+  private double speed;
+  private double maxSpeed;
+  private double way;
+  
+  
+  public Plivac () {};
+  
+  public Plivac ( double maxSpeed, double r)
+  {
+    Integer i = new Integer (k);
+    this.id = i.toString();
+    //this.speed = speed;
+    this.maxSpeed = maxSpeed;
+    this.way = r;
+    k++;
+    start();
+  }
+  
+  public double currentSpeed()
+  {
+    return this.speed;
+  }
+  
+  
+  public void setWay(double d)
+  {
+    this.way = d;
+  }
+  
+  
+  public void run()
+  {
+    System.out.println("Plivac " + id + " krenuo...");
+    this.speed = this.maxSpeed/100.0;
+    
+    double minSpeed = this.speed;
+    
+    Random rand = new Random();
+    
+    do
+    {
+    
+      int interval = 100 + rand.nextInt(100);
+      
+      int change = -1 + rand.nextInt(3);
+      
+      double speedChange = ((double)change)*(speed/100.0);
+      
+      double newSpeed = speedChange + this.speed;
+      
+      if(newSpeed<=this.maxSpeed && newSpeed>=minSpeed) this.speed  = newSpeed;
+      
+      try
+      {
+        sleep(interval);
+      }
+      catch(Exception ex)
+      {
+        ex.printStackTrace();
+      }
+      
+      
+    }
+    while(!"STOP".equalsIgnoreCase(Staza.controlCommand));
+    
+  }
+  
+  
+}//zatvorena klasa
+    
+    
+  

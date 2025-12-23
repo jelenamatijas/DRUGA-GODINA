@@ -1,0 +1,40 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package proizvodi;
+
+import java.io.Serializable;
+/**
+ *
+ * @author Milan
+ */
+public class Racunar extends Proizvod implements Serializable {
+    private String konfiguracija;
+
+    public Racunar() {
+    }
+
+    public Racunar(String konfiguracija, String sifra, double cijena, String naziv,
+            Proizvodjac proizvodjac) {
+        super(sifra, cijena, naziv, proizvodjac);
+        this.konfiguracija = konfiguracija;
+    }
+
+    public String getKonfiguracija() {
+        return konfiguracija;
+    }
+
+    public void setKonfiguracija(String konfiguracija) {
+        this.konfiguracija = konfiguracija;
+    }
+
+    @Override
+    public String toString() {
+        return "Racunar: " + "konfiguracija=" + konfiguracija + ' '+super.toString();
+    }
+    
+    
+}

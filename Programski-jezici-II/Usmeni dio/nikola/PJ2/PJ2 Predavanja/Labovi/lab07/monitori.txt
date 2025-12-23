@@ -1,0 +1,4 @@
+monitor#lg hc12#4#400
+monitor#samsung ic-23#1#450
+monitor#lg cc22#3#250
+monitor#xanglong b1j#8#99

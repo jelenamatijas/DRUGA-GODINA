@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" main="" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="net/etfbl/pj2/CounterMain.java" package="net.etfbl.pj2" timestamp="27-Apr-2015 10:30:02">
+        <select from="21" to="21"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="net/etfbl/pj2/CounterThread.java" package="net.etfbl.pj2" timestamp="27-Apr-2015 10:30:02">
+        <select from="21" to="21"/>
+        <scroll column="0" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="Student.java" package="" timestamp="20-Apr-2015 08:48:29">
+        <select from="1360" to="1360"/>
+        <scroll column="370" row="0"/>
+      </file>
+      <file name="Dnevnik.java" package="" timestamp="14-Apr-2014 09:02:50">
+        <select from="1360" to="1360"/>
+        <scroll column="370" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

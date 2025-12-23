@@ -1,0 +1,5 @@
+
+grant codeBase "file:/D:/nastava/Programski jezici 2/LAB/Lab 10/01 RMI"{
+permission java.net.SocketPermission "localhost:1099", "connect";
+permission java.net.SocketPermission "localhost:1024-", "accept, resolve";
+};

@@ -1,0 +1,131 @@
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
+
+
+public class AnalizaProdaje
+{
+  
+  public static void main (String[] args)
+  {
+    
+    Computer PC = new Computer("ASUS",1000,123456,new String[]{"ASUS","USA","asus@usa.org"},new String[]{"Intel dual core","DDR3 512MB","Intel HD","Western Digital"});
+    Computer PC2 = new Computer("DELL",1500,56793933,new String[]{"DELL","USA","dell@usa.org"},new String[]{"AMD quad core","DDR3 1024MB","NVIDIA","Samsung"});
+    
+    Menu m = new Menu (new Computer[]{PC,PC2},null,null,null);
+    
+    m.printAll();
+    
+    Bill b = new Bill();
+    
+    Product p = m.getProizvodSaSifrom("123456");
+    //System.out.println(p.toString());
+    
+    b.add(p);
+    
+    try
+    {
+      
+      PrintWriter out = null;
+      
+        
+        out = new PrintWriter ( new BufferedWriter (new FileWriter("prodaja.txt")));
+        
+        String s = new String();
+        s = "monitor#lg234#3#400\ntelefon#samsung galaxy s4#1#899\ntelefon#htc one#2#500\nracunar#lenovo#4#1205\nracunar#hp#2#900\nmonitor#samsung#1#400\nracunar#lenovo#1#1200";
+        //System.out.println(s);
+        
+        out.println(s);
+        out.close();
+       
+    }
+    catch (Exception ex) 
+    {
+        ex.printStackTrace();
+     }
+      
+    
+    try
+    {
+      BufferedReader in = new BufferedReader (new FileReader("prodaja.txt"));
+      String s;
+      String mo = new String();
+      String r = new String();
+      String sw= new String();
+      String t = new String();
+      
+      PrintWriter racunari = new PrintWriter(new BufferedWriter(new FileWriter("prodajaRacunari.txt")));
+      PrintWriter monitori = new PrintWriter(new BufferedWriter(new FileWriter("prodajaMonitori.txt")));
+      PrintWriter telefoni = new PrintWriter(new BufferedWriter(new FileWriter("prodajaTelefoni.txt")));
+      PrintWriter softver = new PrintWriter(new BufferedWriter(new FileWriter("prodajaSoftver.txt")));
+      double monitoriSumarno = 0;
+      double racunariSumarno = 0;
+      double telefoniSumarno = 0;
+      double softverSumarno = 0;
+      while ((s=in.readLine())!=null)
+      {
+        
+        int kolicina = Integer.parseInt(s.split("#")[2]);
+        double cijena = Double.parseDouble(s.split("#")[3]);
+        
+        String kategorija = s.split("#")[0];
+        System.out.println(kategorija);
+        if(kategorija.equals("racunar")) 
+        {
+          racunari.println(s);
+          racunariSumarno += (double)kolicina * (double)cijena;
+        }
+        else if (kategorija.equals("telefon")) 
+        {
+          telefoni.println(s);
+          telefoniSumarno += (double)kolicina * (double)cijena;
+        }
+        else if  (kategorija.equals("monitor")) 
+        {
+          monitori.println(s);
+          monitoriSumarno += (double)kolicina * (double)cijena;
+        }
+        else  
+        {
+          softver.println(s);
+          softverSumarno += (double)kolicina * (double)cijena;
+        }
+      }
+      
+      
+      in.close();
+      monitori.close();
+      telefoni.close();
+      racunari.close();
+      softver.close();
+      
+      PrintWriter sumarno = new PrintWriter(new BufferedWriter (new FileWriter("prodajaSumarno.txt")));
+      
+      if (racunariSumarno != 0) sumarno.println("Racunari " + racunariSumarno);
+      if (monitoriSumarno != 0) sumarno.println("Monitori " + monitoriSumarno);
+      if (telefoniSumarno != 0) sumarno.println("Telefoini " + telefoniSumarno);
+      if (softverSumarno != 0) sumarno.println("Softver " + softverSumarno);
+      
+      sumarno.close();
+      
+      
+    }
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    finally
+    {
+      
+    }
+      
+    
+          
+   // System.out.println(b.toString());
+          
+    }
+}

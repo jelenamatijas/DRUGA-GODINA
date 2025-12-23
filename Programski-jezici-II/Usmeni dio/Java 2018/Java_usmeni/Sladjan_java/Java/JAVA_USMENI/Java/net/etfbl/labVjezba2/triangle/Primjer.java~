@@ -1,0 +1,43 @@
+class Primjer {
+  static int init = 2;
+  
+  {
+    init = 1;
+    System.out.println("Inicijalizacioni blok");
+  }
+  
+  static {
+    init = 3;
+    System.out.println("Staticki inicijalizacioni blok");
+  }
+  
+  public static void main(String [] parametri){
+    //Primjer p = new Primjer();
+    System.out.println("init = " + init);
+    if(parametri.length > 0){
+      for(String i: parametri){
+        System.out.println(i);
+      }
+      if(parametri.length >= 2 ){
+        
+        switch (parametri[1]){
+         case "1":
+          System.out.println("Parametar je 1");
+          break;
+        case "c":
+          System.out.println("Slovo c");
+          break;
+        case "3":
+          System.out.println("Broj 3");
+          break;
+        default:
+          System.out.println(parametri[1]);
+        }
+        
+      }
+    } else {
+      System.out.println("Nema parametara");
+    }
+  }
+
+}

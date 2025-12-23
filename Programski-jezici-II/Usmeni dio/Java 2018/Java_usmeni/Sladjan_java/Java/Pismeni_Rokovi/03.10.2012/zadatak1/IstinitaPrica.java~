@@ -1,0 +1,4 @@
+interface IstinitaPrica
+{
+  String scenario = "ISTINITA PRICA";
+}

@@ -1,0 +1,107 @@
+package net.etfbl.pj2.server;
+
+import java.io.*;
+import java.net.*;
+
+public class ServerThread extends Thread {
+
+    public ServerThread(Socket sock, int value) {
+        this.sock = sock;
+        this.value = value;
+        try {
+            // inicijalizuj ulazni stream
+            in = new BufferedReader(
+                    new InputStreamReader(
+                            sock.getInputStream()));
+            // inicijalizuj izlazni stream
+            out = new PrintWriter(
+                    new BufferedWriter(
+                            new OutputStreamWriter(
+                                    sock.getOutputStream())), true);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        start();
+    }
+
+    //implementiraj run metodu
+    public void run() {
+        try {
+            //obrada klijentskih zahtjeva 
+            /*klijent posalje zahtjev, u vidu neke poruke, server ocita zahtjev, u zavisnosti od 
+             same poruke izvrsi odredjenu akciju, i vrati klijentu odgovor*/
+            // procitaj zahtjev
+            String login = in.readLine();
+            String[] loginElements = login.split("#");
+            int score = 0;
+            if (checkLogin(loginElements[0], loginElements[1])) {
+                out.println("OK");
+                String[] questions = prepareQuestions();
+                for (String s : questions) {
+                    String correct = s.split("#")[4];
+                    out.println(s.substring(0, s.lastIndexOf("#")));
+                    String answer = in.readLine();
+                    if (correct.equals(answer)) {
+                        score++;
+                    }
+                }
+                out.println("Rezultat je " + score);
+            } else {
+                out.println("Klijent nije registrovan");
+            }
+            // zatvori konekciju
+            in.close();
+            out.close();
+            sock.close();
+            System.out.println("[Client " + value + "] se odjavio");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * metoda priprema 5 pitanja
+     *
+     * @return
+     */
+    private synchronized String[] prepareQuestions() {
+        String[] questions = new String[5];
+        try {
+            BufferedReader in = new BufferedReader(new FileReader("./questions.txt"));
+            String s;
+            int i = 0;
+            while ((s = in.readLine()) != null) {
+                questions[i] = s;
+                i++;
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return questions;
+    }
+
+    private synchronized boolean checkLogin(String username, String password) {
+        try {
+            BufferedReader in = new BufferedReader(new FileReader("./users.txt"));
+            String s;
+            while ((s = in.readLine()) != null) {
+                if (s.startsWith(username)) {
+                    String u = s.split("#")[0];
+                    String p = s.split("#")[1];
+                    if (u.equals(username) && p.equals(password)) {
+                        return true;
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
+    private Socket sock;
+    //redni broj klijenta
+    private int value;
+    private BufferedReader in;
+    private PrintWriter out;
+}

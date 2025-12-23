@@ -1,0 +1,1 @@
+grant codeBase "file:/D:/Java/Pismeni_Rokovi/13.07.2012/zadatak3/rima" {permission java.security.AllPermission;};

@@ -1,0 +1,24 @@
+import java.util.Scanner;
+import java.net.*;
+import java.io.*;
+import java.util.Random;
+
+
+public class citacObjekataClient
+{
+  public static void main(String[] args)
+  {
+    File f1 = new File("Folder1");
+    File f2 = new File("Folder2");
+    
+    if (!f1.exists()) f1.mkdir();
+    if (!f2.exists()) f2.mkdir();
+    
+    DomaciFilm df1 = new DomaciFilm("Orlovi Rano Lete","1983:11:12","ROMAN","DRAMA");
+    DomaciFilm df2 = new DomaciFilm("Balkanski Spijun","1974:1:4","ROMAN","KOMEDIJA");
+    
+    StraniFilm sf1 = new StraniFilm("Alien","1991:5:4","ROMAN","NAUCNA FANTASTIKA");
+    StraniFilm sf2 = new StraniFilm("Beautiful Mind","1995:6:2","ISTINITA PRICA","DRAMA");
+  }
+  
+}

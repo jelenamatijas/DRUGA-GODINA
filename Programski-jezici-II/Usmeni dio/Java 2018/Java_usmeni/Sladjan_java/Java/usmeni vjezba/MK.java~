@@ -1,0 +1,15 @@
+public class MK
+{
+  public void metoda(String s)
+  {
+    System.out.println("Moze " + s);
+  }
+  
+  public static void main(String[] args)
+  {
+    MK m = new MK();
+    
+    m.metoda(1);
+  }
+  
+}

@@ -1,0 +1,33 @@
+import java.net.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
+public class EscapeGameServer
+{
+  public static ArrayList<String> usernames = new ArrayList<String>();
+  
+  static
+  {
+    try
+    {
+      ObjectInputStream ois = new ObjectInputStream(new FileInputStream("usernames.ser"));
+      usernames = (ArrayList<String>) ois.readObject();
+      ois.close();
+    }
+    catch(Exception ex)
+    {
+      System.out.println("Greska kod ucitavanja usernames.ser fajla");
+      ex.printStackTrace();
+    }
+    
+  }
+  
+  public static void main(String[] args)
+  {
+    
+    
+  }
+  
+}

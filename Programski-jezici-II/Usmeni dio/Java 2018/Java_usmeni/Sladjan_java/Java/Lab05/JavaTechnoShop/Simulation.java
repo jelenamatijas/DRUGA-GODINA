@@ -1,0 +1,77 @@
+import java.util.Scanner;
+import java.util.Arrays;
+import java.lang.String;
+import java.lang.Math;
+import java.util.Calendar;
+import java.io.*;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
+public class Simulation
+{
+  public static void main (String[] args)
+  {
+    Computer PC = new Computer("ASUS",1000,123456,new String[]{"ASUS","USA","asus@usa.org"},new String[]{"Intel dual core","DDR3 512MB","Intel HD","Western Digital"});
+    Computer PC2 = new Computer("DELL",1500,56793933,new String[]{"DELL","USA","dell@usa.org"},new String[]{"AMD quad core","DDR3 1024MB","NVIDIA","Samsung"});
+    
+    Menu m = new Menu (new Computer[]{PC,PC2},null,null,null);
+    
+    m.printAll();
+    
+    Bill b = new Bill();
+    
+    Product p = m.getProizvodSaSifrom("123456");
+    //System.out.println(p.toString());
+    
+   // b.add(p);
+    
+    try
+    {
+     SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yy_hh_mm_ss");
+     String fileName =sdf.format(new Date());
+      
+    FileOutputStream fout = new FileOutputStream ("D:\\Java\\Lab05\\JavaTechnoShop\\racuni\\"+fileName+".etf");
+    
+    ObjectOutputStream out = new ObjectOutputStream (fout);
+    out.writeObject(b);
+    out.close();
+    fout.close();
+    }
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+    
+    FileInputStream fin;
+    File[] files = new File ("D:\\Java\\Lab05\\JavaTechnoShop\\racuni\\").listFiles();
+    for (File f: files)
+    {
+      try
+      {
+       System.out.println(f); 
+        fin = new FileInputStream(f);
+        ObjectInputStream in = new ObjectInputStream(fin);
+        Bill temp = (Bill) in.readObject();
+        System.out.println("Usao TRY");
+       // Object mistery = in.readObject();
+       // System.out.println(mistery.getClass());
+      //  if (temp == null) System.out.print("NULL");
+        System.out.println(temp.toString());
+         in.close();
+         fin.close();
+       
+      }
+      catch(Exception ex)
+      {
+        ex.printStackTrace();
+      }
+      finally
+      {
+       
+       
+      }
+    }
+    
+  }
+}

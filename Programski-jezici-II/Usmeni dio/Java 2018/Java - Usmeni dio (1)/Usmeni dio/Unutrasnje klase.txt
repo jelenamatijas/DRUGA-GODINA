@@ -1,0 +1,14 @@
+Unutrasnje lokalne klase:
+-imaju pristup svim poljima koji pripadaju instanci klase
+-imaju pristup svim lokalnim finalnim promjenjivima
+-moze ih sve ispisati, ali pristup ima samo navedenim
+
+Unutrasnje klase:
+-mogu biti final, abstract ili static
+-mogu imati samo nestaticke clanove
+-ima pristup svim clanovima klase
+
+Staticke ugnjezdjene klase:
+-ne mogu direktno pristupati clanovima obuhvatajuce klase (jedino npr. preko reference)
+-klasa ugnjezdjena u interfejs je uvijek static
+-mogu imati i staticke i nestaticke clanove

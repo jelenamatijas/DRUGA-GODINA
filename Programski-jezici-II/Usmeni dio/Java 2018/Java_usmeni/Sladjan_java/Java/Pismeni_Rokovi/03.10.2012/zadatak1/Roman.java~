@@ -1,0 +1,4 @@
+interface Roman
+{
+  String scenario = "ROMAN";
+}

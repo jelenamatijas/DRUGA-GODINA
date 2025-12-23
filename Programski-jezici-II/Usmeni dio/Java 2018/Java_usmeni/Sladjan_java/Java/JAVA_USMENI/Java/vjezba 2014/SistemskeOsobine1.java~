@@ -1,0 +1,5 @@
+public class SistemskeOsobine1{
+  public static void main(String[] args){
+    System.out.pringln("OS= " + java.util.Properties.getProperty(os.name));
+  }
+}

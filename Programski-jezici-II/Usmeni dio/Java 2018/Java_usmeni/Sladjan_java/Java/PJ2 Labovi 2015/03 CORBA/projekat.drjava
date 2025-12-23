@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20130901-r5756">
+  <project autorefresh="false" main="" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="NaucneKonferencijeClient.java" package="" timestamp="18-May-2014 12:42:47">
+        <select from="663" to="663"/>
+        <scroll column="38" row="0"/>
+      </file>
+      <file name="pracenjenaucnihkonferencija/NaucneKonferencijePOA.java" package="pracenjenaucnihkonferencija" timestamp="18-May-2014 12:26:59">
+        <select from="663" to="663"/>
+        <scroll column="38" row="0"/>
+      </file>
+      <file name="NaucneKonferencijeServant.java" package="" timestamp="18-May-2014 12:29:28">
+        <select from="663" to="663"/>
+        <scroll column="38" row="0"/>
+      </file>
+      <file name="NaucneKonferencijeServer.java" package="" timestamp="18-May-2014 12:32:13">
+        <select from="663" to="663"/>
+        <scroll column="38" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

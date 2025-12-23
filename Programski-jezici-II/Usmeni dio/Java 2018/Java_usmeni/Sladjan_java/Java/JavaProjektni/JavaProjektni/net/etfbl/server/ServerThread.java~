@@ -1,0 +1,496 @@
+package net.etfbl.server;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import java.text.*;
+import net.etfbl.server.izvjestaj.Izvjestaj;
+
+public class ServerThread extends Thread {
+  public static ServerSocket ss;
+  private BufferedReader in;
+  private PrintWriter out;
+  private Socket s;
+  private boolean logged = false;
+  private String username = "";
+  private String path = "net" + File.separator + "etfbl" + File.separator + "server" + File.separator;
+  private ServerTeleekranThread tel = null;
+  
+  static {
+    try {
+      ss = new ServerSocket(Server.TEL_PORT);
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+  
+  public ServerThread(Socket s) {
+    this.s = s;
+    try {
+      in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+      out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(s.getOutputStream())), true);
+    }
+    catch (IOException e) {
+      System.out.println("Exception in ServerThread constructor");
+    }
+    start();
+  }
+  
+  @Override
+  public void run() {
+    String str;
+    String request = "";
+    
+    try {
+      while ((!request.equals("EXIT")) && (Server.run)) {
+        
+        request = in.readLine();
+        String[] info = request.split(": ");
+        
+        // Ako nije prijavljen
+        if (!logged) {
+          // Provjera postojanja korisnickog imena
+          if (info[0].equals("CHECK")) {
+            check(info[1]);
+          }
+          
+          // Registracija
+          else if (info[0].equals("REG")) {
+            register(info[1]);
+            tel = new ServerTeleekranThread(ss.accept());
+          }
+          
+          // Provjera prijave
+          else if (info[0].equals("LOG")) {
+            login(info[1]);
+            if (logged)
+              tel = new ServerTeleekranThread(ss.accept());
+          }
+          
+          // Nadzornik ili prepravljac
+          else if (info[0].equals("NOLOGIN")) {
+            logged = true;
+            username = info[1];
+            System.out.println("Logged in: " + username);
+            tel = new ServerTeleekranThread(ss.accept());
+          }
+          
+          // Ostalo
+          else {
+            out.println("ERR");
+          }
+        }
+        
+        // Ako je prijavljen
+        else {
+          if (username.equals("Nadzornik")) {
+            
+            if (info[0].equals("SHOWMSG"))
+              showMessage(info[1], info[2]);
+            
+            else if (info[0].equals("SEARCHKEY"))
+              searchByKeyword();
+            
+            else if (info[0].equals("MKREP"))
+              makeReport(info[1]);
+            
+            else if (info[0].equals("SHOWDIR"))
+              showDirectory();
+            
+            else if (info[0].equals("SHOWREP"))
+              showReport(info[1]);
+              
+            else if (info[0].equals("GETUSER")) {
+              boolean p = false;
+              String temp;
+              BufferedReader br = new BufferedReader(new FileReader(path + "login.txt"));
+              while (((temp = br.readLine()) != null) && (!p))
+                if (temp.split("#")[4].equals(info[1])) {
+                  p = true;
+                  out.println(temp.split("#")[0]);
+                }
+              br.close();
+            }
+            
+            else if (info[0].startsWith("@")) {
+              String name = info[0].replace("@", "");
+              ServerThread temp = Server.getUserThread(name);
+              if (temp != null) {
+                temp.sendMessage(username, info[1]);
+                out.println("Korisnik <" + name + "> je primio poruku!");
+              }
+              else
+                out.println("Korisnik <" + name + "> nije prijavljen!");
+            }
+          }
+          
+          else if (username.equals("Prepravljac")) {
+            
+            if (info[0].equals("SHOWMSG"))
+              showMessage(info[1], info[2]);
+            
+            else if (info[0].startsWith("@")) {
+              String name = info[0].replace("@", "");
+              ServerThread temp = Server.getUserThread(name);
+              temp.sendMessage(username, info[1]);
+            }
+          }
+          else {
+            
+            if (info[0].startsWith("@")) {
+              String name = info[0].replace("@", "");
+              ServerThread temp = Server.getUserThread(name);
+              temp.sendMessage(username, info[1]);
+              saveMessage(name, info[1], (new SimpleDateFormat("dd-MM-YYYY")).format(new Date()));
+            }
+            
+            // Provjera da li je korisnik prijavljen
+            else if (info[0].equals("ON"))
+              out.println(checkLoggedIn(info[1]));
+          }
+        }
+      }
+      
+      in.close();
+      out.close();
+      s.close();
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+    finally {
+      Server.list.remove(this);
+    }
+  }
+  
+  public void sendMessage(String name, String message) {
+    String msg = name + ": " + message;
+    if (tel != null)
+      tel.send(msg);
+  }
+  
+  public void send(String message) {
+    out.println(message);
+  }
+  
+  public String getUsername() {
+    return username;
+  }
+  
+  public String getJMBG(String user) {
+    String str;
+    BufferedReader br;
+    try {
+      br = new BufferedReader(new FileReader(path + "login.txt"));
+      while (((str = br.readLine()) != null)) {
+        if (str.split("#")[0].contains(user)) {
+          br.close();
+          return str.split("#")[4];
+        }
+      }
+      br.close();
+    }
+    catch (Exception e) {
+      System.out.println("Exception in getJMBG()");
+    }
+    return "";
+  }
+  
+  public String removePunctuation(String word) {
+    word = word.replace(".", "");
+    word = word.replace("?", "");
+    word = word.replace("!", "");
+    word = word.replace(",", "");
+    word = word.replace(";", "");
+    return word;
+  }
+  
+  public boolean searchFile(String file, String keyword, HashSet<String> set) throws IOException {
+    BufferedReader br = new BufferedReader(new FileReader(path + "poruke" + File.separator + file));
+    String line;
+    String[] word;
+    
+    while ((line = br.readLine()) != null) {
+      word = line.split(" ");
+    
+      for (int i = 0; i < word.length; i++) {
+        word[i] = removePunctuation(word[i]);
+        if (word[i].equals(keyword)) {
+          set.add(file.split("-")[0]);
+          set.add(file.split("-")[1].split("_")[0]);
+          br.close();
+          return true;
+        }
+      }
+    }
+    br.close();
+    return false;
+  }
+  
+  public void showMessage(String jmbg, String date) {
+    int n = 0;
+    File dir = new File(path + "poruke");
+    String[] filename = dir.list();
+    for (String i : filename)
+      if ((i.contains(jmbg)) && (i.contains(date)))
+        n++;
+    out.println(n);
+    
+    if (username.equals("Nadzornik")) {
+      try {
+        n = Integer.valueOf(in.readLine());
+      }
+      catch (Exception e) {
+        System.out.println("Exception in showMessage() while reading the number of files");
+      }
+      
+      for (int i = 0, j = 0; i < n; j++)
+        if ((filename[j].contains(jmbg)) && (filename[j].contains(date))) {
+          try {
+            BufferedReader br = new BufferedReader(new FileReader(path + "poruke" + File.separator + filename[j]));
+            String temp;
+            while ((temp = br.readLine()) != null)
+              out.println(temp);
+            out.println("END");
+            i++;
+            br.close();
+          }
+          catch (Exception e) {
+            System.out.println("Exception in showMessage() while reading from files");
+          }
+        }
+    }  
+    
+    else {
+      Random rand = new Random();
+      String temp;
+      String file = filename[rand.nextInt(filename.length)];
+      while ((!file.contains(jmbg)) || (!file.contains(date)))
+        file = filename[rand.nextInt(filename.length)];
+      
+      try {
+        BufferedReader br = new BufferedReader(new FileReader(path + "poruke" + File.separator + file));
+        while ((temp = br.readLine()) != null)
+          out.println(temp);
+        out.println("END");
+        br.close();
+      }
+      catch (Exception e) {
+        System.out.println("Exception in showMessage() while sending file");
+      }
+      
+      try {
+        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(path + "poruke" + File.separator + file)), true);
+        while (!(temp = in.readLine()).equals("END"))
+          pw.println(temp);
+        pw.close();
+        out.println("Prepravljeno");
+      }
+      catch (Exception e) {
+        System.out.println("Exception in showMessage() while editing file");
+      }
+    }
+  }
+  
+  public void searchByKeyword() {
+    String temp;
+    ArrayList<String> argument = new ArrayList<String>();
+    HashSet<String> set = new HashSet<String>();
+    String[] file = new File(path + "poruke").list();
+    
+    // Preuzimanje svih kljucnih rijeci
+    try {
+      while (!(temp = in.readLine()).equals("END"))
+        argument.add(temp);
+      
+      for (int i = 0; i < file.length; i++)
+        for (int j = 0; j < argument.size(); j++)
+          searchFile(file[i], argument.get(j), set);  
+    }
+    catch (IOException e) {
+      System.out.println("IOException in searchByKeyword!");
+    }
+    
+    Iterator<String> i = set.iterator();
+    while (i.hasNext())
+      out.println(i.next());
+    out.println("END");
+    
+    try {
+      reduceSalary(set);
+    }
+    catch (Exception e) {
+      System.out.println("Exception in searchByKeyword while reducing salary!");
+    }
+  }
+  
+  public void makeReport(String text) {
+    Izvjestaj.save(new Izvjestaj(text));
+  }
+  
+  public void showDirectory() {
+    File dir = new File(Izvjestaj.path);
+    String[] file = dir.list();
+    if (file.length == 2)
+      out.println("FALSE");
+    else {
+      out.println("TRUE");
+      for (int i = 0; i < file.length; i++) {
+        if ((!file[i].equals("Izvjestaj.java")) && (!file[i].equals("Izvjestaj.class")))
+          out.println(file[i]);
+      }
+      out.println("END");
+    }
+  }
+  
+  public void showReport(String name) {
+    File dir = new File(Izvjestaj.path);
+    String[] file = dir.list();
+    
+    boolean p = false;
+    for (int i = 0; i < file.length; i++)
+      if (file[i].equals(name))
+        p = true;
+    
+    if (!p)
+      out.println("FALSE");
+    else {
+      out.println("TRUE");
+      out.println(Izvjestaj.load(name));
+    }
+  }
+  
+  public void reduceSalary(HashSet<String> set) throws Exception {
+    String temp;
+    ArrayList<String> user = new ArrayList<String>();
+    ArrayList<String> modUser = new ArrayList<String>();
+    BufferedReader br = new BufferedReader(new FileReader(path + "login.txt"));
+    
+    while ((temp = br.readLine()) != null)
+      user.add(temp);
+    br.close();
+    
+    for (int i = 0; i < user.size(); i++) {
+      Iterator<String> it = set.iterator();
+      while (it.hasNext()) {
+        String jmbg = it.next();
+        temp = user.get(i);
+        if (temp.contains(jmbg)) {
+          String[] info = temp.split("#");
+          if (Integer.valueOf(info[5]) >= 100)
+            info[5] = String.valueOf(Integer.valueOf(info[5]) - 100);
+          else
+            info[5] = "0";
+          temp = info[0];
+          for (int j = 1; j < info.length; j++)
+            temp += "#" + info[j];
+          break;
+        }
+      }
+      modUser.add(temp);
+    }
+    
+    PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(path + "login.txt")), true);
+    for (int i = 0; i < modUser.size(); i++)
+      pw.println(modUser.get(i));
+    pw.close();
+  }
+  
+  public void saveMessage(String user, String message, String date) {
+    String msg = user + ": " + message;
+    String[] files;
+    String filename = "";
+    String time;
+    String absPath = path + "poruke";
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY_HH-mm");
+    Date now = new Date();
+    File f = new File(absPath);
+    files = f.list();
+    time = sdf.format(now);
+    
+    for (String i : files) {
+      if ((i.contains(getJMBG(user))) && (i.contains(getJMBG(username))) && (i.contains(date)))
+        filename = i;
+    }
+    if (filename.equals(""))
+      filename = getJMBG(user) + "-" + getJMBG(username) + "_" + time;
+      
+    try {
+      PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(absPath + File.separator + filename, true)), true);
+      pw.println(msg);
+      pw.close();
+    }
+    catch (Exception e) { }
+  }
+    
+  public void check(String s) throws FileNotFoundException, IOException {
+    boolean p = false;
+    String str;
+    BufferedReader br = new BufferedReader(new FileReader(path + "login.txt"));
+    
+    while ((str = br.readLine()) != null)
+      if (str.split("#")[0].equals(s)) p = true;
+    if (p)
+      out.println("FALSE");
+    else 
+      out.println("TRUE");
+    br.close();
+  }
+  
+  public void register(String s) throws IOException {
+    PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(path + "login.txt", true)), true);
+    pw.println(s);
+    pw.close();
+    logged = true;
+    username = s.split("#")[0];
+  }
+  
+  public void login(String s) throws FileNotFoundException, IOException {
+    boolean p = false;
+    String str;
+    BufferedReader br = new BufferedReader(new FileReader(path + "login.txt"));
+    
+    // Ako je dati korisnik vec prijavljen
+    for (int i = 0; i < Server.list.size(); i++)
+      if (s.split("#")[0].equals(Server.list.get(i).getUsername())) {
+        out.println("FALSE");
+        return ;
+      }
+    
+    while (((str = br.readLine()) != null) && (!p)) {
+      if (str.contains(s)) {
+        p = true;
+        logged = true;
+        username = str.split("#")[0];
+        out.println("TRUE#" + str);
+        System.out.println("Logged in: " + username);
+      }
+    }
+    if (!p)
+      out.println("FALSE");
+    br.close();
+  }
+  
+  public boolean checkLoggedIn(String name) {
+    for (int i = 0; i < Server.list.size(); i++)
+      if (name.equals(Server.list.get(i).getUsername()))
+        return true;
+    return false;
+  }
+  
+  public void sendToUser(String message) {
+    out.println(message);
+  }
+  
+  public void pauseClient() {
+    tel.send("PAUSE!");
+  }
+  
+  public void notifyClient() {
+    tel.send("WAKE UP!");
+  }
+  
+  public void killClient() {
+    tel.send("KILL IT!");
+  }
+}

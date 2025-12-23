@@ -1,0 +1,21 @@
+public class Simulacija2{
+  public static void main(String args[]){
+   int count = 0;
+   outer:
+     for(int x = 0; x < 5; x++) {
+       middle:
+        for(int y = 0; y < 5; y++) {
+          System.out.println("u middle"+" "+x+" "+y+" "+count);
+          if(y == 1) continue middle;  //nastavlja izvrsavanje sledece iteracije for petlje u middle
+          System.out.println("iza continue u middle"+" "+x+" "+y+" "+count);
+          if(y == 3) break middle; //iskace iz for petlje i labele middle i nastavlja u for petlju outera
+          count++;
+    System.out.println("iza break u middle"+" "+x+" "+y+" "+count);
+ }
+ if(x > 2) continue outer; //kad x bude vece od 2 nece izlaziti iz petlje for
+ count = count + 10;
+ System.out.println("u outeru iza middla"+" "+x+" "+count);
+ }
+ System.out.println("count: " + count);
+}
+}

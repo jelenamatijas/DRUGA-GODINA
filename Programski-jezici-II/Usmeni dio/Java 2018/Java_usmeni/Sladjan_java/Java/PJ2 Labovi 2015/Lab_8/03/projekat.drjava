@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20130901-r5756">
+  <project autorefresh="false" main="" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="net/etfbl/textual_game_watcher/object/Poruke.java" package="net.etfbl.textual_game_watcher.object" timestamp="04-May-2014 12:36:02">
+        <select from="817" to="817"/>
+        <scroll column="158" row="0"/>
+      </file>
+      <file name="net/etfbl/textual_game_watcher/object/Messages.java" package="net.etfbl.textual_game_watcher.object" timestamp="04-May-2014 12:36:02">
+        <select from="817" to="817"/>
+        <scroll column="158" row="0"/>
+      </file>
+      <file name="net/etfbl/textual_game_watcher/object/Message.java" package="net.etfbl.textual_game_watcher.object" timestamp="04-May-2014 12:36:02">
+        <select from="817" to="817"/>
+        <scroll column="158" row="0"/>
+      </file>
+      <file name="net/eftbl/textual_game_watcher/producer_consumer/Watcher.java" package="net.eftbl.textual_game_watcher.producer_consumer" timestamp="04-May-2014 12:36:02">
+        <select from="817" to="817"/>
+        <scroll column="158" row="0"/>
+      </file>
+      <file name="net/eftbl/textual_game_watcher/producer_consumer/TextualGameWatcherSaSynchronousQueue.java" package="net.eftbl.textual_game_watcher.producer_consumer" timestamp="04-May-2014 12:36:02">
+        <select from="817" to="817"/>
+        <scroll column="158" row="0"/>
+      </file>
+      <file name="net/eftbl/textual_game_watcher/producer_consumer/TextualGameWatcher.java" package="net.eftbl.textual_game_watcher.producer_consumer" timestamp="04-May-2014 12:36:02">
+        <select from="817" to="817"/>
+        <scroll column="158" row="0"/>
+      </file>
+      <file name="net/eftbl/textual_game_watcher/producer_consumer/Komentator.java" package="net.eftbl.textual_game_watcher.producer_consumer" timestamp="04-May-2014 12:36:02">
+        <select from="817" to="817"/>
+        <scroll column="158" row="0"/>
+      </file>
+      <file name="net/eftbl/textual_game_watcher/producer_consumer/Informer.java" package="net.eftbl.textual_game_watcher.producer_consumer" timestamp="04-May-2014 12:36:02">
+        <select from="817" to="817"/>
+        <scroll column="158" row="0"/>
+      </file>
+      <file name="net/eftbl/textual_game_watcher/producer_consumer/Gledalac.java" package="net.eftbl.textual_game_watcher.producer_consumer" timestamp="04-May-2014 12:36:02">
+        <select from="817" to="817"/>
+        <scroll column="158" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

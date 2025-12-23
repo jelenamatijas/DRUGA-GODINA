@@ -1,0 +1,27 @@
+module oglasi{
+
+interface Advertisment{
+
+
+struct Author{
+string name;
+string surname;
+};
+
+struct Ad{
+Author author;
+string name;
+string content;
+string date;
+};
+
+struct Ads{
+sequence <Ad> ads;
+};
+
+
+boolean createAd(in string data);
+Ads viewAll ();
+Ad viewOne (in Ad ad);
+};
+};

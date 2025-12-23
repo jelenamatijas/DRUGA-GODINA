@@ -1,0 +1,43 @@
+import java.lang.String;
+import java.rmi.*;
+import java.net.*;
+import java.io.*;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.server.UnicastRemoteObject;
+
+
+public class OnlineMatematicianServer extends UnicastRemoteObject implements OnlineMatematicianInterface
+{
+  public OnlineMatematicianServer () throws RemoteException{};
+  
+  public String volume(Figure f) throws RemoteException
+  {
+    return f.volume();
+  }
+  
+  public String surface(Figure f) throws RemoteException
+  {
+    return f.surface();
+  }
+  
+  public static void main(String[] args)
+  {
+    System.setSecurityManager(new RMISecurityManager());
+    
+    try
+    {
+      OnlineMatematicianServer server = new OnlineMatematicianServer();
+      LocateRegistry.createRegistry(1099);
+      Naming.rebind("//localhost:1099/Server",server);
+      
+      System.out.println("Server starterd...");
+      
+    }
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+  }
+  
+}

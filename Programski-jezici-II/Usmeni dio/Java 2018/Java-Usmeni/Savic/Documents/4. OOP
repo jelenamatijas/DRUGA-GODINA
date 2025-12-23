@@ -1,0 +1,37 @@
+Kompajler zahtjeva da programsko bacanje izuzetka bude tako da se baca objekat koji je tipa Throwable.
+Kompajler ne zna da li referenca u toku izvrsavanja pokazuje na objekat koji ima valjanu metodu.
+Potpis metode = naziv metode, tip, broj i redoslijed parametara
+Za redefinisanje potpis metode mora biti isti.
+Ne moze se redefinisati staticka metoda.
+Preklopljene metode imaju isti naziv metode, ali razlicite parametre.
+Kod maskiranja polja nije vazan tip, vec samo ime.
+Zahtjev za maskiranje staticke metode je isti kao i za redefinisanje obicne metode.
+Staticka metoda klase izvedenice ne moze maskirati metodu instance osnovne klase.
+Super moze da se koristi samo u nestatickom kontekstu.
+Klasa ne moze specificirati novi izuzetak u throws klauzuli.
+Metode interfejsa se uvijek implementiraju kao metode instance, nikako kao staticke metode.
+Konstante interfejsa moraju biti inicijalizovane.
+Operator instanceof zahtjeva provjeru za vrijeme kompajliranja(podklasa-superklasa)
+Nestaticki blok vidi sve reference koje pripadaju objektu, ali redoslijed izvrsavanja ide odozgo ka dole.
+
+1) Staticki blok nadklase ( ako je potrebno )
+2) Staticki blok podklase ( ako je potrebno )
+3) Nestaticki blok nadklase
+4) Konstruktor nadklase
+5) Nestaticki blok podklase
+6) Konstruktor podklase ---> paziti na redoslijed nestatickog inicijalizacionog bloka i polja klase
+
+
+Maskiranje vrijedi kod statickih metoda, svih polja. Inace se radi o redefinisanju.
+
+
+Redefinisanje metode zahtjeva da nova metoda baca sve, neke ili nijedan izuzetak pri cemu ako baca izuzetak on mora biti podtip izuzetka.( novi izuzetak moze biti necekirani)
+Inner klase ne mogu imati staticka polja ni metode.
+Statiska inner klasa moze imati staticka polja i metode.
+Inner klase u interfejsima su implicitno staticke.
+Protected inner klase su dostupne nasljednicama, i klasama u istom paketu.
+Inner staticka klasa se moze instancirati i bez objekta vanjske klase.
+Method local-inner klasa se vidi samo unutar te metode i samo unutar nje se moze i instancirati. ( ne moze biti static)
+Method local-ineer klase vide samo atrbiute outer klase, lokalne promjenljive metode samo ako su final.
+Pristup objektu anonimne klase se moze raditi samo preko API-a klase/interfejsa koja je nasledjena.
+Anonimne klase se mogu implementirati pri pozivanju funkcije.

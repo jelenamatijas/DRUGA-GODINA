@@ -1,0 +1,13 @@
+Deklaracijom uvoza paketa ne uvoze se potpaketi.
+Enum ne moze biti abstract.
+Enum ne moze da se stavi final, iako je implicitno final.
+Labele pripadaju posebnom namespace-u,pa se imena ne preklapaju sa metodama, paketima i sl...
+Ako metoda zavrsava bacanjem izuzetka, return ne mora da postoji.
+Samo u slucaju try-catch bloka mora biti moguce da dio koda baca odredjeni izuzetak.
+
+Unchecked izuzeci:
+-ArrayIndexOutOfBoundsException
+-NullPointerException
+-ClassCastException
+-ArithmeticException
+-NumberFormatException

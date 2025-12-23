@@ -1,0 +1,18 @@
+public class Ref
+{
+  public static void main(String[] args)
+  {
+    MyOuter m = new MyOuter();
+    MyOuter.MyInner in = MyOuter.new MyInner();
+  }
+  
+}
+
+
+class MyOuter 
+{
+    public static class MyInner 
+    {
+        public static void foo() { }
+    }
+}

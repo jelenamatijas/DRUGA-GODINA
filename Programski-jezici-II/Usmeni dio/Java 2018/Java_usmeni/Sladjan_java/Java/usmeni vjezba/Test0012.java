@@ -1,0 +1,19 @@
+import java.lang.String;
+import java.util.HashMap;
+
+public class Test0012
+{
+  public static void main(String[] args)
+  {
+    String s1 = new String("test1");
+    String s2 = new String("test1");
+    
+    HashMap<String,String> hm = new HashMap<String,String>();
+    
+    hm.put("t1",s1);
+    hm.put("t2",s2);
+    
+    for(String k : hm.keySet()) System.out.println(k);
+  }
+  
+}

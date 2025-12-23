@@ -1,0 +1,118 @@
+2000 MB heap
+
+public class Mainy{
+
+	public static k = true;
+      int id;
+      
+      double[] doubles = new double[12_000_000];
+
+      long[] longs = new long[8_000_000];
+
+      Dumb[][] matrica = new Dumb[3][2];
+
+      Dumb d;
+
+      Mainy m;
+	
+	public Mainy(){};
+
+      public Mainy(int id){
+
+            
+            if(m!=null)
+		 id = m.id + 1;
+   
+   }
+ 
+
+	public Mainy(Dumb d,Mainy m,int id)
+        {
+           this.m = m;
+           this.d = d;
+	   this.id = id;
+		if(k =! k) new Mainy()
+		else 
+		{
+		   Dumb db = new Dumb(null,0);
+		}
+	}
+     
+      public static void main(String[] args){
+
+            Mainy m0 = new Mainy(10);
+
+            Dumb d0 = new Dumb(m0,11);
+
+            Mainy m2 = new Mainy(d0,m0,12);
+
+	    m0.matrica[0][0] = new Dumb(m2,12);
+	    m0.matrica[0][1] = new Dumb(null,13);
+            m2.d = m0.matrica[0][0];
+	    d0.m = null;
+	    m0.matrica[0][0] = null;
+	    
+	    m0.matrica[1][0] = new Dumb(m0,11);
+	    m0.matrica[2][0] = d0;
+	    m0.matrica[2][1] = m0.matrica[0][0];
+	    m2.matrica[0][1] = new Dumb(new Mainy(15));
+
+	====================================================
+		
+            Mainy m3 = new Mainy(m2);
+
+            Mainy m4 = m3;
+
+            Mainy m5 = new Mainy(m0);
+
+
+            Mainy[] ms = new Mainy[3];
+
+            ms[0] = new Mainy(m2);
+
+            ms[1] = new Mainy(m3);
+
+            ms[2] = new Mainy(m2);
+
+            m1 = m2 = m3 = m5 = null;
+
+            System.gc();   //1                 //pozivanje  garbage collectora
+
+            ms[0] = new Mainy(ms[0]);
+
+            ms[1] = new Mainy(ms[1]);
+
+            ms[2] = new Mainy(ms[2]);
+
+            ms[2].m = ms[0];
+
+            m3 = new Mainy(ms[0] = null);
+
+            ms[0] = new Mainy(ms[0]);
+
+            System.gc();  //2
+
+            }
+
+       }
+
+
+class Dumb {
+
+  float[] flaots = new float[20_000_000];
+
+  int[] ints = new int[40_000_000];
+
+  int id = 0;
+
+  //Mainy m = new Mainy(999);//
+
+  public Dumb(Mainy m,int id)
+   {
+	this.m = m;
+	this.id = id;
+	}
+
+  
+	
+}

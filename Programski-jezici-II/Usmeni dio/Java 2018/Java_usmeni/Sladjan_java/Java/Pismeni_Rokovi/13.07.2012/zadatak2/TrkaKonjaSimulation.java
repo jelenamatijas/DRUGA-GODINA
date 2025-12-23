@@ -1,0 +1,45 @@
+import java.util.ArrayList;
+
+
+public class TrkaKonjaSimulation extends Thread
+{
+  public TrkaKonjaSimulation ()
+  {
+    start();
+  }
+  
+  public void run()
+  {
+    System.out.println("Simulacija je krenula");
+    Konj a = new Konj("Mustang",1,0);
+    Konj b = new Konj("Divlji konj",2,1);
+    Konj c = new Konj("Konj3",3,2);
+    Konj d = new Konj("Konj4",4,3);
+    Konj e = new Konj("Konj5",5,4);
+    Konj f = new Konj("Konj6",6,5);
+    
+    synchronized(TrkaKonjaServer.usernames)
+    {
+      while(TrkaKonjaServer.usernames.size() == 0)
+      {
+        try
+        {
+          TrkaKonjaServer.usernames.wait(200);
+        }
+        catch(Exception ex)
+        {
+          ex.printStackTrace();
+        }
+      }
+    }
+    
+    a.start();
+    b.start();
+    c.start();
+    e.start();
+    d.start();
+    f.start();
+    
+  }
+  
+}

@@ -1,0 +1,1 @@
+Defaultni konstruktor mora biti dostupan prilikom implementacije externalizable interfejsa( kad je u pitanju deserijalizacija)

@@ -1,0 +1,13 @@
+interface K1
+{
+  metoda();
+}
+
+interface K2
+{
+  metoda();
+}
+
+public class U implements K1,K2
+{
+}

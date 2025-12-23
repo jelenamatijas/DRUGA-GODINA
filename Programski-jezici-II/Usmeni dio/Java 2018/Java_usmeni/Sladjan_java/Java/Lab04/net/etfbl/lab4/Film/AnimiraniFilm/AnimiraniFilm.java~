@@ -1,0 +1,14 @@
+package net.etfbl.lab4.Film.AnimiraniFilm;
+
+import net.etfbl.lab4.Film.Film.*;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.lang.Math;
+import java.lang.String;
+
+public class AnimiraniFilm extends Film
+{
+  private String crtac;
+  
+  
+}

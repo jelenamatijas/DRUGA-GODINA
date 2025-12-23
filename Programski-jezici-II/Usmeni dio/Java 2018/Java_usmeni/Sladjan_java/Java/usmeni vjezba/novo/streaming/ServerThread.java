@@ -1,0 +1,35 @@
+import java.io.*;
+import java.net.*;
+
+
+public class ServerThread extends Thread
+{
+  public Socket sock;
+  
+  public ServerThread() {};
+  
+  public ServerThread(Socket s)
+  {
+    this.sock = s;
+    start();
+  }
+  
+  public void run()
+  {
+    try
+    {
+      //BufferedReader br = new BufferedReader(new InputStreamReader(this.sock.getInputStream()));
+      //PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(this.sock.getOutputStream())),true);
+      
+      //ObjectInputStream ois = new ObjectInputStream(this.sock.getInputStream());
+     //ObjectOutputStream oos = new ObjectOutputStream(this.sock.getOutputStream());
+      
+    }
+    catch(Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+  }
+  
+}

@@ -1,0 +1,82 @@
+1.
+	a) 
+	Imas 5 klasa, A1 do A5, svaka nasledjuje ovu prethodnu. Svaka ima nekoliko konstruktora, 
+	(konstruktori zovu jedan drugog), nekoliko polja, staticke i nestaticke blokove i slicno.
+	Svaki od tih blokova ima neki ispis, u mainu ti napravi instancu objekta A3 i A5, i pita te
+	koji je ispis. Uglavnom da znas sta se kojim redom poziva.
+	Cuvaj se njegovih caka, tipa: 
+		A2 ima polje tipa A3, A3 nasljedjuje A2. Pokusas kreirati jednog, upadnes u beskonacnu petlju.
+		Bazna klasa neke klase nema defaultni konstruktor, a nemas nigdje: super(param1, param2)
+		Konstruktor ne poziva drugi konstruktor sa this, nego tako sto navede ime klase
+
+	b)
+	Izuzeci. Napravi par klasa, koje nasljedjuju Exception, RuntimeException, Throwable,
+	pa ih baci u nekim metodama, pa je pitanje koje od njih mora prijaviti, koje mora uhvatiti,
+	da li je ispravan red catch naredbi. Sta ako i try i finally imaju return - koja se uzima,
+	sta ako catch baci izuzetak, sta ako finally baci izuzetak. Smijes li imati try-catch
+	blok u kom se ne baca nista i slicno.
+
+	c)
+	Niti. Napravi i pokrene nekoliko threadova, napravi neke objekte koje koristi za 
+	zakljucavanjem, i pokrene niti. Najlakse ti je da ih crtas, tipa jedna linija predstavlja
+	main nit, pa onda kako se koja pravi ti granas tu liniju, oznacavas gdje je wait, gdje je join
+	i napises za koje stvari ne znas red kojim se izvrsavaju, za koje znas.
+
+	d)
+	Interfejsi. Imas 4, 5 interfejsa, neki se nasljedjuju, neki imaju iste ili slicne metode,
+	par klasa koje implementiraju te interfejse, pa treba da vidis da li to moze (klasa 
+	implementira interfejs, a metodu iz interfejsa oznaci kao protected). U mainu onda
+	pravi instance klasa, dodjeljuje ih referencama interfejsa (MojInterfejs aa = new MojaKlasa()),
+	pa onda cast-a, poziva metode i slicno.
+
+	e)
+	Unutrasnje i anonimne klase. Da ti par klasa, neke staticke, neke, ne, neke ugnjezdene, neke ne
+	pa kreira i poziva metode. Bitno ti je da znas one unutrasnje kako se kreiraju, sta ako je unutrasnja
+	staticka, vanjska ne, sta ako je obrnuto i slicno. Da znas kojim dijelovima okruzujuce klase mogu
+	pristupiti i slicno.
+
+	f) 
+	Genericke klase, napravi nekoliko obicnih klasa, nekoliko generickih, pa gleda kako se
+	snalazis sa onim: Klasa<? extends NekaDrugaKlasa> i slicno. Isto i raw tipovi (umjesto
+	ArrayList<Integer> kazes ArrayList, sve ce raditi, ali moras cast-ovati) 
+
+2. Memorija. Imas kod, velicinu heapa (tipa 1450MB) i kaze ti da se garbage collector pokrece
+samo na pozivima GC.collect() (koji se nalazi u kodu na par mjesta) i kad se kreira novi objekat.
+U kodu obicno imas dve, tri klase, obe imaju neke nizove za polja, tako da jedan objekat klase bude
+cca 50MB, i onda u mainu kreira neke, pa kreira nizove njih, pa neke reference brise i slicno.
+Najlakse nacrtati stack s jedne strane, heap sa druge, kako se kreira, crtati, kad treba da se brise
+vidis koje dostupan sa stacka ko ne.
+Cake:
+	Staticka polja se prave jednom za klasu (ne instancu)
+	Matrice su nizovi nizova, i takvi se cuvaju u memoriji
+	Kod padne zbog neceg desetog (kod mene je bilo ArrayIndexOutOfBoundsException)
+
+3. 6 zadataka, svaki nosi bod, max 10 linija koda, sitnice su u pitanju:
+	a)  Sta ispise sledeci kod: 
+
+		HashMap<Integer, String> hm = new HashMap<>();
+		hm.put(8, "osam"); hm.put(9, "devet");
+		for(int i = 0; i < 10; ++i)
+			System.out.println(hm.get(i));
+	b) Da ti 10ak definicija klasa, pita koje su ispravne 
+		- Mora li apstraktna klasa imati apstraktne metode
+		- Moze li klasa biti abstract final
+		i slicno
+	c) Sta ispise sledeci kod:
+
+		int i = 10;
+		while (i < 20) {
+			System.out.println(i);
+			i =+ 10;
+		}
+	c) Rekurzija, prioritet operatora, razlika izmedju >>> i >> i slicno
+
+
+Ne sjecam se vise. Bitna stvar je da sve one "cake" se mogu javiti bilo gdje. Dakle moze se
+desiti da gledas kod kojeg se sve vrti oko generickih klasa i na nekom mjestu dobijes NullPointerException
+ili tako nesto, nevezano.
+Drugo, ocekuje da mu podvuces liniju gdje je problem ako ga ima. Nemoj se praviti pametan pa pisati
+koji je problem, ako pogrijesis ne dobijas bodove (tipa bio NullPointer ti napises ClassCast izuzetak).
+Trece, imas malo vremena, ako se uhvatis da stojis i razmisljas, predji na sledeci list.
+
+Srecno :D

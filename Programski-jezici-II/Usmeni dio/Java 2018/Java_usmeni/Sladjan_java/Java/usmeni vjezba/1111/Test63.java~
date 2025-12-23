@@ -1,0 +1,16 @@
+public class Test63{
+  
+  public static int a = 5;
+  
+  public void metoda(int a){
+    System.out.println(++a);
+    a=a-2;
+    System.out.println(a++);
+  }
+  
+  public static void main(String[] args){
+    Test63 t = new Test63();
+    t.metoda(Test63.a);
+    System.out.println(Test63.a);
+  }
+}

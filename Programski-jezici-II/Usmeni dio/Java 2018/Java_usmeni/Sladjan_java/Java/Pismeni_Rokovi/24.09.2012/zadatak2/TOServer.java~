@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.io.*;
+import java.net.*;
+public class TOServer
+{
+  public static ArrayList<Korisnik> korisnici;
+  public static HashMap<String,TOServerThread> aktivniKorisnici;
+  
+  
+  public static void main(String[] args)
+  {
+  try
+  {
+    File f = new File("reg.usr");
+    if(f.exists())
+    {
+    ObjectInputStream ois = new ObjectInputStream(new FileInputStream("reg.usr"));
+    
+    korisnici = (ArrayList<Korisnik>) ois.readObject();
+    ois.close();
+    }
+    
+  }
+  catch(Exception ex)
+  {
+    ex.printStackTrace();
+  }
+  }
+  
+  
+}

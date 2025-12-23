@@ -1,0 +1,33 @@
+class A {
+ static int i;
+ A() {
+  ++i;
+ }
+
+ public int metoda() {
+  return ++i;
+ }
+ 
+ 
+};
+
+class B extends A {
+
+ B() {
+  i++;
+ }
+
+ /*int metoda() {
+  return (i + 3);
+ }*/
+};
+
+class X extends B {
+public static void main(String ka[]) {
+  X x = new X();
+  A a = new A();
+  a = (A) x;
+  System.out.println(a.metoda());
+ }
+ 
+};

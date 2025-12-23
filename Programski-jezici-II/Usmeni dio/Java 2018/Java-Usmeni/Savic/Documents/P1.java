@@ -1,0 +1,40 @@
+class Pokusaj
+{
+    static int i;
+    public static void main()
+    {
+    
+    }
+    public void main(int x)
+    {
+    
+    }
+    public static void main(String [] args) 
+    {
+ try{
+ B b = new B();
+ B.main(args);
+ System.out.println(i);
+ if (i++>3)
+ {System.out.println("KRAJ");
+   return;
+ }
+ main(args);
+ }catch(ClassNotFoundException e)
+ {
+   System.out.println("AAA");
+ }
+    }
+}
+
+class B
+{
+    public B() throws ClassNotFoundException
+    {
+    
+    }
+    public static void main(String [] args)
+    {
+    
+    }
+}

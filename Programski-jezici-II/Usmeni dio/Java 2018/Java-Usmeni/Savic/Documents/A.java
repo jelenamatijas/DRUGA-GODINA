@@ -1,0 +1,71 @@
+import java.io.*;
+
+
+public class A
+{
+  int x ;
+  public static int f() throws Exc1
+  {
+      return g();
+  }
+  public static int g() throws Exc1
+  {
+      return 1;
+  }
+  public static int h() 
+  {
+    g();
+ return 2;
+  }
+  public static void j() throws Exc1
+  {
+      b();
+  }
+  public static void b() throws Exc1
+  {
+      try{
+ throw new IOException();
+      }catch(IOException ex)
+      { 
+ throw new IOException();
+      }
+      finally
+      {
+ //return ;
+ new B().clone();
+ throw new Exc3();
+      }
+  }
+  public static void main(String [] args)
+  {
+    try{
+      //System.out.println(f());
+      Integer intaca = null;
+      int x = intaca;
+    }catch(NullPointerException ex)
+    {
+      System.out.println("SSSS");
+    }
+  }
+}
+
+class Exc1 extends Exception
+{
+
+}
+
+class Exc2 extends Exc1
+{
+
+}
+
+class Exc3 extends Exc1
+{
+
+}
+class B {
+  public Object clone() //throws CloneNotSupportedException
+  {
+    return new Object();
+  }
+}

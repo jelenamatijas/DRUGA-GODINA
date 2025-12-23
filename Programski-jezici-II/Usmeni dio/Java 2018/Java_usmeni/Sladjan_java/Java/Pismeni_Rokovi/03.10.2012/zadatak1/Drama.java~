@@ -1,0 +1,4 @@
+interface Drama
+{
+  String genre = "DRAMA";
+}

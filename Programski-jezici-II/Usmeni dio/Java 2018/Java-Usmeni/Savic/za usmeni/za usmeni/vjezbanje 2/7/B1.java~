@@ -1,0 +1,13 @@
+public class B1{
+
+  public void metoda1(){
+  System.out.println(" B1 metoda 1");
+  }
+  public void metoda2(){
+  System.out.println("B1 metoda 2")
+  }
+  B1(){
+  System.out.println("B1");
+  }
+
+}

@@ -1,0 +1,28 @@
+Redefinisanje (Override):
+1. identican naziv
+2. isti modifikator pristupa ili manje restriktivan
+3. identicna lista parametara
+4. kovarijantni povratni tip (podtip originalnog tipa)
+5. deklaracija podskupa originalnog skupa izuzetaka
+6. private, final i static (i default ako nisu u istom paketu) metode ne mogu biti redefinisane
+7. kljucna rijec synchronized se moze koristiti ili izostaviti i ne utice na pravila redefinisanja
+8. nije moguce redefinisati staticku metodu metodom instance, niti je moguce redefinisati metodu instance statickom metodom
+
+Preklapanje (Overloading):
+1. u istoj klasi ili u naslijedjenoj klasi
+2. naziv MORA biti identican
+3. lista parametara NE SMIJE biti identicna
+4. za sve ostalo nema ogranicenja
+5. moguce je definisati metodu koja ima isti naziv kao konstruktor(klasa)
+
+Napomena: ukoliko imamo dvije metode ciji se naziv i lista parametara poklapaju, a neki od ostalih uslova za redefinisanje nisu ispunjeni, 
+docice do greske pri kompajliranju! (treba se odluciti ili za redefinisanje ili za preklapanje)
+Napomena: ne smijemo definisati metode tako da vaze uslovi redefinisanja, a jedna od njih je staticka; docice do greske pri kompajliranju!
+Napomena: moguce je imati iste uslove kao za redefinisanje za metodu koja je staticka u roditeljskoj, i u naslijedjenoj klasi; o tome koja metoda ce se izvrsavati
+odlucuje tip reference koji je zadat.
+
+Maskiranje (Hiding):
+1. moguce je maskirati polja u roditeljske klase u naslijedjenoj klasi; bitan je samo naziv - nije bitan tip, niti da li je polje static ili ne
+2. moguce je maskirati staticku metodu roditeljske klase u naslijedjenoj klasi takodje statickom metodom; uslovi treba da budu isti kao za redefinisanje; 
+ukoliko su potpisi metoda isti ( naziv i lista argumenata ), a neki drugi uslovi za redefinisanje nisu, docice do greske pri kompajliranju; 
+ukoliko su potpisi razliciti, tada vec pricamo o preklapanju, i tu vise nema pravila;

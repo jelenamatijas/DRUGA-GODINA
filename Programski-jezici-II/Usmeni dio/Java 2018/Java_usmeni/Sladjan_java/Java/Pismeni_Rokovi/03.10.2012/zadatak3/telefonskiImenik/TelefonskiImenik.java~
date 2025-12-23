@@ -1,0 +1,10 @@
+import java.rmi.*;
+
+
+public interface TelefonskiImenik extends Remote
+{
+  void pregledSadrzaja() throws RemoteException;
+  void pretrazivanjePoBrojuTelefona(String s) throws RemoteException;
+  void prikazSortiranPoPrezimenu() throws RemoteException;
+  void dodavanjeUImenik(String s) throws RemoteException;
+}

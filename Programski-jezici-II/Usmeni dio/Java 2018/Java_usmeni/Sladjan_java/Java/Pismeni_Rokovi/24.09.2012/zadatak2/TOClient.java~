@@ -1,0 +1,135 @@
+
+
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+import java.util.Random;
+
+
+public class TOClient extends Thread
+{
+  public String br;
+  public String pin;
+  public double racun;
+  public BufferedReader in;
+  public PrintWriter out;
+  public Socket sock;
+  
+  
+  public TOClient()
+  {
+  }
+  
+  public TOCLient(String br, String pin, double racun)
+  {
+    
+    
+    try
+    {
+      InetAddress adr = InetAddress.getByName("127.0.0.1");
+      
+      try
+      {
+        this.sock = new Socket(adr.9000);
+        BufferedReader in = new BufferedReader(new InputStreamReader(this.sock.getInputStream()));
+        PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(this.sock.getOutputStream(),true)),true);
+      }
+      catch(Exception ex)
+      {
+        ex.printStackTrace();
+      }
+      
+    }//zatvoren Try
+    
+  }//zatvoren konstruktor sa parametrima
+  
+  
+  
+  public void run()
+  {
+    
+  }
+  
+  
+  public void login()
+  {
+    
+    
+    String s = new String();
+    
+    Scanner scan = new Scanner(System.in);
+    
+    do
+    {
+      System.out.println("Unesite broj broj telefona i pin u formatu BROJTEL#PIN");
+      s = scan.nextLine();
+      
+      
+    }
+    while((s.split("#")[1]).length()!=4);
+    
+    try
+    {
+      out.println("LOGIN");
+      
+      out.println(s);
+      
+      String response = new String();
+      
+      response = in.readLine();
+      
+      if(!"##LOGINOK##".equalsIgnoreCase(response)) System.out.println("Greska pri prijavi");
+    }
+    catch(Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+  }//zatvorena metoda login
+  
+  
+  public void sendMsg()
+  {
+    Scanner scan = new Scanner(System.in);
+    try
+    {
+      out.println("##MSG##");
+      
+      String response = new String();
+      
+      response = in.readLine();
+    
+      Double racun = Double.valueOf(response);
+      
+      if (racun < 0.11) System.out.println("Nemate dovoljno na racunu da biste poslali poruku!!!");
+      else
+      {
+        System.out.println("Unesite poruku u formatu MSG#KORISNIK#PORUKA");
+        
+        String message = new String();
+        
+        message = scan.nextLine();
+        
+        out.println(message);
+        
+        response = in.readLine();
+        
+        if("##SENT##".equalsIgnoreCase(response)) System.out.println("Poruka poslata");
+        else System.out.println("Poruka nije poslata");
+        
+      }
+    }
+    catch(Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+  }//zatvorena funkcija sendMsg
+  
+    
+    
+  }
+  
+  
+  
+  

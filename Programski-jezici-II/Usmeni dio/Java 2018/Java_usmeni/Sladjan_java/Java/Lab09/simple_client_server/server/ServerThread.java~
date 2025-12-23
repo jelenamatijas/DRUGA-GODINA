@@ -1,0 +1,47 @@
+package Lab09.simple_client_server.server;
+
+import java.util.Scanner;
+import java.lang.String;
+import java.io.*;
+import java.util.Random;
+
+
+public class ServerThread extends Thread
+{
+  
+  private Socket s;
+  private int broj;
+  
+  public ServerThread (Socket sock,int broj)
+  {
+    this.s = sock;
+    this.broj = broj;
+  }
+  
+  
+  public run()
+  {
+    BufferedReader in;
+    PrintWriter out;
+    String request = new String();
+    try
+    {
+      in = new BufferedReader(new InputStreamReader (this.s.getInputStream()));
+      out = new BufferedWriter(new OutputStreamWriter(this.s.getOutputStream()));
+      while(!"KRAJ".equals(request = in.readLine()))
+      {
+        System.out.println("Klijent [" +this.broj+"]: "+request);
+        Random ran = new Random();
+        int temp = Radnom(80) - 30;
+        out.println(temp);
+      }   
+        
+    }
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
+  }
+}
+      
+      

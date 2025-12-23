@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" main="" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="Banka.java" package="" timestamp="06-Aug-2015 00:10:46">
+        <select from="1458" to="1458"/>
+        <scroll column="723" row="0"/>
+      </file>
+      <file name="Klijent.java" package="" timestamp="06-Aug-2015 00:01:08">
+        <select from="1458" to="1458"/>
+        <scroll column="723" row="0"/>
+      </file>
+      <file name="IznosException.java" package="" timestamp="06-Aug-2015 00:19:03">
+        <select from="1458" to="1458"/>
+        <scroll column="723" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

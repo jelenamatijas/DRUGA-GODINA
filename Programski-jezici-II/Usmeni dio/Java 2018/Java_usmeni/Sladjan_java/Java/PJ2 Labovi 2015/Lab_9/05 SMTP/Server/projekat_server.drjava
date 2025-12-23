@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20130901-r5756">
+  <project autorefresh="false" main="" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="net/etfbl/pseudosmtp/server/PseudoSMTPServerThread.java" package="net.etfbl.pseudosmtp.server" timestamp="12-May-2014 08:48:54">
+        <select from="1835" to="1835"/>
+        <scroll column="966" row="0"/>
+      </file>
+      <file name="net/etfbl/pseudosmtp/server/PseudoSMTPUtilities.java" package="net.etfbl.pseudosmtp.server" timestamp="27-May-2012 22:21:41">
+        <select from="1835" to="1835"/>
+        <scroll column="966" row="0"/>
+      </file>
+      <file name="net/etfbl/pseudosmtp/server/PseudoSMTPServer.java" package="net.etfbl.pseudosmtp.server" timestamp="27-May-2012 20:41:33">
+        <select from="1835" to="1835"/>
+        <scroll column="966" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>

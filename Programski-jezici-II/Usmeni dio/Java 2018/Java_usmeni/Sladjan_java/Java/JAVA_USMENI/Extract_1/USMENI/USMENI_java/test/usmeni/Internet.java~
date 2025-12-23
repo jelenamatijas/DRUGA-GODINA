@@ -1,0 +1,26 @@
+public class Internet { 
+  private int y = 8; 
+  
+  void print()
+ {
+   System.out.println("Radi");
+ }
+ public static void main(String[] args) { 
+ new Internet().go(); 
+ 
+  } 
+ void go() { 
+
+   final int x = 7; 
+   final Internet i=new Internet();
+ class TCPIP { 
+ void doit() { System.out.println(y + x);
+ i.print();
+ } 
+
+ } 
+  
+  TCPIP ip = new TCPIP();
+ ip.doit(); 
+ } 
+ } 

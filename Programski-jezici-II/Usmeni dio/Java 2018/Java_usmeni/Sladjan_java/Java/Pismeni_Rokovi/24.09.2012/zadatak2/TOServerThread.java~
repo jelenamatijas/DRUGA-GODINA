@@ -1,0 +1,26 @@
+
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+import java.util.Random;
+
+
+public class TOServerThread extends Thread
+{
+  public BufferedReader in;
+  public PrintWriter out;
+  public Socket sock;
+  
+  
+  public TOServerThread() {};
+  
+  public TOServerThread(Socket s)
+  {
+    this.sock = s;
+    
+    try
+    {
+      in = new BufferedReader(new InputStreamReader(this.sock.getInputStream()));
+      out = new PrintWriter(new BufferedWriter(new OutputStreamWriter()),true);
+      
+    }

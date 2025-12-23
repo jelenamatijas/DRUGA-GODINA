@@ -1,0 +1,29 @@
+class Stat 
+{
+  public static void metoda()
+  {
+  System.out.println("Staticka");
+  }
+  
+  public static void main()
+  {}
+  
+  public void nestaticka()
+  {}
+  
+}
+
+class Y extends Stat
+{
+  public void  metoda()          
+  {
+  System.out.println("Ne staticka");
+  }
+ 
+  public void metoda(int a)  
+  {}
+  
+  public static void nestaticka()
+  {}
+  
+}

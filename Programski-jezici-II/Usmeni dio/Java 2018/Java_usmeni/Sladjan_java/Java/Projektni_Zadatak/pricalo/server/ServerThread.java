@@ -1,0 +1,806 @@
+package Projektni_Zadatak.pricalo.server;
+
+import Projektni_Zadatak.pricalo.server.Server;
+import Projektni_Zadatak.pricalo.server.interfejsi.ReportManagement.*;
+import Projektni_Zadatak.pricalo.server.izvjestaj.*;
+import Projektni_Zadatak.stanovnik.*;
+import java.lang.String;
+import java.net.*;
+import java.io.*;
+import java.util.HashMap;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.Set;
+
+
+public class ServerThread extends Thread implements ReportManagement
+{
+  private Socket sock;
+  private BufferedReader in;
+  private PrintWriter out;
+  private String username;
+  
+  boolean loginOK = false;
+  boolean registrationOK = false;
+  
+  public ServerThread(Socket s)
+  {
+    super();
+    this.sock = s;
+    try
+    {
+      in = new BufferedReader(new InputStreamReader( this.sock.getInputStream()));
+      out = new PrintWriter (new BufferedWriter (new OutputStreamWriter(this.sock.getOutputStream())),true);
+      
+      
+    }//zatvoren TRY Blok
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    String timeStamp = new SimpleDateFormat("yyyyMMdd_HH:mm:ss").format(Calendar.getInstance().getTime());
+    System.out.println(timeStamp);
+    start();
+    
+  }//zatvoren konstruktor
+  
+  
+  public void run()
+  {
+    boolean logedout = false;
+    boolean  back = false;
+    
+      
+      String str = new String();
+      try
+      {
+       
+        String user = new String();
+        out.println("OK");
+        
+        do
+        {
+          str = in.readLine();
+          //out.println(str);
+          
+          if(str.equalsIgnoreCase("LOGIN")) back = login();
+          
+          else if (str.equalsIgnoreCase("REG")) registration();
+          else if (str.equalsIgnoreCase("LOGOUT")) logedout = logout();
+          else if (str.equalsIgnoreCase("NADZORNIK"))
+          {
+            System.out.println("NADZORNIK se prijavio.");
+            do
+            {
+              Server.aktivniRadnici.put("NADZORNIK",this);
+              str = in.readLine();
+              if("1".equalsIgnoreCase(str))searchByJMB();
+              else if ("2".equalsIgnoreCase(str))searchByKeyword();
+              else if ("LOGOUT".equalsIgnoreCase(str)) logedout = logoutNadzornik();
+            }while(!logedout);
+          }
+          else if ("PREPRAVLJAC".equalsIgnoreCase(str))
+          {
+            System.out.println("PREPRAVLJAC se prijavio.");
+            do
+            {
+              str = in.readLine();
+              if ("1".equalsIgnoreCase(str)) searchForMod();
+              else if ("LOGOUT".equalsIgnoreCase(str)) logedout = logoutPrepravljac();
+            }while(!logedout);
+          }
+          else send(str);
+        } while ((!str.equalsIgnoreCase("STOP") || back) && !logedout);
+       
+           
+           
+           
+         
+       
+      }//zatvoren TRY blok
+      catch (Exception ex)
+      {
+        ex.printStackTrace();
+      }
+      
+      
+  }//zatvoren RUN
+  
+  public boolean login()
+  {
+    boolean usrOK = false;
+    String str = new String();
+    str = "";
+    String user = "";
+    
+    try
+    {
+    
+          while (!loginOK || "BACK".equalsIgnoreCase(str))
+          {
+            str = in.readLine();
+            System.out.println(str);
+            
+            if (!"BACK".equalsIgnoreCase(str))
+            {
+              synchronized (Server.radniciRegistar)
+              {
+                for(String temp : Server.radniciRegistar.keySet())
+                {
+                  user = new String();
+                  user = temp;
+                  
+                  if ((str.split("#")[0]).equalsIgnoreCase(user.split("#")[0]))
+                  { 
+                    //out.println("PASS");
+                    usrOK = true;
+                    
+                    break;
+                  }
+                }
+               
+                if (usrOK)
+                {
+                  if ((str.split("#")[1]).equalsIgnoreCase(user.split("#")[1]))
+                  {
+                    loginOK = true;
+                    String k = new String();
+                    k = str.split("#")[0];
+                    Server.aktivniRadnici.put(k,this);
+                    username = new String(k.split("#")[0]);
+                   
+                    out.println("LOGINOK");
+                    return false;
+                  }
+                  else
+                  {
+                    out.println("INVALIDPASS");
+                  }
+                }
+                else
+                {
+                  out.println("INVALIDUSRNAME");
+                }
+              }//zatovoren Synchronized blok
+              
+            }//zatvoren if za provjeru koja opcija je unesena
+            else return true;
+              
+          }//zatvoren While
+          
+    }//zatvoren TRY blok login metode
+    catch (Exception ex)
+    {
+      System.out.println("Izuzetak u login metodi!!!");
+      ex.printStackTrace();
+    }
+          
+        return false;
+    
+  }//zatvorena login metoda
+  
+  
+  public void registration()
+  {
+    String str = new String();
+    while (!registrationOK && !str.equalsIgnoreCase("BACK"))
+          {
+            System.out.println("Usao u while registration");
+            
+            try
+            {
+              str = in.readLine();
+              System.out.println("str : "+ str);
+              if(!str.equalsIgnoreCase("BACK"))
+              {
+                synchronized (Server.radniciRegistar)
+                {
+                  System.out.println("Usao u synchronized");
+                  if (!Server.radniciRegistar.isEmpty())
+                  {
+                    for (String temp : Server.radniciRegistar.keySet())
+                    {
+                      if((str.split("#")[0]).equalsIgnoreCase(temp.split("#")[0]))
+                      {
+                        registrationOK = false;
+                        System.out.println("Postavio registrationOK = false");
+                        out.println("USERNAME TAKEN");
+                      }
+                      else registrationOK = true;
+                    }//zatvoren for
+                  }
+                  else registrationOK = true;
+                  
+                  if (registrationOK)
+                  {
+                    System.out.println("USERNAME DOBAR");
+                    Radnik radnik = new Radnik((str.split("#")[2]),(str.split("#")[3]),(str.split("#")[4]));
+                    String usrPass = new String();
+                    usrPass = (str.split("#")[0]) + "#" + (str.split("#")[1]);
+                    Server.radniciRegistar.put(usrPass,radnik);
+                    System.out.println("Radnik " + str.split("#")[2] + " " +str.split("#")[3] + " se uspjesno registrovao.");
+                    out.println("REGISTRATION OK");
+                  }
+                }//zatvoren synchronized blok
+              }//zatvoren if za provjeru da li je dosla naredba BACK
+            }//zatvoren TRY blok
+            catch (Exception ex)
+            {
+              System.out.println("Izuzetak kod registracije!!!");
+              ex.printStackTrace();
+            }
+          }//zatvoren while za registraciju
+              
+                
+  }//zatvorena registration metoda
+  
+  public synchronized boolean logout()
+  {
+    
+    for (String search : Server.aktivniRadnici.keySet())
+    {
+      
+      if (search.equals(username))
+      {
+        Server.aktivniRadnici.remove(username);
+        System.out.println("Klijent " + username + " se uspjesno odjavio.");
+        out.println("LOGOUTOK");
+        try
+        {
+          in.close();
+          out.close();
+        }
+        catch(Exception ex)
+        {
+          System.out.println("Greska pri zatvaranju streamova");
+        }
+        Server.clientCounter--;
+        
+        return true;
+      }
+    
+    }//zatvoren for u funkciji logout
+    
+     System.out.println("Greska pri odjavljivanju klijenta");
+     out.println("LOGOUTNOTOK");
+     return false;
+  }//zatvorena funkcija logout
+  
+  public void forward (String s)
+  {
+    out.println(s);
+  }
+  
+  public synchronized void send (String s)
+  {
+    ServerThread temp;
+    String dateTime = new SimpleDateFormat("yyyy#MM#dd_HH#mm#ss").format(Calendar.getInstance().getTime());
+    String date = new SimpleDateFormat("yyyy#MM#dd").format(Calendar.getInstance().getTime());
+    String time = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
+    Radnik reciever = new Radnik();
+    Radnik sender = new Radnik();
+    String newFileName = new String();
+    String fileName = new String();
+    boolean fileExists = false;
+    
+    if ((temp = Server.aktivniRadnici.get(s.split("#")[1])) != null)
+    {
+      String msg = new String();
+      msg += "MSG " + username + " : " + s.split("#")[2];
+      String toFile = new String();
+      toFile = time + " " + username + " : " + s.split("#")[2];
+      
+      //blok za upis poruka u datoteke
+      //**********************************
+      
+      
+      File[] fileList = null;
+      File f;
+      PrintWriter printToFile;
+      try
+      {
+        f = new File("Projektni_Zadatak"+File.separator+"pricalo"+File.separator+"server"+File.separator+"messages");
+        for(String q : Server.radniciRegistar.keySet())
+        {
+          if ((s.split("#")[1]).equals(q.split("#")[0])) 
+          {
+             reciever = Server.radniciRegistar.get(q);
+             break;
+          }
+        }
+       
+         for(String q : Server.radniciRegistar.keySet())
+        {
+          if (username.equals(q.split("#")[0])) 
+          {
+             sender = Server.radniciRegistar.get(q);
+             break;
+          }
+        }
+        
+        
+        if (!f.exists() && !f.isDirectory()) f.mkdir();
+        fileList = f.listFiles();
+        System.out.println("Nasao folder!!");
+        String search = new String();
+        String searchReverse = new String();
+        
+        newFileName = sender.getJMB() + "-" + reciever.getJMB() + "_" + dateTime;
+        
+        if (fileList != null && reciever != null)
+        {
+          System.out.println("Ima fajlova u folderu messages");
+          
+          search = sender.getJMB() + "-" +reciever.getJMB() + "_" + date;
+          searchReverse = reciever.getJMB() + "-" + sender.getJMB() + "_" + date;
+          
+          for(File fileTemp : fileList)
+          {
+            System.out.println("Provjera u for petlji");
+            String cmp = new String();
+            cmp = fileTemp.getName();
+            if(cmp.startsWith(search) || cmp.startsWith(searchReverse)) 
+            {
+              System.out.println("Nasao fajl u kojem je vec upisan razgovor");
+              fileExists = true;
+              fileName = cmp;
+              break;
+            }
+          }//zatvorena for petlja za provjeru da li vec postoji fajl sa porukama korisnika za taj dan
+          
+          if(fileExists)
+          {
+            System.out.println("Upisivanje u postojeci fajl!");
+            printToFile= new PrintWriter(new BufferedWriter(new FileWriter(f+File.separator+fileName,true)),true);
+            printToFile.println(toFile);
+            printToFile.close();
+          }
+          else
+          {
+            System.out.println("Pravljenje novog txt fajla broj1");
+            printToFile = new PrintWriter(new BufferedWriter(new FileWriter(f+File.separator+newFileName+".txt")),true);
+            printToFile.println(toFile);
+            printToFile.close();
+          }//zatvoren else za ispitivanje da li vec postoji fajl
+        }
+        else
+        {
+          System.out.println("Pravljenje novog txt faljla broj2");
+          printToFile = new PrintWriter(new BufferedWriter(new FileWriter(f+File.separator+newFileName+".txt")),true);
+          printToFile.println(toFile);
+          printToFile.close();
+        }
+      }//zatvoren try blok u funkciji send
+      
+      catch (Exception ex)
+      {
+        System.out.println("Greska pri upisivanju poruka korisnika " + username + " i " + s.split("#")[1]);
+        ex.printStackTrace();
+      }
+      
+      //zatvoren blok za upisivanje poruka korisnika
+      //**********************************************
+      
+      temp.forward(msg);
+      out.println("SENT");
+    }
+    else
+    {
+      out.println("USEROFF");
+    }
+  }//zatvorena metoda send
+  
+  
+  public synchronized void searchByJMB()
+  {
+    String search = new String();
+    String info = new String();
+    int fileCounter = 0;
+    
+   
+    
+    File f;
+    File[] fileList = null;
+    try
+    {
+       search = in.readLine();//citanje stringa za pretragu sa maticnim brojem i datumom
+      f = new File ("Projektni_Zadatak" + File.separator + "pricalo" + File.separator + "server" + File.separator + "messages");
+      
+      if (f.exists() && f.isDirectory())
+      {
+        fileList = f.listFiles();
+        
+        if (fileList != null && !"".equalsIgnoreCase(search))
+        {
+          
+          for (File tempFile : fileList)
+          {
+            String fileName = new String();
+            fileName = tempFile.getName();
+            if(fileName.contains(search.split(" ")[0]) && fileName.contains(search.split(" ")[1]))
+            {
+              fileCounter++;
+              info += fileName;
+              info += " ";
+            }
+          }//zatvoren for
+          if (fileCounter != 0) 
+          {
+            out.println(fileCounter);
+            out.println(info);
+            String numberForDownload = new String();
+            numberForDownload = in.readLine();
+            int number = Integer.valueOf(numberForDownload);
+            if (number != 0 && number <= fileCounter)
+            {
+             
+              for (int i=0;i<number;i++)
+              {
+                 BufferedReader readFile = new BufferedReader(new FileReader("Projektni_Zadatak" + File.separator + "pricalo" + File.separator + "server" + File.separator
+                                                                            + "messages" + File.separator + info.split(" ")[i]));
+                 out.println(info.split(" ")[i]);
+                 String toOutput = new String();
+                 toOutput = "";
+                 while(toOutput != null)
+                 {
+                   toOutput = readFile.readLine();
+                   if (toOutput != null) out.println(toOutput);
+                 }
+                 if (toOutput == null)
+                 {
+                   out.println("##EOF##");
+                 }
+                 readFile.close();
+              }
+            }
+          }
+          else
+          {
+            out.println(fileCounter);
+            out.println("NOFILES");
+          }
+        }//zatvoren if unutrasnji
+        
+      }//zatvoren if spoljasnji
+      
+    }//zatvoren try
+    
+    catch(IOException ioex)
+    {
+      System.out.println("Greska pri citanju sa inputa.");
+    }
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+  }//zatvorena metoda searchByJMB
+  
+  public synchronized void searchByKeyword()
+  {
+    try
+    {
+      ArrayList<ServerThread> suspects = new ArrayList<ServerThread>();
+      ArrayList<String> usList = new ArrayList<String>();
+      String foundUsers = new String();
+      foundUsers = "";
+      String keywords = new String();
+      keywords = in.readLine();
+      int numberOfSuspects = 0;
+      
+      File f = new File("Projektni_Zadatak" + File.separator + "pricalo" + File.separator + "server" + File.separator + "messages");
+      
+      File [] fileList;
+      
+      if (f.exists() && f.isDirectory())
+      {
+        System.out.println("SBK ima folder");
+        fileList = f.listFiles();
+        
+        if (fileList != null)
+        {
+          for (File tempFile : fileList)//pretraga svakog fajla
+          {
+            BufferedReader readFile = new BufferedReader(new FileReader(f+File.separator+tempFile.getName()));
+            String content = new String();
+            content = "";
+            
+            System.out.println("SBK ima fajlova");
+            
+            int numberOfKeywords = Integer.valueOf(keywords.split(" ")[0]);
+            
+            for(int i=1;i<numberOfKeywords+1;i++)//pretraga za svaku kljucnu rijec
+            {
+              do//iscitavanje linije po linije fajla
+              {
+                content = readFile.readLine();
+                
+                if (content != null)
+                {
+                  if (content.contains(keywords.split(" ")[i]))
+                  {
+                    String suspect = new String();
+                    
+                    suspect = content.split(" ")[1];
+                    System.out.println("SBK suspect = " + suspect);
+                    System.out.println("FoundUsers = " +foundUsers);
+                    
+                    if (!foundUsers.contains(suspect))
+                    {
+                      ServerThread clth = Server.aktivniRadnici.get(suspect);
+                      if (clth != null) suspects.add(clth);
+                      foundUsers += suspect;
+                      foundUsers += " ";
+                      numberOfSuspects++;
+                    }
+                  }
+                }
+              }
+              while (content != null);
+            }//zatvorena for petlja za pretragu kljucnih rijeci u JEDNOM fajlu
+            
+            readFile.close();
+          }//zatvorena for petlja za pretragu kljucnih rijeci koja prolazi kroz SVE nadjene fajlove
+          
+          String usersJMB = new String();
+          
+          out.println("FILESFOUND");//salje se nadzornikovom thread-u da ima fajlova
+          
+          System.out.println("FU "+foundUsers);
+          for (String r : Server.radniciRegistar.keySet()) usList.add(r);
+          for(int i= 0;i<numberOfSuspects;i++)
+          {
+            
+            String suspectUsername = new String();
+            
+            suspectUsername = foundUsers.split(" ")[i];
+            
+            
+            for(int k=0;k<usList.size();k++)//for petlja koja azurira HashMapu radniciRegistar za pronadjene "osumnjicene" radnike i izdvaja njihove
+            {                                                      // maticne brojeve u string usersJMB koji ce biti poslan nadzorniku
+              String tempStr = new String();
+              tempStr = usList.get(k);
+              //System.out.println("tempStr = " + tempStr);
+              //System.out.println("suspectUsername = " + suspectUsername);
+              
+              if (suspectUsername.equals(tempStr.split("#")[0]))
+              {
+                Radnik tempRadnik = Server.radniciRegistar.get(tempStr);//izdvojimo radnika iz registra
+                Server.radniciRegistar.remove(tempStr);//izbacimo mapiranje za nadjenog radnika
+                
+                System.out.println("Plata radnika " + tempRadnik.getIme() + " " + tempRadnik.getPrezime() + " prije smanjenja iznosi: " + tempRadnik.getPlata());
+                tempRadnik.reduceSalary(100);
+                System.out.println("Plata radnika " + tempRadnik.getIme() + " " + tempRadnik.getPrezime() + " poslije smanjenja iznosi: " + tempRadnik.getPlata());
+                
+                usersJMB += tempRadnik.getJMB();
+                usersJMB += " ";
+                
+                Server.radniciRegistar.put(tempStr,tempRadnik);//vratimo azuriran objekat radnik u HashMapu
+              }
+            }//zatvorena for petlja za azuriranje radniciRegistar HashMape
+          }//zatvorena for petlja koja vrsi azuriraje za svakog nadjenog radnika
+          
+          out.println(Integer.toString(numberOfSuspects));
+          out.println(usersJMB);
+          
+          for(int i=0;i<suspects.size();i++)
+          {
+            ServerThread tempSuspectThread = suspects.get(i);
+            tempSuspectThread.forward("TELEEKRAN : Zbog neadekvatnog ponasanja, vaša plata ce biti umanjena za 100.");
+          }
+          
+          
+        }
+        else out.println("NOFILESFOUND");
+      }//zatvoren if za provjeru da li postoji navedena putanja do direktorijuma
+    }
+    catch (IOException ioex)
+    {
+      System.out.println("Greska pri IO operaciji u metodi searchByKeyWord");
+    }
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+  }//zatvorena funkcija searchByKeyword
+  
+  
+   public synchronized void searchForMod()
+  {
+    String search = new String();
+    String info = new String();
+    int fileCounter = 0;
+    
+    System.out.println("Usao u funkciju searchForMod");
+   
+    
+    File f;
+    File[] fileList = null;
+    try
+    {
+       search = in.readLine();//citanje stringa za pretragu sa maticnim brojem i datumom
+      f = new File ("Projektni_Zadatak" + File.separator + "pricalo" + File.separator + "server" + File.separator + "messages");
+      
+      if (f.exists() && f.isDirectory())
+      {
+        fileList = f.listFiles();
+        
+        if (fileList != null && !"".equalsIgnoreCase(search))
+        {
+          System.out.println("Ima fajlova");
+          for (File tempFile : fileList)
+          {
+            String fileName = new String();
+            fileName = tempFile.getName();
+            System.out.println("Search je " + search);
+            if(fileName.contains(search.split(" ")[0]) && fileName.contains(search.split(" ")[1]))
+            {
+              System.out.println("Pronasao " + (fileCounter +1) + "fajlova");
+              fileCounter++;
+              info += fileName;
+              info += " ";
+            }
+          }//zatvoren for
+          if (fileCounter != 0) 
+          {
+            out.println(fileCounter);//1
+            out.println(info);//2
+            String fileForDownload = new String();
+            fileForDownload = in.readLine();
+            
+            System.out.println("FileForDownload je " + fileForDownload);
+            
+                 BufferedReader readFile = new BufferedReader(new FileReader("Projektni_Zadatak" + File.separator + "pricalo" + File.separator + "server" + File.separator
+                                                                            + "messages" + File.separator + fileForDownload));
+                 out.println(fileForDownload);//3
+                 String toOutput = new String();
+                 toOutput = "";
+                 do
+                 {
+                   toOutput = readFile.readLine();
+                   System.out.println("Linija iz fajla: " + toOutput);
+                   if (toOutput != null) out.println(toOutput);
+                   else
+                 {
+                   out.println("##EOF##");
+                 }
+                 }while(toOutput != null);
+                 
+                
+                 readFile.close();
+                 
+                 File fileForReplace = new File ("Projektni_Zadatak" + File.separator + "pricalo" + File.separator + "server" + File.separator
+                                                                            + "messages" + File.separator + fileForDownload);
+
+                 if (fileForReplace.exists() && fileForReplace.isFile())
+                 {
+                   fileForReplace.delete();
+                   PrintWriter printModifiedFile = new PrintWriter(new BufferedWriter(new FileWriter(fileForReplace)));
+                   
+                   String modifiedContent = new String();
+                   
+                   do
+                   {
+                     modifiedContent = "";
+                     
+                     modifiedContent = in.readLine();
+                     System.out.println("");
+                     System.out.println("ModifiedContetnt : " + modifiedContent);
+                     
+                     if(modifiedContent != null && !"##EOF##".equalsIgnoreCase(modifiedContent)) printModifiedFile.println(modifiedContent);
+                   }
+                   while( modifiedContent != null && !"##EOF##".equalsIgnoreCase(modifiedContent));
+                   
+                   printModifiedFile.close();
+                 }
+                 String numberOfModifications = in.readLine();
+                 ServerThread serverThreadNadzornik = Server.aktivniRadnici.get("NADZORNIK");
+                 if (serverThreadNadzornik != null) serverThreadNadzornik.forward("TELEEKRAN : PREPRAVLJAC izvrseno je " + numberOfModifications + " izmjena na fajlu " +
+                                                                                    fileForDownload);
+            
+          }
+          else
+          {
+            out.println(fileCounter);
+            out.println("NOFILES");
+          }
+        }//zatvoren if unutrasnji
+        
+      }//zatvoren if spoljasnji
+      
+    }//zatvoren try
+    
+    catch(IOException ioex)
+    {
+      System.out.println("Greska pri citanju sa inputa.");
+      ioex.printStackTrace();
+    }
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    
+  }//zatvorena metoda searchByJMB
+                   
+  
+  
+  public boolean logoutNadzornik()
+  {
+    out.println("LOGOUTOK");
+    
+    try
+    {
+      in.close();
+      out.close();
+      System.out.println("NADZORNIK se uspjesno odjavio.");
+      return true;
+    }
+    catch(IOException ioex)
+    {
+      System.out.println("Greska pri odjavljivanju nadzornika.");
+     
+    }
+    catch(Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    return false;
+  }//zatvorena funkcija logoutNadzornik
+            
+  public boolean logoutPrepravljac()
+  {
+    out.println("LOGOUTOK");
+    
+    try
+    {
+      in.close();
+      out.close();
+      System.out.println("PREPRAVLJAC se uspjesno odjavio.");
+      return true;
+    }
+    catch(IOException ioex)
+    {
+      System.out.println("Greska pri odjavljivanju nadzornika.");
+     
+    }
+    catch(Exception ex)
+    {
+      ex.printStackTrace();
+    }
+    return false;
+  }//zatvorena funkcija logoutNadzornik
+          
+      
+  @Override 
+  public void makeReport()
+  {
+    try
+    {
+      String content = new String();
+      content = in.readLine();
+      Izvjestaj izv = new Izvjestaj (content);
+      Izvjestaj.save(izv);
+    }
+    catch (IOException ioex)
+    {
+      System.out.println("Greska pri citanju sa stream-a pri pravljenju izvjestaja.");
+      ioex.printStackTrace();
+    }
+    catch(Exception ex)
+    {
+      ex.printStackTrace();
+    }
+  }
+  
+  @Override
+  public void readReport()
+  {
+    String contentOfReport = new String();
+    //File f = new File("Projektni_Zadatak" + pricalo);
+    //Izvjestaj izv = (Izvjestaj); 
+  }
+  
+  
+}//zatvorena klasa

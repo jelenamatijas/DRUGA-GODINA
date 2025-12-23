@@ -1,0 +1,2 @@
+Naziv: Djecija sala Broj osoba koje su usle: 33 Vrijeme trajanja simulacije (u sekundama) 34.749 Naplaceno: 152.0KM
+Naziv: Sala za odrasle Broj osoba koje su usle: 20 Vrijeme trajanja simulacije (u sekundama) 34.812 Naplaceno: 120.0KM

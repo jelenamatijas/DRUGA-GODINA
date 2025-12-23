@@ -1,0 +1,4 @@
+javac a\*.java *.java
+
+java Test
+pause

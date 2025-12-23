@@ -1,0 +1,4 @@
+interface NaucnaFantastika
+{
+  String genre = "NAUCNA FANTASTIKA";
+}

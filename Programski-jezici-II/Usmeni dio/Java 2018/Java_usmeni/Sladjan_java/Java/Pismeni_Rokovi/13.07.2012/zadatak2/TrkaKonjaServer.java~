@@ -1,0 +1,9 @@
+import java.util.ArrayList;
+
+public class TrkaKonjaServer
+{
+ public static ArrayList<String> usernames = new ArrayList<String>();
+ public static ArrayList<Konj> konji = new ArrayList<Konj>();
+ 
+ 
+}

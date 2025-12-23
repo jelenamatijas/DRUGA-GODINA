@@ -1,0 +1,35 @@
+package net.etfbl.fabrika;
+
+import java.util.Scanner;
+import java.lang.String;
+import java.util.Random;
+
+public class Proizvod
+{
+  private String naziv;
+  private String SB;
+  private boolean greska = false;
+  
+  public Proizvod() {};
+  
+  public Proizvod(String naziv,String serijskiBroj)
+  {
+    this.naziv = naziv;
+    this.SB = serijskiBroj;
+    
+    Random ran = new Random();
+    int p;
+    
+    p = ran.nextInt(100+1);
+    if (p>=0 && p<10) greska = true;
+  }
+  
+  @Override
+  public void String toString()
+  {
+    String s = new String();
+    if (greska) s = "ima GRESKU ";
+    else s = "";
+    return name + " serijski broj " + this.SB + " " + s;
+  }
+}

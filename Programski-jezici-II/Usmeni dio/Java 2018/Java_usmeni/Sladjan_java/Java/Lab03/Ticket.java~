@@ -1,0 +1,11 @@
+package labVjezba3
+  
+import java.lang.Object;
+import java.util.Scanner;
+
+static int serialNumber = 0;
+
+class Ticket
+{
+  int value = serialNumber++;
+}

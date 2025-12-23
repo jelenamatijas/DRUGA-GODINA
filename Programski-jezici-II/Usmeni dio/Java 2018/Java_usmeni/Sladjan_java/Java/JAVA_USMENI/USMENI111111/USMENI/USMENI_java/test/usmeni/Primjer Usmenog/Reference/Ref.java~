@@ -1,0 +1,21 @@
+class Ref
+{
+  D d;
+  Ref(D e)
+  {
+    d=e;
+  }
+
+  public static void main(String[] args)
+  {
+    D p=new D();
+    Ref r=new Ref(p);
+    
+    if(p.equals(r.d)) 
+      System.out.println("Parametri u funkcijama kada se koriste objekti prenose se po referenci...");
+  }
+}
+
+class D
+{
+}

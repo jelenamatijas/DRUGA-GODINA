@@ -1,0 +1,7 @@
+monitor#lg234#3#400
+telefon#samsung galaxy s4#1#899
+telefon#htc one#2#500
+racunar#lenovo#4#1205
+racunar#hp#2#900
+monitor#samsung#1#400
+racunar#lenovo#1#1200

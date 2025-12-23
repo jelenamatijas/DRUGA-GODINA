@@ -1,0 +1,45 @@
+package net.etfbl.labVjezba2;
+
+
+/* @author Milan
+ * @since 31.7.2014.
+ * @version 1.1
+ */
+
+public class NizvoniPodaci{
+  public char slova[];
+  public int tablicaMnozenja[][];
+  
+  public void setSlova(char s[]){
+    slova=s;
+  }
+  
+  NizovniPodaci(){
+    for (int i=0;i<10;i++)
+      for (int j=0;j<10;j++)
+      tablicaMnozenja[i][j]=i*j;
+    slova[0]='*';
+             }
+      
+  public void ispisSlova(){
+    for(char a:this.slova)
+      System.out.print(a);
+    System.out.println();
+  }
+  
+  public void ispisMatrice(){
+    for(int i[]:this.tablicaMozenja[]){
+    for(int j:this.tablicaMnozenja[i][])
+      System.out.println(tablicaMnozenja[(int)i][j];
+    System.out.println("\n");
+    }
+    }
+    
+  public static void main(String[] args){
+    NizovniPodaci n= new NizovniPodaci();
+    n.setSlova("p","o","z");
+    n.ispisSlova();
+    n.ispisMatrice();
+  }
+
+}

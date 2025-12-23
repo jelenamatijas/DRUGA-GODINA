@@ -1,0 +1,12 @@
+package net.etfbl.client.agencija;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+public class Agencija {
+  private String name;
+  
+  public Agencija(String name) {
+    this.name = name;
+  }
+}

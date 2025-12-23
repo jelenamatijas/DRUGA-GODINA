@@ -1,0 +1,22 @@
+public class Kalkulator
+{
+  private int op1;
+  private int op2;
+  
+  Kalkulator(int a, int b)
+  {
+  }
+ 
+  
+}
+
+
+public class ProsireniKalkulator extends Kalkulator
+{
+  int c;
+  
+  ProsireniKalkulator(int a,int b, int c)
+  {
+  }
+  
+}

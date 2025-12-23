@@ -1,0 +1,66 @@
+import java.net.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class EscapeGameServerThread extends Thread
+{
+  public Socket sock;
+  public boolean logedin = false;
+  public static boolean omogucenNastavak = false;
+  
+  
+  public EscapeGameServerThread (Socket sock)
+  {
+    this.sock = sock;
+    start();
+  }
+  
+  public void run()
+  {
+    boolean usrok = false;
+    
+    try( BufferedReader br = new BufferedReader(new InputStreamReader(this.sock.getInputStream()));
+         PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(this.sock.getOutputStream())),true);
+         InputStream in = this.sock.getInputStream();
+         OutputStream out = this.sock.getOutputStream();
+        )
+    {//pocetak try bloka
+      
+      pw.println("USR");
+      
+      String request = new String();
+      
+      request = br.readLine();
+      
+      synchronized(EscapeGameServer.usernames)
+      {
+        for(int i=0;i<EscapeGameServer.usernames.size();i++)
+        {
+          if(request.equalsIgnoreCase(EscapeGameServer.usernames.get(i)))
+          {
+            pw.println("USRNOK");
+            usrok = true;
+            break;
+          }
+        }
+        
+        if(userok)
+        {
+          pw.println("USROK");
+          
+          EscapeGameServer.usernames.add(request);
+          logedin = true;
+          ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("usernames.ser"));
+          oos.writeObject(EscapeGameServer.usernames);
+          oos.close();
+        }
+        
+      }
+      
+      if(logedin)
+      {
+        
+    
+    
+      

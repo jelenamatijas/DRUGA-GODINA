@@ -1,0 +1,28 @@
+import java.lang.String;
+
+class Rod
+{
+  public int x = 0;
+  
+  
+ 
+
+public class Sin extends Rod
+{
+  public int y = 0;
+  
+   public static void main(String[] args)
+  {
+    Rod r = new Rod();
+    Sin s = new Sin();
+    
+    r=s;
+    r.y = 5;
+  
+   }
+  
+  
+}
+
+
+}
