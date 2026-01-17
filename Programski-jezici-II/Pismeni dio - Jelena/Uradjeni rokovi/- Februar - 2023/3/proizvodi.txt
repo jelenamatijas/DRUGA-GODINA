@@ -1,0 +1,13 @@
+Dell XPS 13;2500.00;Laptopi
+HP Pavilion;1800.00;Laptopi
+iPhone 14;2200.00;PametniTelefoni
+Samsung Galaxy S23;2100.00;PametniTelefoni
+Nokia 3310;150.00;KlasicniTelefoni
+Lenovo ThinkCentre;1700.00;Desktopi
+LG Frizider;1900.00;Frizideri
+Bosch Ves Masina;1600.00;MasineZaVes
+Philips Blender;300.00;KucniAparati
+Samsung Galaxy S23;2100.00;Telefoni
+Nokia 3310;150.00;Telefoni
+Lenovo ThinkCentre;1700.00;Racunari
+LG Frizider;1900.00;BijelaTehnika

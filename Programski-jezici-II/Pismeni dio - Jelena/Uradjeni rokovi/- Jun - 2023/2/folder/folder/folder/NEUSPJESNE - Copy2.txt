@@ -1,0 +1,4 @@
+ID saltera: 2 -> ID osobe: 16
+ID saltera: 2 -> ID osobe: 15
+ID saltera: 1 -> ID osobe: 14
+ID sa

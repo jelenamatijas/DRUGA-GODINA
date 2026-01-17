@@ -1,0 +1,13 @@
+Bosch Ves Masina 1600.0 MasineZaVes
+Dell XPS 13 2500.0 Laptopi
+HP Pavilion 1800.0 Laptopi
+LG Frizider 1900.0 Frizideri
+Lenovo ThinkCentre 1700.0 Desktopi
+Nokia 3310 150.0 KlasicniTelefoni
+Samsung Galaxy S23 2100.0 PametniTelefoni
+iPhone 14 2200.0 PametniTelefoni
+LG Frizider 1900.0 BijelaTehnika
+Lenovo ThinkCentre 1700.0 Racunari
+Nokia 3310 150.0 Telefoni
+Samsung Galaxy S23 2100.0 Telefoni
+Philips Blender 300.0 KucniAparati

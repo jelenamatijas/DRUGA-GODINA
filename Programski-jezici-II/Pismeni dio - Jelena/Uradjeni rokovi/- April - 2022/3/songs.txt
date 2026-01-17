@@ -1,0 +1,49 @@
+Bohemian Rhapsody###Queen###1975###354
+Stairway to Heaven###Led Zeppelin###1971###482
+Hotel California###Eagles###1977###391
+Imagine###John Lennon###1971###183
+Smells Like Teen Spirit###Nirvana###1991###301
+Billie Jean###Michael Jackson###1982###294
+Like a Rolling Stone###Bob Dylan###1965###369
+Sweet Child O' Mine###Guns N' Roses###1987###356
+Purple Haze###Jimi Hendrix###1967###170
+Wonderwall###Oasis###1995###258
+November Rain###Guns N' Roses###1991###537
+Thriller###Michael Jackson###1982###357
+Beat It###Michael Jackson###1983###258
+Another One Bites the Dust###Queen###1980###215
+We Will Rock You###Queen###1977###122
+Radio Ga Ga###Queen###1984###348
+Under Pressure###Queen###1981###248
+Don't Stop Me Now###Queen###1978###211
+Comfortably Numb###Pink Floyd###1979###382
+Wish You Were Here###Pink Floyd###1975###334
+Time###Pink Floyd###1973###413
+Money###Pink Floyd###1973###382
+Shape of You###Ed Sheeran###2017###233
+Blinding Lights###The Weeknd###2019###200
+Bad Guy###Billie Eilish###2019###194
+Old Town Road###Lil Nas X###2019###157
+Uptown Funk###Mark Ronson###2014###269
+Happy###Pharrell Williams###2013###232
+Radioactive###Imagine Dragons###2012###186
+Counting Stars###OneRepublic###2013###257
+Rolling in the Deep###Adele###2010###228
+Someone Like You###Adele###2011###285
+Hello###Adele###2015###295
+Set Fire to the Rain###Adele###2011###242
+Skyfall###Adele###2012###286
+With or Without You###U2###1987###296
+One###U2###1991###276
+Sweet Dreams###Eurythmics###1983###216
+Take On Me###a-ha###1985###225
+Livin' on a Prayer###Bon Jovi###1986###249
+Every Breath You Take###The Police###1983###253
+Africa###Toto###1982###295
+Eye of the Tiger###Survivor###1982###246
+Jump###Van Halen###1984###241
+Pour Some Sugar on Me###Def Leppard###1987###283
+Born in the U.S.A.###Bruce Springsteen###1984###278
+Girls Just Want to Have Fun###Cyndi Lauper###1983###239
+Careless Whisper###George Michael###1984###300
+Faith###George Michael###1987###193

@@ -1,0 +1,3 @@
+classfajl1
+tekst tekst class tekst
+fajl1

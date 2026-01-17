@@ -1,0 +1,12 @@
+Elektronika;-
+Racunari;Elektronika
+Laptopi;Racunari
+Desktopi;Racunari
+Telefoni;Elektronika
+PametniTelefoni;Telefoni
+KlasicniTelefoni;Telefoni
+KucniAparati;-
+BijelaTehnika;KucniAparati
+Frizideri;BijelaTehnika
+MasineZaVes;BijelaTehnika
+MaliAparati;KucniAparati
