@@ -1,0 +1,4 @@
+1.txt 33
+2.txt 0
+a.txt 132
+fajl.txt 94

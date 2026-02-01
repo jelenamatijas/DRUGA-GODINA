@@ -1,0 +1,1 @@
+for petlja i thread sleep

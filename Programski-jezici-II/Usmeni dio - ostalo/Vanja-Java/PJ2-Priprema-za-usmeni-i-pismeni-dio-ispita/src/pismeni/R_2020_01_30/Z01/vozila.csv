@@ -1,0 +1,15 @@
+AUTOMOBIL;A1;konfiguracija1;
+MOTOR;A2;96;benzin
+MOTOR;A1;115;dizel
+MOTOR;A4;120;dizel
+MOTOR;A3;140;dizel
+SUPER_MOC;A1;abc1;
+VOZAC;A1;Ime1;Prezime1
+VOZAC;A2;Ime2;Prezime2
+VOZAC;A3;Ime3;Prezime3
+VOZAC;A4;Ime4;Prezime4
+AUTOMOBIL;A2;konfiguracija2;
+AUTOBUS;A3;konfiguracija3;50
+KAMION;A4;konfiguracija4;
+SUPER_MOC;A1;moc1;
+SUPER_MOC;A2;test2;

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/src/usmeni/Z25" />
+      <excludeFolder url="file://$MODULE_DIR$/src/usmeni/Z27" />
+      <excludeFolder url="file://$MODULE_DIR$/src/usmeni/Z30" />
+      <excludeFolder url="file://$MODULE_DIR$/src/usmeni/Z33" />
+      <excludeFolder url="file://$MODULE_DIR$/src/usmeni/Z35" />
+      <excludeFolder url="file://$MODULE_DIR$/src/usmeni/Z36" />
+      <excludeFolder url="file://$MODULE_DIR$/src/usmeni/OL1OL2/P3" />
+      <excludeFolder url="file://$MODULE_DIR$/src/usmeni/OL1OL2/P4" />
+      <excludeFolder url="file://$MODULE_DIR$/src/usmeni/OL1OL2/P6" />
+      <excludeFolder url="file://$MODULE_DIR$/src/usmeni/primjeri/Klasa2" />
+      <excludeFolder url="file://$MODULE_DIR$/src/usmeni/primjeri/Klasa4" />
+      <excludeFolder url="file://$MODULE_DIR$/src/usmeni/primjeri/Klasa5" />
+      <excludeFolder url="file://$MODULE_DIR$/src/usmeni/primjeri2/T2" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

@@ -1,0 +1,4 @@
+Vrijeme trajanja simulacije: 18 sekundi.
+Teme:
+sport
+Broj novih fajlova: 2

@@ -1,6 +1,0 @@
-module calculator {
-  interface Calculator {
-    long add(in long x, in long y);
-    long sub(in long x, in long y);
-  };
-};

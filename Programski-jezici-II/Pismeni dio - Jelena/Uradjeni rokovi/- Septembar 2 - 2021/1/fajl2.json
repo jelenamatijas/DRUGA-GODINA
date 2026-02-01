@@ -1,0 +1,39 @@
+{
+  "proizvodi": [
+    {
+      "brojProizvoda":4
+    },
+    {
+      "sifra": "P201",
+      "naziv": "Wireless slušalice Sony",
+      "kolicina": 40,
+      "cijena": 199.99,
+      "proizvodjac": "Sony",
+      "vrsta": "Audio oprema"
+    },
+    {
+      "sifra": "P202",
+      "naziv": "Smartphone Samsung Galaxy",
+      "kolicina": 25,
+      "cijena": 699.99,
+      "proizvodjac": "Samsung",
+      "vrsta": "Mobilni uređaji"
+    },
+    {
+      "sifra": "P203",
+      "naziv": "Tablet Apple iPad",
+      "kolicina": 15,
+      "cijena": 449.99,
+      "proizvodjac": "Apple",
+      "vrsta": "Mobilni uređaji"
+    },
+    {
+      "sifra": "P204",
+      "naziv": "Punjač za laptop",
+      "kolicina": 60,
+      "cijena": 39.99,
+      "proizvodjac": "HP",
+      "vrsta": "Oprema"
+    }
+  ]
+}

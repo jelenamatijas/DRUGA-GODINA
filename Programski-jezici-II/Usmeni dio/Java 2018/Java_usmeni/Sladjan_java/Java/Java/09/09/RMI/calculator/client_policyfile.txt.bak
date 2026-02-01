@@ -1,4 +1,0 @@
-
-grant{
-permission java.net.SocketPermission "localhost:1024-", "connect, resolve";
-};

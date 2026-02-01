@@ -1,0 +1,4 @@
+Broj paketa: 0
+Broj klasa: 18
+Broj linija: 284
+Broj komentara: 1

@@ -1,0 +1,9 @@
+a.txt
+fajl.txt
+Main.class
+Main.java
+SORT DESC
+Main.class size: 5873
+Main.java size: 2857
+fajl.txt size: 94
+a.txt size: 115
