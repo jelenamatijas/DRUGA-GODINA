@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client page</title>
+
+    <style>
+        .admin-header{
+            margin-bottom: 150px;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'DM Sans',sans-serif;
+        }
+        .admin-logo{
+            margin-left: 42px;
+            font-size: 20px;
+            font-weight: bolder;
+            line-height: 26px;
+            letter-spacing: 0px;
+            color: #229C9F;
+        }
+        .admin-name{
+            margin-right: 70px;
+            font-size: 26px;
+            font-weight: 400;
+            line-height: 26px;
+            color: #1E0E62;
+            text-align: center;
+        }
+        .admin-header-img{
+            margin-right: 0px;
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+        }
+        .admin-container{
+            margin-left: 88px;
+            margin-right: 88px;
+            margin-top: 60px;
+            font-family: 'DM Sans',sans-serif;
+            text-align: center;
+        }
+
+        .admin-wrapper{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .admin-heading-wrapper{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: baseline;
+            
+        }
+        .admin-heading{
+            margin-bottom: 100px;
+            font-size: 42px;
+            font-weight: bold;
+            color: #1E0E62;
+            line-height: 52px;
+            letter-spacing: -0.4px;
+
+        }
+
+        .admin-box-wrapper{
+            margin-top: 64px;
+            display: flex;
+        }
+
+        .box{
+            margin-left: 30px;
+            margin-right: 30px;
+            width:381.57px;
+            height: 361.76px;
+            border: 2px solid;
+            border-color: #EBEAED;
+            border-radius: 10px;;
+            cursor: pointer;
+        }
+        .box-title{
+            margin-left: auto;
+            margin-right: auto;
+            width:221.14px;
+            height: 34.05;
+            font-size: 22px;
+            line-height: 32px;
+            letter-spacing: 0px;
+            font-weight:600;
+            color: #1E0E62;
+        }
+        .box-description{
+            margin-left: auto;
+            margin-right: auto;
+            margin-top:23px;
+            width:283.89px;
+            color:rgba(21, 20, 57, 0.4);
+        }
+        .admin-img{
+            margin-top:60px;
+            margin-bottom: 40px;
+        }
+        .container{
+            margin-left: 88px;
+            margin-right: 88px;
+            margin-top: 60px;
+            font-family: 'DM Sans',sans-serif;
+            text-align: center;
+        }
+
+        .client-wrapper{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .client-heading-wrapper{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: baseline;
+            
+        }
+        .first{
+            margin-right: 8px;
+            font-size: 42px;
+            font-weight: bold;
+            color: #1E0E62;
+            line-height: 52px;
+            letter-spacing: -0.4px;
+
+        }
+        .second{
+            margin-right: 8px;
+            font-size: 42px;
+            font-weight: bold;
+            color: #3EACAF;
+            line-height: 52px;
+            letter-spacing: -0.4px;
+
+        }
+        .third{
+            font-size: 42px;
+            font-weight: bold;
+            color: #1E0E62;
+            line-height: 52px;
+            letter-spacing: -0.4px;
+        }
+        .client-subheading{
+            margin-top: 30px;
+            width: 803px;
+            height: 64px;
+            font-size: 22px;
+            line-height: 32px;
+            letter-spacing: 0px;
+            font-weight: 500;
+            color:rgba(21, 20, 57, 0.4);
+        }
+        .box-wrapper{
+            margin-top: 64px;
+            display: flex;
+        }
+
+        .box{
+            margin-left: 30px;
+            margin-right: 30px;
+            width:381.57px;
+            height: 361.76px;
+            border: 2px solid;
+            border-color: #EBEAED;
+            border-radius: 10px;;
+        }
+        .box-title{
+            margin-left: auto;
+            margin-right: auto;
+            width:221.14px;
+            height: 34.05;
+            font-size: 22px;
+            line-height: 32px;
+            letter-spacing: 0px;
+            font-weight:600;
+            color: #1E0E62;
+        }
+        .box-description{
+            margin-left: auto;
+            margin-right: auto;
+            margin-top:23px;
+            width:283.89px;
+            color:rgba(21, 20, 57, 0.4);
+        }
+        .client-img{
+            margin-top:60px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-header">
+        <div class="admin-logo">GROUP 6</div>
+        <div class="admin-name" id = "username">Client</div>
+        <img src="pngwing.png" class="operator-img" id="logoutButton" alt="Logout">
+    </div>
+    <div class="container">
+   
+        <div class="box-wrapper">
+            <div class="box" data-link="/make-ticket-form.html">
+                <img src="fa-code.png" class="client-img">
+                <div class="box-title">Make New Ticket</div>
+                <div class="box-description">If you are facing any troubles or having some questions be free to make a ticket and we will resolve it.</div>
+            </div>
+            <div class="box" data-link="/show-tickets.html">
+                <img src="fa-toggle-on.png" class="client-img">
+                <div class="box-title">Show My Tickets</div>
+                <div class="box-description">See all your current tickets in one place. </div>
+            </div>
+            <div class="box" data-link="/alter-tickets.html">
+                <img src="fa-paint-brush.png" class="client-img">
+                <div class="box-title">Alter My Tickets</div>
+                <div class="box-description">Your ticket lacks of information... Change it and send it to us again!</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const userId = params.get("id");
+        const userType = params.get("userType");
+        const username = params.get("username");
+
+        if(username){
+            document.getElementById("username").textContent = username;
+        }
+        else{
+            document.getElementById("username").textContent = "CLIENT";
+        }
+
+        document.querySelectorAll(".box").forEach((box) => {
+            box.addEventListener("click", function () {
+                const link = this.getAttribute("data-link");
+                if (link) {
+                    const url = `${link}?username=${encodeURIComponent(username)}&id=${userId}&typeOfUser=${"Client"}`;
+                    window.location.href = url;
+                }
+            });
+        });
+
+        document.getElementById("logoutButton").addEventListener("click", function () {
+            localStorage.clear(); 
+
+            fetch("http://localhost:18080/logout", {
+                method: "POST",
+            }).then(() => {
+                window.location.href = "http://localhost:18080/sign-in.html";
+            }).catch(error => {
+                console.error("Logout failed:", error);
+                alert("An error occurred while logging out.");
+            });
+        });
+    </script>
+</body>

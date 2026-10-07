@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrade</title>
+    
+    
+    <style>
+        body{
+            font-family:'DM Sans',sans-serif;
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .all-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%; /* Optional */
+            max-width: 600px; /* Optional: limit content width */
+            padding: 20px; /* Optional: add some padding */
+            box-sizing: border-box;
+        }
+        .manage-ticket-container{
+            margin-top: 57px;
+            margin-bottom: 20px;
+            margin-left: 74px;
+            margin-right: 74px;
+            text-align: center;
+        }
+        .manage-ticket-heading{
+            font-size:36px;
+            font-weight: bolder;
+            color: #229C9F;
+            line-height: 26px;
+            letter-spacing: 0px;
+            text-align: center;
+        }
+        .first-field{
+            margin-top: 55px;
+            margin-bottom: 24px;
+            width: 528px;
+            height: 78px;
+            border-radius: 100px;
+            border: 1px solid #229C9F;
+            color: #1b585a;
+            display: flex;
+            align-items: center;
+            padding-left: 42px;
+            font-size: 20px;
+            box-sizing: border-box;
+        }
+
+        .second-field{
+            margin-bottom: 38px;
+            width: 100%;
+            height: 341px;
+            font-size: 20px;
+            font-family: 'DM Sans', sans-serif;
+            border-radius: 50px;
+            border: 1px solid #229C9F;
+            padding: 32px 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding-left: 42px;
+            padding-top: 32px;
+            box-sizing: border-box;
+            color: #1b585a;
+            resize: none;
+            position: relative;
+            transition: border-color 0.3s ease;
+            display: block;
+            text-align: left;
+            line-height: normal;
+        }
+        .manage-close-btn-style{
+            width: 180px;
+            height: 60px;
+            background-color: #229C9F;
+            color: white;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .manage-close-btn-style:hover{
+            background-color: #208284;
+        }
+        .first-field::placeholder{
+            color: #229C9F;
+            font-size: 20px;
+            top: 32px;
+            left: 42px;
+        }
+        .second-field::placeholder{
+            color: #229C9F;
+            font-size: 20px;
+            font-family: 'DM Sans', sans-serif;
+            position: absolute;
+            top: 32px;
+            left: 42px;
+        }
+        .first-field:focus,
+        .second-field:focus{
+            border:2px solid #279498;
+            outline:none;
+        }
+        
+        .first-field::placeholder{
+            color: #229C9F;
+            font-size: 20px;
+            top: 32px;
+            left: 42px;
+        }
+
+        .first-field:focus{
+            border:2px solid #279498;
+            outline:none;
+        }
+        .input-name{
+            margin-left:21px ;
+			font-size: 18px;
+			font-weight: bold;
+			text-transform: uppercase;
+			line-height:26px ;
+			letter-spacing: 2px;
+			color: #229C9F;
+        }
+        .h1-heading{
+           color: #1E0E62; 
+        }
+        .h1-wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .save-btn-style{
+            margin-left: 175px;
+            margin-right: auto;
+            width: 180px;
+            height: 60px;
+            background-color: #229C9F;
+            border:none;
+            border-radius: 100px;
+            color: white;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+        .save-btn-style:hover{
+            background-color: #175051;
+        }
+    </style>
+</head>
+<body>
+    <div class="all-wrapper">
+        <div class="h1-wrapper">
+            <h1 class="h1-heading">Enter password</h1>
+        </div>
+        <form id="edit-ticket-form">
+            <div class="ticket-container">
+                <div class="filing-field-wrapper">
+                    <p class="input-name">Password: </p>
+                    <input type="text" id="ticket-name" name="name" class="first-field" /> <!-- ostalo je id ticket name zbog css klasa -->
+                </div>
+                </div>
+                <button class="save-btn-style" id="save-ticket-btn" onclick="upgrade(event)">UPGRADE</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        async function upgrade(event) {
+            event.preventDefault();
+            // Prikupljanje podataka iz forme
+            const userUsername = new URLSearchParams(window.location.search).get("username");
+            const userId = new URLSearchParams(window.location.search).get("id");
+            try {
+                const response = await fetch("http://localhost:18080/upgrade", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        password : document.getElementById("ticket-name").value,
+                    }), 
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to upgrade.");
+                }
+
+                alert("Upgraded successfully!");
+
+                const url = `http://localhost:18080/admin-page.html?username=${encodeURIComponent(userUsername)}&id=${userId}&typeOfUser=${encodeURIComponent("Administrator")}`;
+                window.location.href = url; 
+            } catch (error) {
+                console.error("Error upgrading:", error);
+                alert("Failed to upgrade. Please try again.");
+            }
+        }
+        
+    </script>
+</body>

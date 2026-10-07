@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Windows11",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:/Users/JM/Desktop/OSI2024-Grupa-6/Crow/include", // Crow headers
+                "C:/Boost", // Boost headers
+                "C:/Users/JM/Desktop/OSI2024-Grupa-6/Asio/asio/include", // Standalone Asio headers
+                "C:/Program Files/MySQL/MySQL Connector C++ 9.1/include", // Base include directory
+                "C:/Program Files/MySQL/MySQL Connector C++ 9.1/include/jdbc" // Include jdbc for cppconn
+            ],
+            "defines": [],
+            "windowsSdkVersion": "10.0.19041.0", // Adjust to your installed SDK version
+            "compilerPath": "C:/msys64/ucrt64/bin/g++.exe", // Path to MinGW GCC
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-gcc-x64" // IntelliSense mode for GCC on Windows
+        }
+    ],
+    "version": 4
+}

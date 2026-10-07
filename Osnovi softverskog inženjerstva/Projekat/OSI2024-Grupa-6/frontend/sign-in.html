@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Povezivanje sa CSS fajlom -->
+    
+	<style>
+		/* Reset osnovnih stilova */
+		* {
+			margin:0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body{
+			font-family:'DM Sans',sans-serif;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		.login-form{
+			margin-left:70px;
+			margin-top:20px;
+			margin-bottom: 20px;
+		}
+
+		.title{
+			font-size: 50px;
+			line-height: 52px;
+			color: #1E0E62;
+			font-weight: bold;
+		}
+
+		.subheading-wrapper{
+			margin-top: -9px;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			font-size: 28px;
+		}
+
+		.txt1{
+			margin-right:5px;
+			color: #3EACAF;
+			font-weight: 600;
+			line-height: 52px;
+		}
+		.txt2{
+			color:#1E0E62;
+			line-height: 52px;
+			font-weight: 600;
+		}
+
+
+		.custom-select-wrapper {
+			width: 525px;
+			font-family: 'Arial', sans-serif;
+			font-size: 16px;
+			color: #333;
+			position: relative;
+		}
+
+		.access-label{
+			margin-top: 30px;
+			margin-bottom: 10px;
+			margin-left: 21px;
+			font-size: 18px;
+			font-weight: bold;
+			text-transform: uppercase;
+			color: #1E0E62;
+			
+			
+		}
+
+		.select-selected {
+			margin-bottom:25px ;
+			width: 525px;
+			height: 77px;
+			background-color: #ffffff;
+			border: 1px solid #f4f3f3;
+			border-radius: 100px; /* Zaobljeni uglovi */
+			padding: 10px 15px;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font-size: 16px;
+			color: #b4b3b3;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			transition: all 0.3s ease;
+		}
+
+
+		.select-dropdown {
+			margin-top: 5px;
+			width: 525px;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			background-color: #ffffff;
+			border: 1px solid #f4f3f3;
+			border-radius: 25px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			height: 0; 
+			overflow: hidden; 
+			z-index: 10;
+			padding: 0; 
+			transition: max-height 0.4s ease, padding 0.4s ease; 
+		}
+
+
+		.custom-select.open .select-dropdown {
+			padding: 10px 0; 
+		}
+
+		.option {
+			width: 525px;
+			height: 77px;
+			padding: 10px 15px;
+			cursor: pointer;
+			border-radius: 25px;
+			font-size: 16px;
+			color: #666;
+			transition: background-color 0.2s ease;
+		}
+
+		.option:hover {
+			background-color: #3EACAF;
+			color:#ffff;
+		}
+		.custom-select.open .select-dropdown {
+			display: block;
+		}
+
+
+		.form-label{
+			margin-left:21px ;
+			font-size: 18px;
+			font-weight: bold;
+			text-transform: uppercase;
+			line-height:26px ;
+			letter-spacing: 2px;
+			color: #1E0E62;
+
+		}
+
+		.input-style {
+			margin-top: 5px;
+			width: 525px;
+			height: 77px;
+			border-radius: 100px; 
+			padding-left: 20px;
+			font-size: 16px;
+			background-color: #ffffff;
+			border: 1px solid #f4f3f3;
+			outline: none;
+			transition: all 0.3s ease;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		.input-style::placeholder{
+			color: #b4b3b3;
+		}
+		.password-wrapper {
+			position: relative;
+			align-items: center;
+		}
+
+		.toggle-password {
+			margin-left: 25px;
+			margin-top: 5px;
+			right: 20px; /* Udaljenost od desne ivice polja */
+			background: none;
+			border: none;
+			font-size: 14px;
+			text-transform: uppercase;
+			cursor: pointer;
+			color: #3EACAF;
+			font-weight: bold;
+		}
+
+		.toggle-password:hover {
+			color: #1E0E62;
+		}
+
+		.sign-in-btn{
+			margin-left: 145px;
+			margin-top: 0px;
+			width: 235px;
+			height: 60px;
+			color: #ffffff;
+			background-color: #3EACAF;
+			text-transform: uppercase;
+			font-size: 18px;
+			line-height: 26px;
+			justify-items: center;
+			border-radius: 100px;
+			border:none;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+		.sign-in-btn:hover {
+			background-color: #2B8B8C; 
+		}
+
+		.hero-img{
+			margin-top: -50px;
+			margin-left: 130px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="login-form">
+		<div class="title">
+			<p>WELCOME to GROUP 6!</p>
+		</div>
+		<div class="subheading-wrapper">
+			<div class="txt1">Sign In</div>
+			<div class="txt2">to get started!</div>
+		</div>
+		<div class="custom-select-wrapper">
+			<div class="access-label">Access As</div>
+			<div class="custom-select">
+				<div class="select-selected" id="type-of-user">Type of user</div>
+				<div class="select-dropdown">
+					<div class="option">Client</div>
+					<div class="option">Operator</div>
+					<div class="option">Administrator</div>
+				</div>
+			</div>
+			<input type="hidden" id="typeOfUserInput" name="typeOfUser">
+		</div>
+		
+		
+		<form action="/sign-in" method="POST" id="loginForm">
+			<!-- Polje za korisničko ime -->
+			<label for="username" class="form-label">User name</label><br>
+			<input type="text" id="username" name="username" placeholder="Enter your username" required class="input-style">
+			<br><br>
+		
+			<!-- Polje za lozinku -->
+			<label for="password" class="form-label">Password</label><br>
+			<div class="password-wrapper">
+				<input type="password" id="password" name="password" placeholder="Enter your password" required class="input-style"><br>
+				<button type="button" id="togglePassword" class="toggle-password">Show</button>
+			</div>
+			<br><br>
+			<p id="wrongData"></p>
+		
+			<!-- Dugme za prijavu -->
+			<button type="submit" class="sign-in-btn">Sign In</button>
+		</form>
+		
+	</div>
+	<img src="customer.png" class="hero-img">
+	
+	<script>
+		
+		document.getElementById("loginForm").addEventListener("submit", async function (event) {
+			event.preventDefault(); 
+
+			const username = document.getElementById("username").value;
+			const password = document.getElementById("password").value;
+			const typeOfUser = document.getElementById("typeOfUserInput").value;
+
+			// ispis na konzoli
+			console.log(username, password, typeOfUser);
+
+			try {
+				const response = await fetch("http://localhost:18080/sign-in", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						username: username,
+						password: password,
+						typeOfUser: typeOfUser,
+					}),
+				});
+
+				// Handle the response
+				const data = await response.json();
+				 // dodala try catch blok 
+				try {
+					if (response.ok) {
+
+						// ispis na konzoli
+						//console.log(data.redirectUrl, data.userId, data.username, data.userType)
+						window.location.href = `http://localhost:18080/${data.redirectUrl}`;
+					} else {
+						document.getElementById("username").style.color = "red";
+						document.getElementById("password").style.color = "red";
+						document.getElementById("type-of-user").style.color = "red";
+						document.getElementById("wrongData").innerText = "Please check your data.";
+						//alert("Please check your data.");
+					}
+				} catch (error) {
+					console.error("Error during login:", error);
+					alert("Failed to connect to the server.");
+				}
+
+			} catch (error) {
+				alert("Failed to connect to server!");
+				console.error("Login failed:", error);
+			}
+		});
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		document.addEventListener('DOMContentLoaded', () => {
+			const selected = document.querySelector('.select-selected');
+			const dropdown = document.querySelector('.select-dropdown');
+			const options = document.querySelectorAll('.option');
+
+			// Otvaranje i zatvaranje dropdown-a
+			selected.addEventListener('click', () => {
+				dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+			});
+
+			// Klik na opciju
+			options.forEach(option => {
+				option.addEventListener('click', () => {
+					selected.textContent = option.textContent; 
+					document.getElementById("typeOfUserInput").value = option.textContent;// Postavi izabranu opciju
+					dropdown.style.display = 'none'; // Zatvori dropdown
+				});
+			});
+
+			// Klik van dropdown-a zatvara ga
+			document.addEventListener('click', (event) => {
+				if (!event.target.closest('.custom-select-wrapper')) {
+					dropdown.style.display = 'none';
+				}
+			});
+		});
+
+		document.addEventListener('DOMContentLoaded', () => {
+			const passwordInput = document.getElementById('password');
+			const togglePasswordButton = document.getElementById('togglePassword');
+
+			togglePasswordButton.addEventListener('click', () => {
+				// Proveri trenutni tip input polja
+				if (passwordInput.type === 'password') {
+					passwordInput.type = 'text'; // Prikaži lozinku
+					togglePasswordButton.textContent = 'Hide'; // Promeni tekst dugmeta
+				} else {
+					passwordInput.type = 'password'; // Sakrij lozinku
+					togglePasswordButton.textContent = 'Show'; // Vrati tekst dugmeta
+				}
+			});
+		});
+
+		document.addEventListener('DOMContentLoaded', () => {
+			const selected = document.querySelector('.select-selected');
+			const dropdown = document.querySelector('.custom-select');
+			const dropdownContent = document.querySelector('.select-dropdown');
+			const options = document.querySelectorAll('.option'); // Sve opcije
+
+			// Klik na selektovani deo
+			selected.addEventListener('click', () => {
+				if (dropdown.classList.contains('open')) {
+					dropdownContent.style.height = '0'; // Postavi visinu na 0 za zatvaranje
+					dropdownContent.style.padding = '0';
+				} else {
+					const contentHeight = dropdownContent.scrollHeight + 'px'; // Dinamička visina
+					dropdownContent.style.height = contentHeight; // Postavi visinu
+					dropdownContent.style.padding = '10px 0'; // Dodaj padding
+				}
+
+				// Dodaj ili ukloni klasu "open"
+				dropdown.classList.toggle('open');
+			});
+
+			// Klik na opciju
+			options.forEach(option => {
+				option.addEventListener('click', () => {
+					selected.textContent = option.textContent; // Postavi tekst izabrane opcije
+					dropdownContent.style.height = '0'; // Zatvori dropdown
+					dropdownContent.style.padding = '0'; // Ukloni padding
+					dropdown.classList.remove('open'); // Ukloni klasu "open"
+				});
+			});
+
+			// Klik van dropdown-a zatvara ga
+			document.addEventListener('click', (event) => {
+				if (!event.target.closest('.custom-select')) {
+					dropdown.classList.remove('open');
+					dropdownContent.style.height = '0'; // Zatvori dropdown
+					dropdownContent.style.padding = '0'; // Ukloni padding
+				}
+			});
+		});
+
+	</script>
+</body>

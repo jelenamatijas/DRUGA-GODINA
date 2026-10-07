@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="591.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/17.0.14" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jelena.etfbl.simulation.TopFiveRoutesController">
+   <children>
+      <TableView fx:id="routes_tb" layoutX="210.0" layoutY="15.0" prefHeight="524.0" prefWidth="702.0">
+        <columns>
+          <TableColumn fx:id="departure_clm" maxWidth="175.0" minWidth="175.0" prefWidth="175.0" sortable="false" text="Departure" />
+          <TableColumn fx:id="arrival_clm" maxWidth="175.0" minWidth="175.0" prefWidth="175.0" sortable="false" text="Arrival" />
+            <TableColumn fx:id="type_clm" maxWidth="175.0" minWidth="175.0" prefWidth="175.0" sortable="false" text="Type" />
+            <TableColumn fx:id="price_clm" maxWidth="175.0" minWidth="175.0" prefWidth="175.0" sortable="false" text="Price" />
+        </columns>
+      </TableView>
+      <Button fx:id="goBack_btn" alignment="CENTER" layoutX="15.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goBack_btn_OnClick" prefHeight="26.0" prefWidth="165.0" text="Go back" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="route1_btn" alignment="CENTER" layoutX="14.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#route1_btn_OnClick" prefHeight="26.0" prefWidth="165.0" text="Route 1" textAlignment="CENTER" visible="false" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="route2_btn" alignment="CENTER" layoutX="15.2" layoutY="51.8" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#route2_btn_OnClick" prefHeight="26.0" prefWidth="165.0" text="Route 2" textAlignment="CENTER" visible="false" AnchorPane.leftAnchor="15.2" AnchorPane.topAnchor="51.8">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="route3_btn" alignment="CENTER" layoutX="15.2" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#route3_btn_OnClick" prefHeight="26.0" prefWidth="165.0" text="Route 3" textAlignment="CENTER" visible="false" AnchorPane.leftAnchor="15.2">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="route4_btn" alignment="CENTER" layoutX="15.2" layoutY="125.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#route4_btn_OnClick" prefHeight="26.0" prefWidth="165.0" text="Route 4" textAlignment="CENTER" visible="false" AnchorPane.leftAnchor="15.2">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="route5_btn" alignment="CENTER" layoutX="15.2" layoutY="161.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#route5_btn_OnClick" prefHeight="26.0" prefWidth="165.0" text="Route 5" textAlignment="CENTER" visible="false" AnchorPane.leftAnchor="15.2">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="byeTicket_btn" alignment="CENTER" layoutX="15.0" layoutY="513.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#byeTicket_btn_OnClick" prefHeight="26.0" prefWidth="165.0" text="Buy ticket" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Label fx:id="transferPriceTime_lbl" layoutX="211.0" layoutY="557.0" prefHeight="19.0" prefWidth="386.0" AnchorPane.bottomAnchor="15.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

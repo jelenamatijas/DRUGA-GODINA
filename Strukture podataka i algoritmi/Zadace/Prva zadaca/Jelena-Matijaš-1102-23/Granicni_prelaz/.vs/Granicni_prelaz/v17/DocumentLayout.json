@@ -1,0 +1,89 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\DRUGA-GODINA\\SPA\\Jelena-Matija\u0161-1102-23\\Granicni_prelaz\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{397312DB-D2AC-4815-8594-BBFAF4424D3A}|Granicni_prelaz.vcxproj|D:\\DRUGA-GODINA\\SPA\\Jelena-Matija\u0161-1102-23\\Granicni_prelaz\\Granicni_prelaz.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{397312DB-D2AC-4815-8594-BBFAF4424D3A}|Granicni_prelaz.vcxproj|solutionrelative:Granicni_prelaz.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{397312DB-D2AC-4815-8594-BBFAF4424D3A}|Granicni_prelaz.vcxproj|D:\\DRUGA-GODINA\\SPA\\Jelena-Matija\u0161-1102-23\\Granicni_prelaz\\Teretna_vozila.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{397312DB-D2AC-4815-8594-BBFAF4424D3A}|Granicni_prelaz.vcxproj|solutionrelative:Teretna_vozila.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{397312DB-D2AC-4815-8594-BBFAF4424D3A}|Granicni_prelaz.vcxproj|D:\\DRUGA-GODINA\\SPA\\Jelena-Matija\u0161-1102-23\\Granicni_prelaz\\Teretno_vozilo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{397312DB-D2AC-4815-8594-BBFAF4424D3A}|Granicni_prelaz.vcxproj|solutionrelative:Teretno_vozilo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{397312DB-D2AC-4815-8594-BBFAF4424D3A}|Granicni_prelaz.vcxproj|D:\\DRUGA-GODINA\\SPA\\Jelena-Matija\u0161-1102-23\\Granicni_prelaz\\Roba.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{397312DB-D2AC-4815-8594-BBFAF4424D3A}|Granicni_prelaz.vcxproj|solutionrelative:Roba.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Granicni_prelaz.cpp",
+              "DocumentMoniker": "D:\\DRUGA-GODINA\\SPA\\Jelena-Matija\u0161-1102-23\\Granicni_prelaz\\Granicni_prelaz.cpp",
+              "RelativeDocumentMoniker": "Granicni_prelaz.cpp",
+              "ToolTip": "D:\\DRUGA-GODINA\\SPA\\Jelena-Matija\u0161-1102-23\\Granicni_prelaz\\Granicni_prelaz.cpp",
+              "RelativeToolTip": "Granicni_prelaz.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-08T09:44:58.401Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Roba.cpp",
+              "DocumentMoniker": "D:\\DRUGA-GODINA\\SPA\\Jelena-Matija\u0161-1102-23\\Granicni_prelaz\\Roba.cpp",
+              "RelativeDocumentMoniker": "Roba.cpp",
+              "ToolTip": "D:\\DRUGA-GODINA\\SPA\\Jelena-Matija\u0161-1102-23\\Granicni_prelaz\\Roba.cpp",
+              "RelativeToolTip": "Roba.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-18T13:19:22.41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Teretno_vozilo.cpp",
+              "DocumentMoniker": "D:\\DRUGA-GODINA\\SPA\\Jelena-Matija\u0161-1102-23\\Granicni_prelaz\\Teretno_vozilo.cpp",
+              "RelativeDocumentMoniker": "Teretno_vozilo.cpp",
+              "ToolTip": "D:\\DRUGA-GODINA\\SPA\\Jelena-Matija\u0161-1102-23\\Granicni_prelaz\\Teretno_vozilo.cpp",
+              "RelativeToolTip": "Teretno_vozilo.cpp",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEcAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-18T13:19:20.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Teretna_vozila.cpp",
+              "DocumentMoniker": "D:\\DRUGA-GODINA\\SPA\\Jelena-Matija\u0161-1102-23\\Granicni_prelaz\\Teretna_vozila.cpp",
+              "RelativeDocumentMoniker": "Teretna_vozila.cpp",
+              "ToolTip": "D:\\DRUGA-GODINA\\SPA\\Jelena-Matija\u0161-1102-23\\Granicni_prelaz\\Teretna_vozila.cpp",
+              "RelativeToolTip": "Teretna_vozila.cpp",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-18T13:19:17.395Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
